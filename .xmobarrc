@@ -1,0 +1,16 @@
+Config { font = "-misc-fixed-*-*-*-*-10-*-*-*-*-*-*-*"
+       , bgColor = "#002b36"
+       , fgColor = "#eee8d5"
+       , position = Static {xpos = 0, ypos = 0, width = 922, height = 16}
+       , lowerOnStart = True
+       , commands = [ Run Cpu ["-L","3","-H","50","--normal", "#859900","--high","#b58900"] 10
+                    , Run Memory ["-t","Mem: <usedratio>%"] 10
+                    , Run Com "uname" ["-s","-r"] "" 36000
+                    , Run BatteryP ["C1B4"]
+                    ["-t","<left>","-L","30","-H","75","-l",
+                    "#b58900","-n","#dc322f","-h", "#859900"] 10
+                    , Run Date "%a %b %_d %Y %H:%M:%S" "date" 10]
+       , sepChar = "%"
+       , alignSep = "}{"
+       , template = "%cpu% | %memory% | %battery% }{ <fc=#268bd2>%date%</fc>"
+       }
