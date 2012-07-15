@@ -1,3 +1,5 @@
+URxvt.font:    xft:terminus
+URxvt.scrollstyle: plain
 Xcursor.theme: Neutral
 
 Xft.antialias: 1

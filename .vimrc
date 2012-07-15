@@ -34,5 +34,7 @@ let g:haddock_docdir = "/usr/share/doc/ghc/html/"
 function Kernel()
     set tabstop=8
     set shiftwidth=8
+    set softtabstop=8
+    set shiftwidth=8
     set noexpandtab
 endfunction
