@@ -1,1 +1,8 @@
-/home/arbn/.emacs
+(require 'quack)
+(load "/usr/share/emacs/site-lisp/haskell-mode/haskell-site-file.el")
+(add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
+(add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/emacs-color-theme-solarized")
+(load-theme 'solarized-dark t)
+(add-to-list 'load-path "~/.emacs.d/coffee-mode")
+(require 'coffee-mode)
