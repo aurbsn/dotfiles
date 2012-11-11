@@ -24,6 +24,5 @@ theseKeys =
     [
         ("M4-p", spawn "dmenu_run"),
         ("<XF86AudioRaiseVolume>", spawn "amixer set Master 1+"),
-        ("<XF86AudioLowerVolume>", spawn "amixer set Master 1-"),
-        ("M4-c", spawn "chromium")
+        ("<XF86AudioLowerVolume>", spawn "amixer set Master 1-")
     ]
