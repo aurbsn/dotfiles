@@ -1,4 +1,4 @@
 OPTIONS=name:Melethor,male,race:elf,role:wiz,align:chaotic
-OPTIONS=color,hilite_pet,lit_corridor,menucolors
+OPTIONS=color,hilite_pet,lit_corridor
 OPTIONS=autodig,autopickup,pickup_types:$?!/
 OPTIONS=catname:Ada,dogname:Turing,fruit:slice of pizza.
