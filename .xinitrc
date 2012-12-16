@@ -5,7 +5,7 @@ feh --bg-center ~/pic/haskell-pattern.png &
 # Icon tray!
 
 trayer --edge top --align right --SetDockType true --SetPartialStrut true \
-    --expand true --width 10 --transparent true --alpha 1 --tint 0x002b36 --height 16 &
+    --expand true --width 28 --transparent true --alpha 1 --tint 0x002b36 --height 16 &
 
 # Hide the obnoxious rodent!
 
