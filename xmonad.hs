@@ -12,7 +12,7 @@ main = do
         $ defaultConfig
         { 
             manageHook = manageDocks <+> manageHook defaultConfig,
-            layoutHook = smartBorders $ avoidStruts  $  layoutHook defaultConfig,
+            layoutHook = smartBorders . avoidStruts . layoutHook $ defaultConfig,
             modMask = mod4Mask,
             focusFollowsMouse = False,
             terminal = "urxvt",
