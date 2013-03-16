@@ -1,6 +1,6 @@
 (add-to-list 'load-path "~/.emacs.d/lisp/")
 (setq column-number-mode t)
-(setq backup-directory-alist `(("." . "~/.emacs/backups")))
+(setq backup-directory-alist `(("." . "~/.emacs.d/backups")))
 (setq backup-by-copying t)
 
 ;; Scheme
