@@ -34,4 +34,14 @@
 
 ;; Objective-C
 (defun xcode-build ()
-  (buffer-file-name))
+  (interactive)
+  (let ((default-directory (up-one-dir buffer-file-name))
+        )
+    (start-process "xcode-build" "*xcode-build*" "xcodebuild")
+    (split-window)
+    (switch-to-buffer-other-window "*xcode-build*")
+    ))
+
+(defun up-one-dir (file-name)
+  (file-name-directory (directory-file-name (file-name-directory file-name)))
+  )
