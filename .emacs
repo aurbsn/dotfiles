@@ -21,7 +21,6 @@
     (package-install p)))
 
 (add-to-list 'load-path "~/.emacs.d/lisp/ensime/elisp")
-(add-to-list 'exec-path "/usr/local/bin/")
 (setq column-number-mode t)
 (setq backup-directory-alist `(("." . "~/.emacs.d/backups")))
 (setq backup-by-copying t)
