@@ -25,8 +25,6 @@
 (setq backup-directory-alist `(("." . "~/.emacs.d/backups")))
 (setq backup-by-copying t)
 
-(load-theme 'solarized-dark)
-
 ;; Scheme
 (require 'quack)
 (setq quack-default-program "mit-scheme")
@@ -65,3 +63,5 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+(load-theme 'solarized-dark)
