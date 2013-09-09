@@ -14,7 +14,8 @@
                       nrepl
                       markdown-mode
                       scala-mode2
-                      solarized-theme))
+                      solarized-theme
+                      find-file-in-repository))
 
 (dolist (p my-packages)
   (when (not (package-installed-p p))
@@ -25,6 +26,7 @@
 (setq backup-directory-alist `(("." . "~/.emacs.d/backups")))
 (setq backup-by-copying t)
 
+(global-set-key (kbd "C-x f") 'find-file-in-repository)
 ;; Scheme
 (require 'quack)
 (setq quack-default-program "mit-scheme")
@@ -45,12 +47,13 @@
     (switch-to-buffer-other-window "*xcode-build*")))
 
 (defun up-one-dir (file-name)
-  (file-name-directory (directory-file-name (file-name-directory file-name))))
+  (file-name-directory (directory-file-name (file-yuname-directory file-name))))
 
 ;; Scala
 
 (require 'ensime)
 (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
