@@ -15,11 +15,16 @@
                       markdown-mode
                       scala-mode2
                       solarized-theme
-                      find-file-in-repository))
+                      find-file-in-repository
+                      flycheck
+                      exec-path-from-shell))
 
 (dolist (p my-packages)
   (when (not (package-installed-p p))
     (package-install p)))
+
+(when (memq window-system '(mac ns))
+  (exec-path-from-shell-initialize))
 
 (add-to-list 'load-path "~/.emacs.d/lisp/ensime/elisp")
 (setq column-number-mode t)
@@ -27,6 +32,7 @@
 (setq backup-by-copying t)
 
 (global-set-key (kbd "C-x f") 'find-file-in-repository)
+
 ;; Scheme
 (require 'quack)
 (setq quack-default-program "mit-scheme")
@@ -47,7 +53,7 @@
     (switch-to-buffer-other-window "*xcode-build*")))
 
 (defun up-one-dir (file-name)
-  (file-name-directory (directory-file-name (file-yuname-directory file-name))))
+  (file-name-directory (directory-file-name (file-name-directory file-name))))
 
 ;; Scala
 
