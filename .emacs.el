@@ -43,18 +43,6 @@
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
 (put 'narrow-to-region 'disabled nil)
 
-;; Objective-C
-(defun xcode-build ()
-  (interactive)
-  (let ((default-directory (up-one-dir buffer-file-name))
-        )
-    (start-process "xcode-build" "*xcode-build*" "xcodebuild")
-    (split-window)
-    (switch-to-buffer-other-window "*xcode-build*")))
-
-(defun up-one-dir (file-name)
-  (file-name-directory (directory-file-name (file-name-directory file-name))))
-
 ;; Scala
 
 (require 'ensime)
