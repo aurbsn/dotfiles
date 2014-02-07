@@ -18,7 +18,9 @@
                       find-file-in-repository
                       flycheck
                       exec-path-from-shell
-                      python-mode))
+                      python-mode
+                      web-mode
+                      monokai-theme))
 
 (dolist (p my-packages)
   (when (not (package-installed-p p))
@@ -54,6 +56,15 @@
 (add-to-list 'interpreter-mode-alist '("python" . python-mode))
 
 ;; HTML
+(require 'web-mode)
+(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.tpl?\\'" . web-mode))
+(defun web-mode-hook ()
+  (setq web-mode-markup-indent-offset 4)
+  (setq web-mode-code-indent-offset 4)
+  (setq web-mode-css-indent-offset 4)
+  )
+(add-hook 'web-mode-hook  'web-mode-hook)
 (add-hook 'html-mode-hook
           (lambda ()
             ;; Default indentation is usually 2 spaces, changing to 4.
@@ -64,6 +75,12 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-safe-themes (quote ("8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default))))
+ '(custom-safe-themes (quote ("9c26d896b2668f212f39f5b0206c5e3f0ac301611ced8a6f74afe4ee9c7e6311" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default))))
 
-(load-theme 'solarized-dark)
+(load-theme 'monokai)
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
