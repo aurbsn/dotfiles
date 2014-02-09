@@ -1,3 +1,11 @@
+# Start ssh-agent
+
+eval $(ssh-agent)
+
+# Start dropboxd
+
+dropboxd &
+
 # Hide the obnoxious rodent!
 
 unclutter &
@@ -12,7 +20,7 @@ xrdb -merge ~/.Xdefaults
 
 # Set up screens
 
-~/.screenlayout/laptop.sh
+~/.screenlayout/layout.sh
 
 # Launch XMonad!
 

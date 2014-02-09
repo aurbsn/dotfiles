@@ -1,5 +1,6 @@
 import XMonad
 import XMonad.Hooks.ManageDocks
+import XMonad.Hooks.ManageHelpers
 import XMonad.Hooks.UrgencyHook
 import XMonad.Util.Run(spawnPipe)
 import XMonad.Layout.NoBorders
@@ -11,7 +12,7 @@ main = do
         $ withUrgencyHook dzenUrgencyHook { args = ["-bg", "darkgreen"]}
         $ defaultConfig
         { 
-            manageHook = manageDocks <+> manageHook defaultConfig,
+            manageHook = manageDocks <+> (isFullscreen --> doFullFloat) <+> manageHook defaultConfig,
             layoutHook = smartBorders . avoidStruts . layoutHook $ defaultConfig,
             modMask = mod4Mask,
             focusFollowsMouse = False,
