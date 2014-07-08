@@ -20,7 +20,8 @@
                       exec-path-from-shell
                       python-mode
                       web-mode
-                      monokai-theme))
+                      monokai-theme
+                      ensime))
 
 (dolist (p my-packages)
   (when (not (package-installed-p p))
@@ -29,7 +30,6 @@
 (when (memq window-system '(mac ns))
   (exec-path-from-shell-initialize))
 
-(add-to-list 'load-path "~/.emacs.d/lisp/ensime/elisp")
 (setq column-number-mode t)
 (setq backup-directory-alist `(("." . "~/.emacs.d/backups")))
 (setq backup-by-copying t)
@@ -75,7 +75,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-safe-themes (quote ("73fe242ddbaf2b985689e6ec12e29fab2ecd59f765453ad0e93bc502e6e478d6" "9c26d896b2668f212f39f5b0206c5e3f0ac301611ced8a6f74afe4ee9c7e6311" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default))))
+ '(custom-safe-themes (quote ("60f04e478dedc16397353fb9f33f0d895ea3dab4f581307fbf0aa2f07e658a40" "73fe242ddbaf2b985689e6ec12e29fab2ecd59f765453ad0e93bc502e6e478d6" "9c26d896b2668f212f39f5b0206c5e3f0ac301611ced8a6f74afe4ee9c7e6311" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default))))
 
 (load-theme 'monokai)
 (custom-set-faces
