@@ -14,13 +14,12 @@ unclutter &
 
 setxkbmap -option ctrl:nocaps
 
+# Set screens
+~/.screenlayout/layout.sh
+
 # Merge Xdefaults
 
 xrdb -merge ~/.Xdefaults
-
-# Set up screens
-
-~/.screenlayout/layout.sh
 
 # Launch XMonad!
 

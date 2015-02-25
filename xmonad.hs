@@ -16,7 +16,7 @@ main = do
             layoutHook = smartBorders . avoidStruts . layoutHook $ defaultConfig,
             modMask = mod4Mask,
             focusFollowsMouse = False,
-            terminal = "urxvt",
+            terminal = "sakura",
             focusedBorderColor = "#0000ff",
             normalBorderColor = "#99ccff"
         } `additionalKeysP` theseKeys

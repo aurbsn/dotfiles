@@ -21,7 +21,7 @@
                       python-mode
                       web-mode
                       monokai-theme
-                      ensime))
+                      android-mode))
 
 (dolist (p my-packages)
   (when (not (package-installed-p p))
@@ -46,10 +46,6 @@
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
 (put 'narrow-to-region 'disabled nil)
 
-;; Scala
-(require 'ensime)
-(add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
-
 ;; Python
 (autoload 'python-mode "python-mode" "Python Mode." t)
 (add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
@@ -69,6 +65,10 @@
           (lambda ()
             ;; Default indentation is usually 2 spaces, changing to 4.
             (set (make-local-variable 'sgml-basic-offset) 4)))
+
+;; Android
+(require 'android-mode)
+(custom-set-variables '(android-mode-sdk-dir "/opt/android-sdk"))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
