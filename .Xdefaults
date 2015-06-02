@@ -1,5 +1,0 @@
-URxvt.font:    xft:terminus
-URxvt.scrollstyle: plain
-URxvt.background: black
-URxvt.foreground: gray
-Xcursor.theme: Neutral
