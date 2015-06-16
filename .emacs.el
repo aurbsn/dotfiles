@@ -29,7 +29,7 @@
 (when (memq window-system '(mac ns))
   (exec-path-from-shell-initialize))
 
-(set-face-attribute 'default nil :font "Anonymous Pro-12")
+(set-face-attribute 'default nil :font "Anonymous Pro-17")
 (setq column-number-mode t)
 (setq backup-directory-alist `(("." . "~/.emacs.d/backups")))
 (setq backup-by-copying t)
