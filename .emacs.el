@@ -19,7 +19,8 @@
                       idris-mode
                       elm-mode
                       rust-mode
-                      racket-mode))
+                      racket-mode
+                      es-mode))
 
 (dolist (p my-packages)
   (when (not (package-installed-p p))
