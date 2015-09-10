@@ -26,8 +26,7 @@
   (when (not (package-installed-p p))
     (package-install p)))
 
-(when (memq window-system '(mac ns))
-  (exec-path-from-shell-initialize))
+(exec-path-from-shell-initialize)
 
 (set-face-attribute 'default nil :font "Anonymous Pro-17")
 (setq column-number-mode t)
