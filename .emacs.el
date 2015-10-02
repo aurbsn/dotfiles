@@ -20,7 +20,8 @@
                       elm-mode
                       rust-mode
                       racket-mode
-                      es-mode))
+                      es-mode
+                      yaml-mode))
 
 (dolist (p my-packages)
   (when (not (package-installed-p p))
