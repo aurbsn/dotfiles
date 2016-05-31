@@ -21,7 +21,9 @@
                       rust-mode
                       racket-mode
                       es-mode
-                      yaml-mode))
+                      yaml-mode
+                      markdown-mode))
+
 
 (dolist (p my-packages)
   (when (not (package-installed-p p))
@@ -67,6 +69,11 @@
 
 ;; Android
 (require 'android-mode)
+
+;; This was added by hand: edit away.
+(custom-set-variables
+ '(markdown-command "/usr/local/bin/pandoc"))
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
