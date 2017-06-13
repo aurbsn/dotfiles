@@ -78,6 +78,12 @@
 
     ;; Source tree viewer
     neotree
+
+    ;; ElasticSearch
+    es-mode
+
+    ;; Auto-complete
+    company
     ))
 
 ;; On OS X, an Emacs instance started from the graphical user
@@ -143,4 +149,22 @@
 (load "setup-clojure.el")
 (load "setup-js.el")
 
+;; Autocomplete everything
+(add-hook 'after-init-hook 'global-company-mode)
+
 (put 'downcase-region 'disabled nil)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(coffee-tab-width 2)
+ '(package-selected-packages
+   (quote
+    (markdown-mode markdown-mode+ restclient company es-mode tagedit smex rainbow-delimiters projectile paredit neotree magit ido-ubiquitous exec-path-from-shell clojure-mode-extra-font-locking cider-eval-sexp-fu cider-decompile))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
