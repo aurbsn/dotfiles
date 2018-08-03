@@ -32,7 +32,7 @@
 (load-theme 'dracula t)
 
 ;; increase font size for better readability
-(set-face-attribute 'default nil :height 130)
+(add-to-list 'default-frame-alist '(font . "Source Code Pro-24"))
 
 ;; Uncomment the lines below by removing semicolons and play with the
 ;; values in order to set the width (in characters wide) and height

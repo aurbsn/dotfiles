@@ -47,6 +47,9 @@
     ;; https://github.com/clojure-emacs/clojure-mode
     clojure-mode
 
+    ;; PHP mode
+    php-mode
+
     ;; extra syntax highlighting for clojure
     clojure-mode-extra-font-locking
 
@@ -59,6 +62,7 @@
     ;; of ido
     ido-completing-read+
 
+    ;; The preferred color scheme
     dracula-theme
 
     ;; Enhances M-x to allow easier execution of commands. Provides
@@ -86,6 +90,9 @@
 
     ;; Auto-complete
     company
+
+    ;; Mustache
+    mustache-mode
     ))
 
 ;; On OS X, an Emacs instance started from the graphical user
@@ -150,11 +157,15 @@
 ;; Langauage-specific
 (load "setup-clojure.el")
 (load "setup-js.el")
+(load "setup-php.el")
 
 ;; Autocomplete everything
 (add-hook 'after-init-hook 'global-company-mode)
 
 (put 'downcase-region 'disabled nil)
+
+(global-set-key (kbd "<f5>") 'kmacro-end-or-call-macro)
+(put 'erase-buffer 'disabled nil)
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -163,12 +174,10 @@
  '(coffee-tab-width 2)
  '(package-selected-packages
    (quote
-    (green-phosphor-theme parse-csv csv-mode dad-joke markdown-mode markdown-mode+ restclient company es-mode tagedit smex rainbow-delimiters projectile paredit neotree magit ido-ubiquitous exec-path-from-shell clojure-mode-extra-font-locking cider-eval-sexp-fu cider-decompile))))
+    (mustache-mode php-mode green-phosphor-theme parse-csv csv-mode dad-joke markdown-mode markdown-mode+ restclient company es-mode tagedit smex rainbow-delimiters projectile paredit neotree magit ido-ubiquitous exec-path-from-shell clojure-mode-extra-font-locking cider-eval-sexp-fu cider-decompile))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
-
-(global-set-key (kbd "<f5>") 'kmacro-end-or-call-macro)
