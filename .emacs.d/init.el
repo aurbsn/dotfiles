@@ -174,7 +174,7 @@
  '(coffee-tab-width 2)
  '(package-selected-packages
    (quote
-    (mustache-mode php-mode green-phosphor-theme parse-csv csv-mode dad-joke markdown-mode markdown-mode+ restclient company es-mode tagedit smex rainbow-delimiters projectile paredit neotree magit ido-ubiquitous exec-path-from-shell clojure-mode-extra-font-locking cider-eval-sexp-fu cider-decompile))))
+    (geben mustache-mode php-mode green-phosphor-theme parse-csv csv-mode dad-joke markdown-mode markdown-mode+ restclient company es-mode tagedit smex rainbow-delimiters projectile paredit neotree magit ido-ubiquitous exec-path-from-shell clojure-mode-extra-font-locking cider-eval-sexp-fu cider-decompile))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
