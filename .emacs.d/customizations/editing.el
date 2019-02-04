@@ -51,10 +51,10 @@
   (comment-or-uncomment-region (line-beginning-position) (line-end-position)))
 (global-set-key (kbd "C-;") 'toggle-comment-on-line)
 
-;; use 2 spaces for tabs
+;; use 4 spaces for tabs
 (defun die-tabs ()
   (interactive)
-  (set-variable 'tab-width 2)
+  (set-variable 'tab-width 4)
   (mark-whole-buffer)
   (untabify (region-beginning) (region-end))
   (keyboard-quit))
