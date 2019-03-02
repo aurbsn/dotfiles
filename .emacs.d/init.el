@@ -91,8 +91,8 @@
     ;; Auto-complete
     company
 
-    ;; Mustache
-    mustache-mode
+    ;; Web mode
+    web-mode
     ))
 
 ;; On OS X, an Emacs instance started from the graphical user
@@ -172,9 +172,12 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(coffee-tab-width 2)
+ '(custom-safe-themes
+   (quote
+    ("274fa62b00d732d093fc3f120aca1b31a6bb484492f31081c1814a858e25c72e" default)))
  '(package-selected-packages
    (quote
-    (geben mustache-mode php-mode green-phosphor-theme parse-csv csv-mode dad-joke markdown-mode markdown-mode+ restclient company es-mode tagedit smex rainbow-delimiters projectile paredit neotree magit ido-ubiquitous exec-path-from-shell clojure-mode-extra-font-locking cider-eval-sexp-fu cider-decompile))))
+    (web-mode tagedit smex rainbow-delimiters projectile php-mode paredit neotree mustache-mode magit ido-completing-read+ es-mode dracula-theme company clojure-mode-extra-font-locking cider))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
