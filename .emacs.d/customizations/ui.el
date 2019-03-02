@@ -32,7 +32,7 @@
 (load-theme 'dracula t)
 
 ;; increase font size for better readability
-(add-to-list 'default-frame-alist '(font . "Source Code Variable-24"))
+(add-to-list 'default-frame-alist '(font . "Source Code Variable-18"))
 
 ;; Uncomment the lines below by removing semicolons and play with the
 ;; values in order to set the width (in characters wide) and height
