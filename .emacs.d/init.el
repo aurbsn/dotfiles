@@ -91,8 +91,8 @@
     ;; Auto-complete
     company
 
-    ;; Mustache
-    mustache-mode
+    ;; Web mode
+    web-mode
     ))
 
 ;; On OS X, an Emacs instance started from the graphical user
