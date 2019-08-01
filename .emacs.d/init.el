@@ -93,6 +93,12 @@
 
     ;; Web mode
     web-mode
+
+    ;; Haskell
+    haskell-mode
+
+    ;;
+    elixir-mode
     ))
 
 ;; On OS X, an Emacs instance started from the graphical user
