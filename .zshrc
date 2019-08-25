@@ -14,4 +14,5 @@ plugins=(git)
 source $ZSH/oh-my-zsh.sh
 
 export EDITOR=mg
-export QT_AUTO_SCREEN_SCALE_FACTOR=1
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
