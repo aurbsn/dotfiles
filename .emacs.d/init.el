@@ -43,6 +43,9 @@
     ;; PHP mode
     php-mode
 
+    ;; Company PHP
+    company-php
+
     ;; extra syntax highlighting for clojure
     clojure-mode-extra-font-locking
 
@@ -163,3 +166,18 @@
 
 ;; Autocomplete everything
 (add-hook 'after-init-hook 'global-company-mode)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(coffee-tab-width 4)
+ '(package-selected-packages
+   (quote
+    (elixir-mode haskell-mode web-mode tagedit smex restclient rainbow-delimiters projectile php-mode paredit neotree mustache-mode markdown-mode magit ido-completing-read+ geben exec-path-from-shell es-mode dracula-theme company clojure-mode-extra-font-locking cider apples-mode))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
