@@ -1,11 +1,11 @@
 ;;;;
 ;; Packages
+
 ;;;;
 
 ;; Define package repositories
 (require 'package)
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
-                         ("marmalade" . "http://marmalade-repo.org/packages/")
                          ("melpa" . "http://melpa-stable.milkbox.net/packages/")))
 
 
@@ -96,9 +96,8 @@
     ;; Elixir
     elixir-mode
 
-    ;; Org-mode
-    org
-    ))
+    ;; Rust
+    rust-mode))
 
 ;; On OS X, an Emacs instance started from the graphical user
 ;; interface will have a different environment than a shell in a
@@ -163,6 +162,7 @@
 (load "setup-clojure.el")
 (load "setup-js.el")
 (load "setup-php.el")
+(load "setup-rs.el")
 
 ;; Autocomplete everything
 (add-hook 'after-init-hook 'global-company-mode)
@@ -174,7 +174,7 @@
  '(coffee-tab-width 4)
  '(package-selected-packages
    (quote
-    (elixir-mode haskell-mode web-mode tagedit smex restclient rainbow-delimiters projectile php-mode paredit neotree mustache-mode markdown-mode magit ido-completing-read+ geben exec-path-from-shell es-mode dracula-theme company clojure-mode-extra-font-locking cider apples-mode))))
+    (rust-mode company-php web-mode tagedit smex rainbow-delimiters projectile php-mode paredit neotree mustache-mode magit ido-completing-read+ haskell-mode es-mode elixir-mode dracula-theme company clojure-mode-extra-font-locking cider))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
