@@ -3,6 +3,7 @@
  
 (defun php-mode-init ()
   "Set some buffer-local variables."
+  (setq php-mode-force-pear 1)
   (setq case-fold-search t)
   (setq c-basic-offset 4)
   (setq indent-tabs-mode nil)

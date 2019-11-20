@@ -32,7 +32,10 @@
 ;; manually with M-x package-install
 ;; Add in your own as you wish:
 (defvar my-packages
-  '(;; makes handling lisp expressions much, much easier
+  '(;; Flycheck
+    flycheck
+
+    ;; makes handling lisp expressions much, much easier
     ;; Cheatsheet: http://www.emacswiki.org/emacs/PareditCheatsheet
     paredit
 
@@ -132,6 +135,7 @@
 ;;;;
 ;; Customization
 ;;;;
+(add-hook 'after-init-hook #'global-flycheck-mode)
 
 ;; Add a directory to our load path so that when you `load` things
 ;; below, Emacs knows where to look for the corresponding file.
@@ -163,21 +167,8 @@
 (load "setup-js.el")
 (load "setup-php.el")
 (load "setup-rs.el")
+(load "setup-html.el")
+(load "setup-css.el")
 
 ;; Autocomplete everything
 (add-hook 'after-init-hook 'global-company-mode)
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(coffee-tab-width 4)
- '(package-selected-packages
-   (quote
-    (rust-mode company-php web-mode tagedit smex rainbow-delimiters projectile php-mode paredit neotree mustache-mode magit ido-completing-read+ haskell-mode es-mode elixir-mode dracula-theme company clojure-mode-extra-font-locking cider))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
