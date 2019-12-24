@@ -84,9 +84,6 @@
     ;; Source tree viewer
     neotree
 
-    ;; ElasticSearch
-    es-mode
-
     ;; Auto-complete
     company
 
