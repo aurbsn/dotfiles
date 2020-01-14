@@ -20,14 +20,6 @@
 (when (not package-archive-contents)
   (package-refresh-contents))
 
-;; Define he following variables to remove the compile-log warnings
-;; when defining ido-ubiquitous
-(defvar ido-cur-item nil)
-(defvar ido-default-item nil)
-(defvar ido-cur-list nil)
-(defvar predicate nil)
-(defvar inherit-input-method nil)
-
 ;; The packages you want installed. You can also install these
 ;; manually with M-x package-install
 ;; Add in your own as you wish:
@@ -55,11 +47,6 @@
     ;; integration with a Clojure REPL
     ;; https://github.com/clojure-emacs/cider
     cider
-
-    ;; allow ido usage in as many contexts as possible. see
-    ;; customizations/navigation.el line 23 for a description
-    ;; of ido
-    ido-completing-read+
 
     ;; The preferred color scheme
     dracula-theme
@@ -93,9 +80,6 @@
     ;; Haskell
     haskell-mode
 
-    ;; Elixir
-    elixir-mode
-
     ;; Rust
     rust-mode))
 
@@ -114,6 +98,7 @@
   (when (not (package-installed-p p))
     (package-install p)))
 
+(add-hook 'after-init-hook #'global-flycheck-mode)
 
 ;; Place downloaded elisp files in ~/.emacs.d/vendor. You'll then be able
 ;; to load them.
@@ -127,12 +112,6 @@
 ;; Adding this code will make Emacs enter yaml mode whenever you open
 ;; a .yml file
 (add-to-list 'load-path "~/.emacs.d/vendor")
-
-
-;;;;
-;; Customization
-;;;;
-(add-hook 'after-init-hook #'global-flycheck-mode)
 
 ;; Add a directory to our load path so that when you `load` things
 ;; below, Emacs knows where to look for the corresponding file.
@@ -166,6 +145,17 @@
 (load "setup-rs.el")
 (load "setup-html.el")
 (load "setup-css.el")
-
-;; Autocomplete everything
-(add-hook 'after-init-hook 'global-company-mode)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   (quote
+    (web-mode tagedit smex rust-mode restclient rainbow-delimiters projectile paredit neotree mustache-mode markdown-mode magit ido-completing-read+ haskell-mode geben exec-path-from-shell es-mode elixir-mode dracula-theme company-php clojure-mode-extra-font-locking cider apples-mode ac-php))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
