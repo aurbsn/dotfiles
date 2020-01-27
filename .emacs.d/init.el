@@ -145,17 +145,3 @@
 (load "setup-rs.el")
 (load "setup-html.el")
 (load "setup-css.el")
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   (quote
-    (projectile web-mode tagedit smex rust-mode restclient rainbow-delimiters paredit neotree mustache-mode markdown-mode magit ido-completing-read+ haskell-mode geben exec-path-from-shell es-mode elixir-mode dracula-theme company-php clojure-mode-extra-font-locking cider apples-mode ac-php))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
