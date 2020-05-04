@@ -1,8 +1,6 @@
-;;;;
 ;; Packages
 
 ;;;;
-
 ;; Define package repositories
 (require 'package)
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
@@ -49,7 +47,7 @@
     cider
 
     ;; The preferred color scheme
-    dracula-theme
+    cyberpunk-theme
 
     ;; Enhances M-x to allow easier execution of commands. Provides
     ;; a filterable list of possible commands in the minibuffer
@@ -81,7 +79,10 @@
     haskell-mode
 
     ;; Rust
-    rust-mode))
+    rust-mode
+
+    ;; Fead reader
+    elfeed))
 
 ;; On OS X, an Emacs instance started from the graphical user
 ;; interface will have a different environment than a shell in a
@@ -155,9 +156,15 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   (quote
+    ("addfaf4c6f76ef957189d86b1515e9cf9fcd603ab6da795b82b79830eed0b284" default)))
+ '(elfeed-feeds
+   (quote
+    ("https://threatpost.com/feed" "https://feeds.feedburner.com/TroyHunt" "https://www.schneier.com/blog/atom.xml" "https://krebsonsecurity.com/feed/")))
  '(package-selected-packages
    (quote
-    (rust-mode haskell-mode web-mode neotree magit tagedit rainbow-delimiters projectile smex dracula-theme cider clojure-mode-extra-font-locking company-php php-mode clojure-mode paredit flycheck))))
+    (cyberpunk-theme rust-mode haskell-mode web-mode neotree magit tagedit rainbow-delimiters projectile smex dracula-theme cider clojure-mode-extra-font-locking company-php php-mode clojure-mode paredit flycheck))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

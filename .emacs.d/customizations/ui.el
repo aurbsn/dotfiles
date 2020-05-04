@@ -29,7 +29,7 @@
 ;; for a more technical explanation.
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 (add-to-list 'load-path "~/.emacs.d/themes")
-(load-theme 'dracula t)
+(load-theme 'cyberpunk t)
 
 ;; increase font size for better readability
 (add-to-list 'default-frame-alist '(font . "Source Code Pro-14"))
