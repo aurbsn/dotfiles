@@ -79,10 +79,7 @@
     haskell-mode
 
     ;; Rust
-    rust-mode
-
-    ;; Fead reader
-    elfeed))
+    rust-mode))
 
 ;; On OS X, an Emacs instance started from the graphical user
 ;; interface will have a different environment than a shell in a
@@ -159,9 +156,6 @@
  '(custom-safe-themes
    (quote
     ("addfaf4c6f76ef957189d86b1515e9cf9fcd603ab6da795b82b79830eed0b284" default)))
- '(elfeed-feeds
-   (quote
-    ("https://threatpost.com/feed" "https://feeds.feedburner.com/TroyHunt" "https://www.schneier.com/blog/atom.xml" "https://krebsonsecurity.com/feed/")))
  '(package-selected-packages
    (quote
     (cyberpunk-theme rust-mode haskell-mode web-mode neotree magit tagedit rainbow-delimiters projectile smex dracula-theme cider clojure-mode-extra-font-locking company-php php-mode clojure-mode paredit flycheck))))
