@@ -8,3 +8,12 @@ projectile-bookmarks.eld
 projectile.cache
 auto-save-list
 backups
+customizations/setup-etsy.el
+elpa/
+env
+eshell/
+history
+network-security.data
+tramp
+url/
+vendor/

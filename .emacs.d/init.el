@@ -82,7 +82,10 @@
     rust-mode
 
     ;; Fead reader
-    elfeed))
+    elfeed
+
+    use-package
+    ))
 
 ;; On OS X, an Emacs instance started from the graphical user
 ;; interface will have a different environment than a shell in a
@@ -117,6 +120,9 @@
 ;; Add a directory to our load path so that when you `load` things
 ;; below, Emacs knows where to look for the corresponding file.
 (add-to-list 'load-path "~/.emacs.d/customizations")
+
+;; Config branches based on env string value
+(load "setup-env.el")
 
 ;; Sets up exec-path-from-shell so that Emacs will use the correct
 ;; environment variables
@@ -164,7 +170,7 @@
     ("https://threatpost.com/feed" "https://feeds.feedburner.com/TroyHunt" "https://www.schneier.com/blog/atom.xml" "https://krebsonsecurity.com/feed/")))
  '(package-selected-packages
    (quote
-    (cyberpunk-theme rust-mode haskell-mode web-mode neotree magit tagedit rainbow-delimiters projectile smex dracula-theme cider clojure-mode-extra-font-locking company-php php-mode clojure-mode paredit flycheck))))
+    (json-mode use-package cyberpunk-theme rust-mode haskell-mode web-mode neotree magit tagedit rainbow-delimiters projectile smex dracula-theme cider clojure-mode-extra-font-locking company-php php-mode clojure-mode paredit flycheck))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
