@@ -4,7 +4,7 @@
 ;; Define package repositories
 (require 'package)
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
-                         ("melpa" . "http://melpa-stable.milkbox.net/packages/")))
+                         ("melpa" . "https://melpa.org/packages/")))
 
 
 ;; Load and activate emacs packages. Do this first so that the
@@ -146,6 +146,7 @@
 (load "elisp-editing.el")
 
 ;; Langauage-specific
+(load "setup-c.el")
 (load "setup-clojure.el")
 (load "setup-js.el")
 (load "setup-php.el")
@@ -156,24 +157,3 @@
 ;; Other
 (load "setup-git.el")
 (load "setup-org.el")
-
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(custom-safe-themes
-   (quote
-    ("addfaf4c6f76ef957189d86b1515e9cf9fcd603ab6da795b82b79830eed0b284" default)))
- '(elfeed-feeds
-   (quote
-    ("https://threatpost.com/feed" "https://feeds.feedburner.com/TroyHunt" "https://www.schneier.com/blog/atom.xml" "https://krebsonsecurity.com/feed/")))
- '(package-selected-packages
-   (quote
-    (json-mode use-package cyberpunk-theme rust-mode haskell-mode web-mode neotree magit tagedit rainbow-delimiters projectile smex dracula-theme cider clojure-mode-extra-font-locking company-php php-mode clojure-mode paredit flycheck))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
