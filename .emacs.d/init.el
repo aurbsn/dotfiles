@@ -85,6 +85,9 @@
     elfeed
 
     use-package
+
+    ;; EPUB reader
+    nov
     ))
 
 ;; On OS X, an Emacs instance started from the graphical user
@@ -105,6 +108,21 @@
 (add-hook 'after-init-hook #'global-flycheck-mode)
 
 ;; Place downloaded elisp files in ~/.emacs.d/vendor. You'll then be able
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   '("addfaf4c6f76ef957189d86b1515e9cf9fcd603ab6da795b82b79830eed0b284" default))
+ '(package-selected-packages
+   '(nov leetcode cyberpunk-theme rust-mode haskell-mode web-mode neotree magit tagedit rainbow-delimiters projectile smex dracula-theme cider clojure-mode-extra-font-locking company-php php-mode clojure-mode paredit flycheck)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
 ;; to load them.
 ;;
 ;; For example, if you download yaml-mode.el to ~/.emacs.d/vendor,
