@@ -38,7 +38,6 @@
 
     ;; Company PHP
     company-php
-
     ;; extra syntax highlighting for clojure
     clojure-mode-extra-font-locking
 
@@ -78,16 +77,28 @@
     ;; Haskell
     haskell-mode
 
+    ;; Scala
+    scala-mode
+
     ;; Rust
     rust-mode
 
     ;; Fead reader
     elfeed
 
+    ;; Dependency for conditional installs
     use-package
+
 
     ;; EPUB reader
     nov
+
+    ;; Language Server Protocol
+    lsp-mode
+    lsp-ui
+    lsp-treemacs
+    dap-mode
+>>>>>>> 562e92a45c7e58fc7e3265c786ef6bfb261051bd
     ))
 
 ;; On OS X, an Emacs instance started from the graphical user
@@ -106,6 +117,8 @@
     (package-install p)))
 
 (add-hook 'after-init-hook #'global-flycheck-mode)
+
+(require 'use-package)
 
 ;; Place downloaded elisp files in ~/.emacs.d/vendor. You'll then be able
 (custom-set-variables
@@ -171,7 +184,25 @@
 (load "setup-rs.el")
 (load "setup-html.el")
 (load "setup-css.el")
+(load "setup-scala.el")
 
 ;; Other
 (load "setup-git.el")
 (load "setup-org.el")
+
+;; LSP
+(add-hook 'prog-mode-hook #'lsp)
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   '(company-lsp yasnippet lsp-metals sbt-mode use-package scala-mode ## eglot web-mode tagedit smex rust-mode restclient rainbow-delimiters projectile paredit neotree mustache-mode markdown-mode magit ido-completing-read+ haskell-mode geben flycheck exec-path-from-shell es-mode elixir-mode elfeed dracula-theme cyberpunk-theme company-php clojure-mode-extra-font-locking cider apples-mode ac-php)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
