@@ -29,6 +29,9 @@
     ;; Cheatsheet: http://www.emacswiki.org/emacs/PareditCheatsheet
     paredit
 
+    ;; Scheme stuff
+    geiser
+
     ;; key bindings and code colorization for Clojure
     ;; https://github.com/clojure-emacs/clojure-mode
     clojure-mode
@@ -38,6 +41,7 @@
 
     ;; Company PHP
     company-php
+
     ;; extra syntax highlighting for clojure
     clojure-mode-extra-font-locking
 
@@ -98,7 +102,6 @@
     lsp-ui
     lsp-treemacs
     dap-mode
->>>>>>> 562e92a45c7e58fc7e3265c786ef6bfb261051bd
     ))
 
 ;; On OS X, an Emacs instance started from the graphical user
@@ -121,21 +124,6 @@
 (require 'use-package)
 
 ;; Place downloaded elisp files in ~/.emacs.d/vendor. You'll then be able
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(custom-safe-themes
-   '("addfaf4c6f76ef957189d86b1515e9cf9fcd603ab6da795b82b79830eed0b284" default))
- '(package-selected-packages
-   '(nov leetcode cyberpunk-theme rust-mode haskell-mode web-mode neotree magit tagedit rainbow-delimiters projectile smex dracula-theme cider clojure-mode-extra-font-locking company-php php-mode clojure-mode paredit flycheck)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
 ;; to load them.
 ;;
 ;; For example, if you download yaml-mode.el to ~/.emacs.d/vendor,
@@ -192,14 +180,14 @@
 
 ;; LSP
 (add-hook 'prog-mode-hook #'lsp)
-
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(company-lsp yasnippet lsp-metals sbt-mode use-package scala-mode ## eglot web-mode tagedit smex rust-mode restclient rainbow-delimiters projectile paredit neotree mustache-mode markdown-mode magit ido-completing-read+ haskell-mode geben flycheck exec-path-from-shell es-mode elixir-mode elfeed dracula-theme cyberpunk-theme company-php clojure-mode-extra-font-locking cider apples-mode ac-php)))
+   (quote
+    (geiser yasnippet web-mode use-package tagedit smex scala-mode sbt-mode rust-mode rainbow-delimiters projectile paredit nov neotree magit lsp-ui lsp-metals haskell-mode flycheck elfeed cyberpunk-theme company-php company-lsp clojure-mode-extra-font-locking cider))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
