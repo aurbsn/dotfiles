@@ -139,6 +139,9 @@
 ;; Add a directory to our load path so that when you `load` things
 ;; below, Emacs knows where to look for the corresponding file.
 (add-to-list 'load-path "~/.emacs.d/customizations")
+(add-to-list 'load-path "/usr/share/emacs/site-lisp/mu4e/")
+
+(require 'mu4e)
 
 ;; Config branches based on env string value
 (load "setup-env.el")
