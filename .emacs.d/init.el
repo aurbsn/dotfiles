@@ -69,9 +69,6 @@
     ;; git integration
     magit
 
-    ;; Source tree viewer
-    neotree
-
     ;; Auto-complete
     company
 
@@ -93,7 +90,6 @@
     ;; Dependency for conditional installs
     use-package
 
-
     ;; EPUB reader
     nov
 
@@ -102,6 +98,12 @@
     lsp-ui
     lsp-treemacs
     dap-mode
+
+    ;; Java LSP
+    lsp-java
+
+    ;; Mode for editing ledger/hledger files
+    ledger-mode
     ))
 
 ;; On OS X, an Emacs instance started from the graphical user
@@ -176,6 +178,7 @@
 (load "setup-html.el")
 (load "setup-css.el")
 (load "setup-scala.el")
+(load "setup-java.el")
 
 ;; Other
 (load "setup-git.el")
@@ -186,9 +189,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ledger-binary-path "hledger")
  '(package-selected-packages
-   (quote
-    (geiser yasnippet web-mode use-package tagedit smex scala-mode sbt-mode rust-mode rainbow-delimiters projectile paredit nov neotree magit lsp-ui lsp-metals haskell-mode flycheck elfeed cyberpunk-theme company-php company-lsp clojure-mode-extra-font-locking cider))))
+   '(ledger-mode lsp-java geiser yasnippet web-mode use-package tagedit smex scala-mode sbt-mode rust-mode rainbow-delimiters projectile paredit nov neotree magit lsp-ui lsp-metals haskell-mode flycheck elfeed cyberpunk-theme company-php company-lsp clojure-mode-extra-font-locking cider)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
