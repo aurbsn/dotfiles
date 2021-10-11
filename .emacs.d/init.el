@@ -69,6 +69,9 @@
     ;; git integration
     magit
 
+    ;; Source tree viewer
+    neotree
+
     ;; Auto-complete
     company
 
@@ -90,6 +93,7 @@
     ;; Dependency for conditional installs
     use-package
 
+
     ;; EPUB reader
     nov
 
@@ -99,11 +103,8 @@
     lsp-treemacs
     dap-mode
 
-    ;; Java LSP
-    lsp-java
-
-    ;; Mode for editing ledger/hledger files
-    ledger-mode
+    ;; Mustache
+    mustache-mode
     ))
 
 ;; On OS X, an Emacs instance started from the graphical user
@@ -143,7 +144,7 @@
 (add-to-list 'load-path "~/.emacs.d/customizations")
 (add-to-list 'load-path "/usr/share/emacs/site-lisp/mu4e/")
 
-(require 'mu4e)
+;;(require 'mu4e)
 
 ;; Config branches based on env string value
 (load "setup-env.el")
@@ -178,20 +179,17 @@
 (load "setup-html.el")
 (load "setup-css.el")
 (load "setup-scala.el")
-(load "setup-java.el")
 
 ;; Other
 (load "setup-git.el")
 (load "setup-org.el")
-
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(ledger-binary-path "hledger")
  '(package-selected-packages
-   '(ledger-mode lsp-java geiser yasnippet web-mode use-package tagedit smex scala-mode sbt-mode rust-mode rainbow-delimiters projectile paredit nov neotree magit lsp-ui lsp-metals haskell-mode flycheck elfeed cyberpunk-theme company-php company-lsp clojure-mode-extra-font-locking cider)))
+   '(mustache-mode yasnippet web-mode use-package tagedit smex sbt-mode rust-mode rainbow-delimiters projectile paredit nov neotree magit lsp-ui lsp-metals haskell-mode geiser flycheck exec-path-from-shell elfeed cyberpunk-theme company-php clojure-mode-extra-font-locking cider)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
