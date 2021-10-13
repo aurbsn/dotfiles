@@ -21,7 +21,8 @@
 ;; The packages you want installed. You can also install these
 ;; manually with M-x package-install
 ;; Add in your own as you wish:
-(defvar my-packages
+(defvar my-packages nil)
+(setq my-packages
   '(;; Flycheck
     flycheck
 
@@ -105,6 +106,9 @@
 
     ;; Mustache
     mustache-mode
+
+    ;; Flash cards
+    org-drill
     ))
 
 ;; On OS X, an Emacs instance started from the graphical user
@@ -189,7 +193,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(mustache-mode yasnippet web-mode use-package tagedit smex sbt-mode rust-mode rainbow-delimiters projectile paredit nov neotree magit lsp-ui lsp-metals haskell-mode geiser flycheck exec-path-from-shell elfeed cyberpunk-theme company-php clojure-mode-extra-font-locking cider)))
+   '(org-drill mustache-mode yasnippet web-mode use-package tagedit smex sbt-mode rust-mode rainbow-delimiters projectile paredit nov neotree magit lsp-ui lsp-metals haskell-mode geiser flycheck exec-path-from-shell elfeed cyberpunk-theme company-php clojure-mode-extra-font-locking cider)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
