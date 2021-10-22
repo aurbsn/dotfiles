@@ -108,6 +108,8 @@
     org-drill
     ))
 
+(setq vc-handled-backends nil)
+
 (if (eq system-type 'darwin)
     (add-to-list 'my-packages 'exec-path-from-shell))
 
@@ -118,6 +120,9 @@
 (add-hook 'after-init-hook #'global-flycheck-mode)
 
 (require 'use-package)
+
+;; LSP setup
+(require 'lsp-mode)
 
 ;; Place downloaded elisp files in ~/.emacs.d/vendor. You'll then be able
 ;; to load them.
@@ -185,7 +190,9 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(org-drill mustache-mode yasnippet web-mode use-package tagedit smex sbt-mode rust-mode rainbow-delimiters projectile paredit nov neotree magit lsp-ui lsp-metals haskell-mode geiser flycheck exec-path-from-shell elfeed cyberpunk-theme company-php clojure-mode-extra-font-locking cider)))
+   '(org-drill mustache-mode yasnippet web-mode use-package tagedit smex sbt-mode rust-mode rainbow-delimiters projectile paredit nov neotree magit lsp-ui lsp-metals haskell-mode geiser flycheck exec-path-from-shell elfeed cyberpunk-theme company-php clojure-mode-extra-font-locking cider))
+ '(tramp-remote-path
+   '(tramp-default-remote-path "/bin" "/usr/bin" "/sbin" "/usr/sbin" "/usr/local/bin" "/usr/local/sbin" "/local/bin" "/local/freeware/bin" "/local/gnu/bin" "/usr/freeware/bin" "/usr/pkg/bin" "/usr/contrib/bin" "/opt/bin" "/opt/sbin" "/opt/local/bin" tramp-own-remote-path)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
