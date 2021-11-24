@@ -4,7 +4,8 @@
     (insert-file-contents filePath)
     (buffer-string)))
 
+;; Personal vs work separation here
 (let ((this-env (get-string-from-file "~/.emacs.d/env")))
   (cond
-   ((eq this-env "etsy") (load "setup-etsy.el")
-    )))
+   ((eq this-env "etsy") (load "setup-etsy.el"))
+   ((eq this-env "personal") (load "setup-personal.el"))))
