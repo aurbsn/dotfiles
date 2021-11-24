@@ -12,15 +12,15 @@
       *input-window-gravity* :top-left
       )
 
-;; Mode line
-;; (setf *screen-mode-line-format*
-;;       (list 
-;;        '(:eval (run-shell-command "acpi -b"))
-;;        '(:eval (run-shell-command "date" t)))
-;;       *mode-line-position* :bottom
-;;       *mode-line-background-color* "black"
-;;       *mode-line-foreground-color* "#4c83ff"
-;;       *mode-line-border-color* "#4c83ff"
-;;       )
-;;(mode-line)
+;;Mode line
+(setf *screen-mode-line-format*
+      (list 
+       '(:eval (run-shell-command "acpi -b" t))
+       '(:eval (run-shell-command "date" t)))
+      *mode-line-position* :bottom
+      *mode-line-background-color* "black"
+      *mode-line-foreground-color* "#4c83ff"
+      *mode-line-border-color* "#4c83ff"
+      )
+(mode-line)
 
