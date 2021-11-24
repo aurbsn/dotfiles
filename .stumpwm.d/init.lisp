@@ -15,7 +15,8 @@
 ;;Mode line
 (setf *screen-mode-line-format*
       (list 
-       '(:eval (run-shell-command "acpi -b" t))
+       '(:eval (run-shell-command "acpi -b | tr -d '\\n'" t))
+       " | "
        '(:eval (run-shell-command "date" t)))
       *mode-line-position* :bottom
       *mode-line-background-color* "black"
