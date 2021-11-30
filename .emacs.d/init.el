@@ -143,6 +143,9 @@
 ;; Config branches based on env string value
 (load "setup-env.el")
 
+;; Setup ERC
+(load "setup-irc.el")
+
 ;; Sets up exec-path-from-shell so that Emacs will use the correct
 ;; environment variables
 (load "shell-integration.el")
