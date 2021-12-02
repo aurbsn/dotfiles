@@ -47,6 +47,9 @@
     ;; https://github.com/clojure-emacs/cider
     cider
 
+    ;; SLIME for Common LISP
+    slime
+
     ;; The preferred color scheme
     cyberpunk-theme
 
@@ -164,21 +167,21 @@
 ;; Hard-to-categorize customizations
 (load "misc.el")
 
-;; For editing lisps
-(load "elisp-editing.el")
-
 ;; The emacs shell
 (load "setup-eshell.el")
 
 ;; Langauage-specific
 (load "setup-c.el")
-(load "setup-clojure.el")
 (load "setup-js.el")
 (load "setup-php.el")
 (load "setup-rs.el")
 (load "setup-html.el")
 (load "setup-css.el")
 (load "setup-scala.el")
+;; Lisps :)
+(load "setup-clojure.el")
+(load "elisp-editing.el")
+(load "common-lisp-editing.el")
 
 ;; Other
 (load "setup-git.el")
@@ -189,7 +192,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(pdf-tools mustache-mode web-mode use-package tagedit smex sbt-mode rust-mode rainbow-delimiters projectile paredit nov neotree magit lsp-ui lsp-metals haskell-mode geiser flycheck exec-path-from-shell elfeed cyberpunk-theme company-php clojure-mode-extra-font-locking cider))
+   '(yasnippet slime pdf-tools mustache-mode web-mode use-package tagedit smex sbt-mode rust-mode rainbow-delimiters projectile paredit nov neotree magit lsp-ui lsp-metals haskell-mode geiser flycheck exec-path-from-shell elfeed cyberpunk-theme company-php clojure-mode-extra-font-locking cider))
  '(tramp-remote-path
    '(tramp-default-remote-path "/bin" "/usr/bin" "/sbin" "/usr/sbin" "/usr/local/bin" "/usr/local/sbin" "/local/bin" "/local/freeware/bin" "/local/gnu/bin" "/usr/freeware/bin" "/usr/pkg/bin" "/usr/contrib/bin" "/opt/bin" "/opt/sbin" "/opt/local/bin" tramp-own-remote-path)))
 (custom-set-faces
