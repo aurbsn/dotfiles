@@ -182,7 +182,6 @@
 ;; Lisps :)
 (load "setup-clojure.el")
 (load "elisp-editing.el")
-(load "common-lisp-editing.el")
 
 ;; Other
 (load "setup-git.el")
