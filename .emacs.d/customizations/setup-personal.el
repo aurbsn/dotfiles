@@ -1,4 +1,2 @@
-(add-to-list 'load-path "/usr/share/emacs/site-lisp/mu4e/")
-
-(require 'mu4e)
+(load "setup-mu4e.el")
 (load "common-lisp-editing.el")

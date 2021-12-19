@@ -25,3 +25,4 @@
       )
 (mode-line)
 
+(run-shell-command "setxkbmap -option ctrl:nocaps")

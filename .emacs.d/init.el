@@ -108,6 +108,10 @@
 
     ;; Mustache
     mustache-mode
+
+    ;; Elisp libraries
+    s
+    f
     ))
 
 (setq vc-handled-backends nil)
