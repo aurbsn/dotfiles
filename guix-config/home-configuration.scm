@@ -35,9 +35,9 @@
                   ("ll" . "ls -alF")
                   ("ls='ls --color" . "auto")))
               (bashrc
-                (list (local-file
-                        "/home/arbn/dev/dotfiles/guix-config/.bashrc"
-                        "bashrc")))
+               (list (local-file
+                      "/home/arbn/dev/dotfiles/guix-config/.bashrc"
+                      "bashrc")))
               (bash-logout
                 (list (local-file
                         "/home/arbn/dev/dotfiles/guix-config/.bash_logout"
