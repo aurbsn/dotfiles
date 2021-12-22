@@ -21,24 +21,26 @@
                "stumpwm"
                "sbcl"
                "sicp"
-               "emacs")))
+               "emacs"
+               "openssh"
+               "hledger"
+               "acpi"
+               "setxkbmap"
+               "curl"
+               "mu"
+               "unzip"
+               "keepassxc"
+               "oath-toolkit"
+               "git")))
   (services
-    (list (service
-            home-bash-service-type
-            (home-bash-configuration
-              (aliases
-                '(("egrep='egrep --color" . "auto")
-                  ("fgrep='fgrep --color" . "auto")
-                  ("grep='grep --color" . "auto")
-                  ("l" . "ls -CF")
-                  ("la" . "ls -A")
-                  ("ll" . "ls -alF")
-                  ("ls='ls --color" . "auto")))
-              (bashrc
-               (list (local-file
-                      "/home/arbn/dev/dotfiles/guix-config/.bashrc"
-                      "bashrc")))
-              (bash-logout
-                (list (local-file
-                        "/home/arbn/dev/dotfiles/guix-config/.bash_logout"
-                        "bash_logout"))))))))
+   (list (service
+          home-bash-service-type
+          (home-bash-configuration
+           (bashrc
+            (list (local-file
+                   "/home/arbn/dev/dotfiles/guix-config/.bashrc"
+                   "bashrc")))
+           (bash-logout
+            (list (local-file
+                   "/home/arbn/dev/dotfiles/guix-config/.bash_logout"
+                   "bash_logout"))))))))
