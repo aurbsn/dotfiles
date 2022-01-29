@@ -72,3 +72,10 @@
 (setq ring-bell-function 'ignore)
 
 (setq mustache-mode-basic-offset 4)
+
+(defun toggle-fullscreen ()
+  "Toggle full screen"
+  (interactive)
+  (set-frame-parameter
+     nil 'fullscreen
+     (when (not (frame-parameter nil 'fullscreen)) 'fullboth)))

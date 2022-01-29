@@ -3,6 +3,10 @@
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
                          ("melpa" . "https://melpa.org/packages/")))
 
+;; Performance tweaks for lsp-mode
+(setq gc-cons-threshold 100000000)
+(setq read-process-output-max (* 1024 1024)) ;; 1mb
+
 ;; Load and activate emacs packages. Do this first so that the
 ;; packages are loaded before you start trying to modify them.
 ;; This also sets the load path.
@@ -14,11 +18,7 @@
 (when (not package-archive-contents)
   (package-refresh-contents))
 
-;; The packages you want installed. You can also install these
-;; manually with M-x package-install
-;; Add in your own as you wish:
-(defvar my-packages nil)
-(setq my-packages
+(setq package-selected-packages
   '(;; Flycheck
     flycheck
 
@@ -117,13 +117,13 @@
 (setq vc-handled-backends nil)
 
 (if (eq system-type 'darwin)
-    (add-to-list 'my-packages 'exec-path-from-shell))
+    (add-to-list 'package-selected-packages 'exec-path-from-shell))
 
-(dolist (p my-packages)
-  (when (not (package-installed-p p))
-    (package-install p)))
+(package-install-selected-packages)
 
 (add-hook 'after-init-hook #'global-flycheck-mode)
+
+(customize-set-variable 'tramp-use-ssh-controlmaster-options nil)
 
 (require 'use-package)
 
@@ -198,9 +198,9 @@
    '(autojoin button completion fill irccontrols list match menu move-to-prompt netsplit networks noncommands readonly ring services stamp track))
  '(erc-prompt-for-nickserv-password t)
  '(mac-command-modifier 'super)
- '(mac-option-modifier '(:ordinary meta))
+ '(mac-option-modifier '(:ordinary meta :function alt :mouse alt))
  '(package-selected-packages
-   '(geiser-guile yasnippet slime pdf-tools mustache-mode web-mode use-package tagedit smex sbt-mode rust-mode rainbow-delimiters projectile paredit nov neotree magit lsp-ui lsp-metals haskell-mode geiser flycheck exec-path-from-shell elfeed cyberpunk-theme company-php clojure-mode-extra-font-locking cider))
+   '(yasnippet lsp-metals sbt-mode exec-path-from-shell flycheck paredit geiser geiser-guile clojure-mode php-mode company-php clojure-mode-extra-font-locking cider slime cyberpunk-theme smex projectile rainbow-delimiters tagedit magit neotree company web-mode haskell-mode scala-mode rust-mode elfeed use-package nov pdf-tools lsp-mode lsp-ui lsp-treemacs dap-mode mustache-mode))
  '(tramp-remote-path
    '(tramp-default-remote-path "/bin" "/usr/bin" "/sbin" "/usr/sbin" "/usr/local/bin" "/usr/local/sbin" "/local/bin" "/local/freeware/bin" "/local/gnu/bin" "/usr/freeware/bin" "/usr/pkg/bin" "/usr/contrib/bin" "/opt/bin" "/opt/sbin" "/opt/local/bin" tramp-own-remote-path)))
 (custom-set-faces

@@ -25,4 +25,3 @@
 
 (add-hook 'php-mode-hook #'lsp)
 (add-hook 'php-mode-hook 'php-mode-init)
-
