@@ -6,6 +6,8 @@
 ;; Performance tweaks for lsp-mode
 (setq gc-cons-threshold 100000000)
 (setq read-process-output-max (* 1024 1024)) ;; 1mb
+(setq package-native-compile t)
+
 
 ;; Load and activate emacs packages. Do this first so that the
 ;; packages are loaded before you start trying to modify them.
@@ -112,6 +114,9 @@
     ;; Elisp libraries
     s
     f
+
+    ;; SICP
+    sicp
     ))
 
 (setq vc-handled-backends nil)

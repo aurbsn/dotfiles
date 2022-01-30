@@ -1,6 +1,7 @@
 ;; example configuration for mu4e
 
 ;; make sure mu4e is in your load-path
+(add-to-list 'load-path "/usr/share/emacs/site-lisp/mu4e")
 (require 'mu4e)
 
 ;; use mu4e for e-mail in emacs

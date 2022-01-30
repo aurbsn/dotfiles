@@ -27,6 +27,4 @@
 
 (run-shell-command "setxkbmap -option ctrl:nocaps")
 (run-shell-command "nextcloud &")
-(run-shell-command "pipewire &")
-(run-shell-command "pipewire-pulse &")
 (run-shell-command "fcitx5 &")
