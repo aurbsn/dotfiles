@@ -4,3 +4,4 @@
 
 (setq inferior-lisp-program (executable-find "sbcl"))
 (require 'slime-autoloads)
+(slime-setup '(slime-company))

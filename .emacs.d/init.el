@@ -27,6 +27,7 @@
     ;; makes handling lisp expressions much, much easier
     ;; Cheatsheet: http://www.emacswiki.org/emacs/PareditCheatsheet
     paredit
+    rainbow-delimiters
 
     ;; Scheme stuff
     geiser
@@ -51,6 +52,7 @@
 
     ;; SLIME for Common LISP
     slime
+    slime-company
 
     ;; The preferred color scheme
     cyberpunk-theme
