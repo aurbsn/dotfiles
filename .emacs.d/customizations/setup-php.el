@@ -11,13 +11,14 @@
 
 (defun php-mode-init ()
   "Set some buffer-local variables."
-  (setq php-mode-force-pear 1)
   (setq case-fold-search t)
   (setq c-basic-offset 4)
   (setq indent-tabs-mode nil)
   (c-set-offset 'arglist-intro '+)
   (c-set-offset 'arglist-close '0)
   (setq lsp-enable-file-watchers nil)
+  (setq lsp-lens-enable nil)
+  (setq lsp-headerline-breadcrumb-enable nil)
 
   ;; Enable company-mode
   (company-mode t)

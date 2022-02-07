@@ -107,8 +107,6 @@
     ;; Language Server Protocol
     lsp-mode
     lsp-ui
-    lsp-treemacs
-    dap-mode
 
     ;; Mustache
     mustache-mode
@@ -132,11 +130,6 @@
 
 (customize-set-variable 'tramp-use-ssh-controlmaster-options nil)
 
-(require 'use-package)
-
-;; LSP setup
-(require 'lsp-mode)
-
 ;; Place downloaded elisp files in ~/.emacs.d/vendor. You'll then be able
 ;; to load them.
 ;;
@@ -154,15 +147,21 @@
 ;; below, Emacs knows where to look for the corresponding file.
 (add-to-list 'load-path "~/.emacs.d/customizations")
 
+;; Sets up exec-path-from-shell so that Emacs will use the correct
+;; environment variables
+(load "shell-integration.el")
+
+(require 'use-package)
+
+;; LSP setup
+(require 'lsp-mode)
+(setq lsp-ui-doc-show-with-mouse nil)
+
 ;; Config branches based on env string value
 (load "setup-env.el")
 
 ;; Setup ERC
 (load "setup-irc.el")
-
-;; Sets up exec-path-from-shell so that Emacs will use the correct
-;; environment variables
-(load "shell-integration.el")
 
 ;; These customizations make it easier for you to navigate files,
 ;; switch buffers, and choose options from the minibuffer.
@@ -209,7 +208,8 @@
  '(package-selected-packages
    '(yasnippet lsp-metals sbt-mode exec-path-from-shell flycheck paredit geiser geiser-guile clojure-mode php-mode company-php clojure-mode-extra-font-locking cider slime cyberpunk-theme smex projectile rainbow-delimiters tagedit magit neotree company web-mode haskell-mode scala-mode rust-mode elfeed use-package nov pdf-tools lsp-mode lsp-ui lsp-treemacs dap-mode mustache-mode sicp))
  '(tramp-remote-path
-   '(tramp-default-remote-path "/bin" "/usr/bin" "/sbin" "/usr/sbin" "/usr/local/bin" "/usr/local/sbin" "/local/bin" "/local/freeware/bin" "/local/gnu/bin" "/usr/freeware/bin" "/usr/pkg/bin" "/usr/contrib/bin" "/opt/bin" "/opt/sbin" "/opt/local/bin" tramp-own-remote-path)))
+   '(tramp-default-remote-path "/bin" "/usr/bin" "/sbin" "/usr/sbin" "/usr/local/bin" "/usr/local/sbin" "/local/bin" "/local/freeware/bin" "/local/gnu/bin" "/usr/freeware/bin" "/usr/pkg/bin" "/usr/contrib/bin" "/opt/bin" "/opt/sbin" "/opt/local/bin" tramp-own-remote-path))
+ '(tramp-use-ssh-controlmaster-options nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
