@@ -6,10 +6,8 @@
 ;; This library works around this problem by copying important
 ;; environment variables from the user's shell.
 ;; https://github.com/purcell/exec-path-from-shell
-
+(exec-path-from-shell-initialize)
 (when (memq window-system '(mac ns))
-  (exec-path-from-shell-initialize)
-  (exec-path-from-shell-copy-envs
-   '("PATH")))
-
+  (exec-path-from-shell-copy-env "PATH"))
+(exec-path-from-shell-copy-env "LSP_USE_PLISTS")
 
