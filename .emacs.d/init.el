@@ -20,7 +20,7 @@
 (when (not package-archive-contents)
   (package-refresh-contents))
 
-(setq package-selected-packages
+(customize-set-variable 'package-selected-packages
   '(;; Flycheck
     flycheck
 
@@ -119,6 +119,9 @@
 
     ;; SICP
     sicp
+
+    ; org-roam
+    org-roam
     ))
 
 (setq vc-handled-backends nil)
@@ -207,7 +210,7 @@
  '(mac-command-modifier 'super)
  '(mac-option-modifier '(:ordinary meta :function alt :mouse alt))
  '(package-selected-packages
-   '(yasnippet lsp-metals sbt-mode exec-path-from-shell flycheck paredit geiser geiser-guile clojure-mode php-mode company-php clojure-mode-extra-font-locking cider slime cyberpunk-theme smex projectile rainbow-delimiters tagedit magit neotree company web-mode haskell-mode scala-mode rust-mode elfeed use-package nov pdf-tools lsp-mode lsp-ui lsp-treemacs dap-mode mustache-mode sicp))
+   '(org-drill flycheck paredit rainbow-delimiters geiser geiser-guile clojure-mode php-mode company-php clojure-mode-extra-font-locking cider slime slime-company cyberpunk-theme smex projectile rainbow-delimiters tagedit magit neotree company web-mode haskell-mode scala-mode rust-mode elfeed use-package nov pdf-tools lsp-mode lsp-ui lsp-treemacs dap-mode mustache-mode s f sicp org-roam))
  '(tramp-remote-path
    '(tramp-default-remote-path "/bin" "/usr/bin" "/sbin" "/usr/sbin" "/usr/local/bin" "/usr/local/sbin" "/local/bin" "/local/freeware/bin" "/local/gnu/bin" "/usr/freeware/bin" "/usr/pkg/bin" "/usr/contrib/bin" "/opt/bin" "/opt/sbin" "/opt/local/bin" tramp-own-remote-path)))
 (custom-set-faces
