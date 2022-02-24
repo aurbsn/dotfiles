@@ -120,12 +120,12 @@
 
     ; org-roam
     org-roam
+
+    exec-path-from-shell
     ))
 
 (setq vc-handled-backends nil)
 
-(if (eq system-type 'darwin)
-    (add-to-list 'package-selected-packages 'exec-path-from-shell))
 
 (package-install-selected-packages)
 
