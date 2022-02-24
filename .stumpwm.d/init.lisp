@@ -14,8 +14,8 @@
 ;; Message and input bar
 (ql:quickload "clx-truetype")
 (load-module "ttf-fonts")
-(setf xft:*font-dirs* '("~/.guix-profile/share/fonts"));
-(setf clx-truetype:+font-cache-filename+ (concat (getenv "HOME") "/.fonts/font-cache.sexp"))
+(setf xft:*font-dirs* '("~/.guix-profile/share/fonts"))
+;(setf clx-truetype:+font-cache-filename+ (concat (getenv "HOME") "/.fonts/font-cache.sexp"))
 (xft:cache-fonts)
 (set-font (make-instance 'xft:font :family "Source Code Pro" :subfamily "Regular" :size 22))
 (set-fg-color "#ACE6D7")
