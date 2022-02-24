@@ -149,6 +149,7 @@
 ;; Add a directory to our load path so that when you `load` things
 ;; below, Emacs knows where to look for the corresponding file.
 (add-to-list 'load-path "~/.emacs.d/customizations")
+(add-to-list 'load-path "~/.guix-profile/share/emacs/site-lisp")
 
 ;; Sets up exec-path-from-shell so that Emacs will use the correct
 ;; environment variables
