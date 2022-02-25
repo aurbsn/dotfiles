@@ -32,7 +32,7 @@
 (load-theme 'cyberpunk t)
 
 ;; increase font size for better readability
-(add-to-list 'default-frame-alist '(font . "Source Code Pro-24"))
+(add-to-list 'default-frame-alist '(font . "Source Code Pro-20"))
 
 ;; Uncomment the lines below by removing semicolons and play with the
 ;; values in order to set the width (in characters wide) and height
