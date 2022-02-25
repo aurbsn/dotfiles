@@ -9,7 +9,8 @@
   (gnu packages)
   (gnu services)
   (guix gexp)
-  (gnu home services shells))
+  (gnu home services shells)
+  (gnu home services desktop))
 
 (home-environment
   (packages
@@ -25,14 +26,21 @@
                "acpi"
                "font-adobe-source-code-pro")))
   (services
-    (list (service
-            home-bash-service-type
-            (home-bash-configuration
-              (bashrc
-               (list (local-file
-                      ".bashrc"
-                      "bashrc")))
-              (bash-logout
-               (list (local-file
-                      ".bash_logout"
-                      "bash_logout"))))))))
+    (list 
+     ; Bash
+     (service
+      home-bash-service-type
+      (home-bash-configuration
+       (bashrc
+        (list (local-file
+               ".bashrc"
+               "bashrc")))
+       (bash-logout
+        (list (local-file
+               ".bash_logout"
+               "bash_logout")))))
+     ; Redshift
+     (service
+      home-redshift-service-type
+      (home-redshift-configuration 
+       (location-provider 'geoclue2))))))

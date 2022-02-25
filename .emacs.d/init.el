@@ -122,6 +122,9 @@
     org-roam
 
     exec-path-from-shell
+
+    ; guix
+    guix
     ))
 
 (setq vc-handled-backends nil)
