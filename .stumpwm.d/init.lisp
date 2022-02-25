@@ -4,10 +4,11 @@
 
 ;; Swank
 (require :swank)
-(swank-loader:init)
-(swank:create-server :port 4004
-                     :style swank:*communication-style*
-                     :dont-close t)
+(ignore-errors
+  (swank-loader:init)
+  (swank:create-server :port 4004
+                       :style swank:*communication-style*
+                       :dont-close t))
 
 (set-prefix-key (kbd "C-z"))
 
@@ -16,7 +17,7 @@
 (load-module "ttf-fonts")
 (setf xft:*font-dirs* '("~/.guix-profile/share/fonts"))
 (xft:cache-fonts)
-(set-font (make-instance 'xft:font :family "Source Code Pro" :subfamily "Regular" :size 15))
+(set-font (make-instance 'xft:font :family "Source Code Pro" :subfamily "Regular" :size 20))
 (set-fg-color "#ACE6D7")
 (set-border-color "#ACE6D7")
 (setf *message-window-gravity* :top-left
@@ -36,4 +37,6 @@
 
 (run-shell-command "setxkbmap -option ctrl:nocaps")
 (run-shell-command "nextcloud &")
-;(run-shell-command "/home/arbn/.screenlayout/docked.sh")
+(run-shell-command "/home/arbn/.screenlayout/docked.sh")
+
+

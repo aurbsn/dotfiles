@@ -213,10 +213,10 @@
  '(mac-command-modifier 'super)
  '(mac-option-modifier '(:ordinary meta :function alt :mouse alt))
  '(package-selected-packages
-   '(org-drill flycheck paredit rainbow-delimiters geiser geiser-guile clojure-mode php-mode company-php clojure-mode-extra-font-locking cider slime slime-company cyberpunk-theme smex projectile rainbow-delimiters tagedit magit neotree company web-mode haskell-mode scala-mode rust-mode elfeed use-package nov pdf-tools lsp-mode lsp-ui lsp-treemacs dap-mode mustache-mode s f sicp org-roam))
+   '(yasnippet lsp-metals sbt-mode flycheck paredit rainbow-delimiters geiser geiser-guile clojure-mode php-mode company-php clojure-mode-extra-font-locking cider slime slime-company cyberpunk-theme smex projectile rainbow-delimiters tagedit magit neotree company web-mode haskell-mode scala-mode rust-mode elfeed use-package nov pdf-tools lsp-mode lsp-ui mustache-mode s f sicp org-roam exec-path-from-shell guix))
  '(tramp-remote-path
    '(tramp-default-remote-path "/bin" "/usr/bin" "/sbin" "/usr/sbin" "/usr/local/bin" "/usr/local/sbin" "/local/bin" "/local/freeware/bin" "/local/gnu/bin" "/usr/freeware/bin" "/usr/pkg/bin" "/usr/contrib/bin" "/opt/bin" "/opt/sbin" "/opt/local/bin" tramp-own-remote-path))
- '(tramp-use-ssh-controlmaster-options nil))
+ '(tramp-use-ssh-controlmaster-options nil t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
