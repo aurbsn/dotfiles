@@ -30,9 +30,9 @@
             (home-bash-configuration
               (bashrc
                (list (local-file
-                      "dev/dotfiles/guix-config/.bashrc"
+                      ".bashrc"
                       "bashrc")))
               (bash-logout
                (list (local-file
-                      "dev/dotfiles/guix-config/.bash_logout"
-                      "bash_logout")))))))
+                      ".bash_logout"
+                      "bash_logout"))))))))
