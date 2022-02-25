@@ -17,7 +17,7 @@
 (setf xft:*font-dirs* '("~/.guix-profile/share/fonts"))
 ;(setf clx-truetype:+font-cache-filename+ (concat (getenv "HOME") "/.fonts/font-cache.sexp"))
 (xft:cache-fonts)
-(set-font (make-instance 'xft:font :family "Source Code Pro" :subfamily "Regular" :size 22))
+(set-font (make-instance 'xft:font :family "Source Code Pro" :subfamily "Regular" :size 14))
 (set-fg-color "#ACE6D7")
 (set-border-color "#ACE6D7")
 (setf *message-window-gravity* :top-left
