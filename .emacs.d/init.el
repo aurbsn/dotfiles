@@ -107,6 +107,10 @@
     ;; Language Server Protocol
     lsp-mode
     lsp-ui
+    lsp-metals
+    sbt-mode
+
+    yasnippet
 
     ;; Mustache
     mustache-mode
