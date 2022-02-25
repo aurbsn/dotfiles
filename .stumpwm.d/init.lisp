@@ -21,7 +21,8 @@
 (set-fg-color "#ACE6D7")
 (set-border-color "#ACE6D7")
 (setf *message-window-gravity* :top-left
-      *input-window-gravity* :top-left)
+      *input-window-gravity* :top-left
+      *window-border-style* :none)
 
 ;;Mode line
 (setf *screen-mode-line-format*
