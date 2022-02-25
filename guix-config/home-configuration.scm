@@ -9,27 +9,15 @@
   (gnu packages)
   (gnu services)
   (guix gexp)
+  (gnu home services)
   (gnu home services shells)
   (gnu home services desktop))
 
 (home-environment
-  (packages
-    (map (compose list specification->package+output)
-         (list "mu"
-               "guile"
-               "fontconfig"
-               "font-gnu-freefont"
-               "font-dejavu"
-               "font-ghostscript"
-               "glibc-locales"
-               "sbcl"
-               "acpi"
-               "font-adobe-source-code-pro"
-               "emacs-native-comp")))
-  (services
-    (list 
-     ; Bash
-     (service
+ (services
+  (list 
+   ; Bash
+   (service
       home-bash-service-type
       (home-bash-configuration
        (bash-profile 
@@ -48,4 +36,31 @@
      (service
       home-redshift-service-type
       (home-redshift-configuration 
-       (location-provider 'geoclue2))))))
+       (location-provider 'geoclue2)))
+
+     ; Configuration files
+     (simple-service 'home-config
+      home-files-service-type
+      (list `("config/guix/channels.scm"
+              ,(scheme-file "channels.scm" '(cons* (channel
+                                                   (name 'flat)
+                                                   (url "https://github.com/flatwhatson/guix-channel.git")
+                                                   (introduction
+                                                    (make-channel-introduction
+                                                     "33f86a4b48205c0dc19d7c036c85393f0766f806"
+                                                     (openpgp-fingerprint
+                                                      "736A C00E 1254 378B A982  7AF6 9DBE 8265 81B6 4490"))))
+                                                   %default-channels)))))))
+  (packages
+    (map (compose list specification->package+output)
+         (list "mu"
+               "guile"
+               "fontconfig"
+               "font-gnu-freefont"
+               "font-dejavu"
+               "font-ghostscript"
+               "glibc-locales"
+               "sbcl"
+               "acpi"
+               "font-adobe-source-code-pro"
+               "emacs-native-comp"))))
