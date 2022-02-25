@@ -24,13 +24,18 @@
                "glibc-locales"
                "sbcl"
                "acpi"
-               "font-adobe-source-code-pro")))
+               "font-adobe-source-code-pro"
+               "emacs-native-comp")))
   (services
     (list 
      ; Bash
      (service
       home-bash-service-type
       (home-bash-configuration
+       (bash-profile 
+        (list (local-file
+               ".bash_profile"
+               "bash_profile")))
        (bashrc
         (list (local-file
                ".bashrc"
