@@ -17,7 +17,7 @@
 (load-module "ttf-fonts")
 (setf xft:*font-dirs* '("~/.guix-profile/share/fonts"))
 (xft:cache-fonts)
-(set-font (make-instance 'xft:font :family "Source Code Pro" :subfamily "Regular" :size 20))
+(set-font (make-instance 'xft:font :family "Source Code Pro" :subfamily "Regular" :size 18))
 (set-fg-color "#ACE6D7")
 (set-border-color "#ACE6D7")
 (setf *message-window-gravity* :top-left
