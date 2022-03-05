@@ -34,10 +34,8 @@
       *mode-line-background-color* "black"
       *mode-line-foreground-color* "#4c83ff"
       *mode-line-border-color* "#4c83ff")
-(mode-line)
 
 (run-shell-command "setxkbmap -option ctrl:nocaps")
-(run-shell-command "nextcloud &")
 (run-shell-command "/home/arbn/.screenlayout/docked.sh")
-
-
+(mode-line)
+(run-shell-command "nextcloud &")
