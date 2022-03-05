@@ -63,4 +63,5 @@
                "sbcl"
                "acpi"
                "font-adobe-source-code-pro"
-               "emacs-native-comp"))))
+               "emacs-native-comp"
+               "nyxt"))))
