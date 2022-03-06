@@ -11,6 +11,7 @@
                        :dont-close t))
 
 (set-prefix-key (kbd "C-z"))
+(setf (getenv "PATH") (concat "/home/arbn/bin:" (getenv "PATH")))
 
 ;; Message and input bar
 (ql:quickload "clx-truetype")
@@ -23,6 +24,20 @@
 (setf *message-window-gravity* :top-left
       *input-window-gravity* :top-left
       *window-border-style* :none)
+
+(defcommand volume-up () ()
+    (run-shell-command "amixer -q sset Master 3%+"))
+
+(defcommand volume-down () ()
+    (run-shell-command "amixer -q sset Master 3%-"))
+
+(defcommand volume-mute () ()
+    (run-shell-command "amixer -q sset Master toggle"))
+
+; Key bindings
+(define-key *top-map* (kbd "XF86AudioLowerVolume") "volume-down")
+(define-key *top-map* (kbd "XF86AudioRaiseVolume") "volume-up")
+(define-key *top-map* (kbd "XF86AudioMute")        "volume-mute")
 
 ;;Mode line
 (setf *screen-mode-line-format*
