@@ -69,8 +69,11 @@
                "font-dejavu"
                "font-ghostscript"
                "glibc-locales"
+               "xclip"
                "sbcl"
+               "keepassxc"
                "acpi"
                "font-adobe-source-code-pro"
                "emacs-native-comp"
-               "nyxt"))))
+               "nyxt"
+               "unzip"))))
