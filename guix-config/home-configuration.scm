@@ -64,11 +64,6 @@
     (map (compose list specification->package+output)
          (list "mu"
                "guile"
-               "fontconfig"
-               "font-gnu-freefont"
-               "font-dejavu"
-               "font-ghostscript"
-               "glibc-locales"
                "xclip"
                "sbcl"
                "keepassxc"

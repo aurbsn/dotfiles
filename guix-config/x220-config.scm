@@ -20,23 +20,15 @@
   (packages
     (append
      (map specification->package 
-          (list "mg"
-                "nss-certs"
-	        "sbcl"
+          (list "nss-certs"
+                "fontconfig"
 	        "font-dejavu"
-                "mu"
+                "font-gnu-freefont"
+                "font-ghostscript"
+                "glibc-locales"
 
                 ;; X Settings Manager
-                "xsettingsd"
-
-                ;; GTK Themes
-                "arc-icon-theme"
-                "matcha-theme"
-                "hicolor-icon-theme"
-                "gnome-icon-theme"
-                "gnome-backgrounds"
-                "papirus-icon-theme"
-                "breeze-icons"))
+                "xsettingsd"))
       %base-packages))
   (services %desktop-services)
   (bootloader
