@@ -29,4 +29,4 @@
       smtpmail-stream-type 'starttls
       smtpmail-smtp-service 1025)
 
-(add-to-list 'gnutls-trustfiles (expand-file-name "~/.config/protonmail/bridge/cert.pem"))
+;(add-to-list 'gnutls-trustfiles (expand-file-name "~/.config/protonmail/bridge/cert.pem"))

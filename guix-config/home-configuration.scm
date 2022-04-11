@@ -63,6 +63,7 @@
   (packages
     (map (compose list specification->package+output)
          (list "mu"
+               "isync"
                "guile"
                "xclip"
                "sbcl"
@@ -70,5 +71,6 @@
                "acpi"
                "font-adobe-source-code-pro"
                "emacs-native-comp"
+               "emacs-vterm"
                "nyxt"
                "unzip"))))
