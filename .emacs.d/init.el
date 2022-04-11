@@ -10,7 +10,8 @@
 
 (add-to-list 'load-path "~/.guix-profile/share/emacs/site-lisp")
 (let ((default-directory "~/.guix-profile/share/emacs/site-lisp"))
-  (normal-top-level-add-subdirs-to-load-path))
+  (if (file-exists-p default-directory)
+      (normal-top-level-add-subdirs-to-load-path)))
 
 ;; Load and activate emacs packages. Do this first so that the
 ;; packages are loaded before you start trying to modify them.
