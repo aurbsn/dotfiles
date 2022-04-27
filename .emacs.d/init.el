@@ -213,16 +213,18 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   '("b89a4f5916c29a235d0600ad5a0849b1c50fab16c2c518e1d98f0412367e7f97" "5078e1845735a69b21b5effe083998dc368853320f449530c2616cf70bc3c47b" default))
  '(erc-modules
    '(autojoin button completion fill irccontrols list match menu move-to-prompt netsplit networks noncommands readonly ring services stamp track))
  '(erc-prompt-for-nickserv-password t)
- '(mac-command-modifier 'super)
- '(mac-option-modifier '(:ordinary meta :function alt :mouse alt))
+ '(ns-alternate-modifier '(:ordinary meta :function alt :mouse alt))
+ '(ns-command-modifier 'super)
  '(package-selected-packages
-   '(clhs trident-mode flycheck paredit rainbow-delimiters geiser geiser-guile clojure-mode php-mode company-php clojure-mode-extra-font-locking cider slime slime-company cyberpunk-theme smex projectile rainbow-delimiters tagedit magit neotree company web-mode haskell-mode scala-mode rust-mode elfeed use-package nov pdf-tools lsp-mode lsp-ui lsp-metals sbt-mode yasnippet mustache-mode s f sicp org-roam exec-path-from-shell guix))
+   '(smarty-mode gandalf-theme vterm vterm-toggle clhs trident-mode flycheck paredit rainbow-delimiters geiser geiser-guile clojure-mode php-mode company-php clojure-mode-extra-font-locking cider slime slime-company cyberpunk-theme smex projectile rainbow-delimiters tagedit magit neotree company web-mode haskell-mode scala-mode rust-mode elfeed use-package nov pdf-tools lsp-mode lsp-ui lsp-metals sbt-mode yasnippet mustache-mode s f sicp org-roam exec-path-from-shell guix))
  '(tramp-remote-path
    '(tramp-default-remote-path "/bin" "/usr/bin" "/sbin" "/usr/sbin" "/usr/local/bin" "/usr/local/sbin" "/local/bin" "/local/freeware/bin" "/local/gnu/bin" "/usr/freeware/bin" "/usr/pkg/bin" "/usr/contrib/bin" "/opt/bin" "/opt/sbin" "/opt/local/bin" tramp-own-remote-path))
- '(tramp-use-ssh-controlmaster-options nil t))
+ '(tramp-use-ssh-controlmaster-options nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
