@@ -52,5 +52,5 @@
 
 (run-shell-command "setxkbmap -option ctrl:nocaps")
 (run-shell-command "/home/arbn/.screenlayout/docked.sh")
-(mode-line)
 (run-shell-command "nextcloud &")
+(mode-line)
