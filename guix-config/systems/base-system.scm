@@ -73,13 +73,4 @@ EndSection
                 "emacs"
                 "git"))
      %base-packages))
-   (services (cons* 
-              (service slim-service-type
-                       (slim-configuration
-                        (xorg-configuration
-                         (xorg-configuration
-                          (keyboard-layout keyboard-layout)
-                          (extra-config (list %xorg-libinput-config))))))
-              (remove (lambda (service)
-                        (eq? (service-kind service) gdm-service-type))
-                      %desktop-services)))))
+   (services %desktop-services)))

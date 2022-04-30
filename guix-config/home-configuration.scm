@@ -22,15 +22,15 @@
       (home-bash-configuration
        (bash-profile 
         (list (local-file
-               ".bash_profile"
+               "config-files/bash_profile"
                "bash_profile")))
        (bashrc
         (list (local-file
-               ".bashrc"
+               "config-files/bashrc"
                "bashrc")))
        (bash-logout
         (list (local-file
-               ".bash_logout"
+               "config-files/bash_logout"
                "bash_logout")))))
      ; Redshift
      (service
@@ -43,13 +43,13 @@
       home-files-service-type
       (list `("config/guix/channels.scm"
               ,(scheme-file "channels.scm" '(cons* (channel
-                                                   (name 'flat)
-                                                   (url "https://github.com/flatwhatson/guix-channel.git")
-                                                   (introduction
-                                                    (make-channel-introduction
-                                                     "33f86a4b48205c0dc19d7c036c85393f0766f806"
-                                                     (openpgp-fingerprint
-                                                      "736A C00E 1254 378B A982  7AF6 9DBE 8265 81B6 4490"))))
+                                                    (name 'flat)
+                                                    (url "https://github.com/flatwhatson/guix-channel.git")
+                                                    (introduction
+                                                     (make-channel-introduction
+                                                      "33f86a4b48205c0dc19d7c036c85393f0766f806"
+                                                      (openpgp-fingerprint
+                                                       "736A C00E 1254 378B A982  7AF6 9DBE 8265 81B6 4490"))))
                                                    (channel
                                                     (name 'nonguix)
                                                     (url "https://gitlab.com/nonguix/nonguix")
@@ -59,7 +59,21 @@
                                                       "897c1a470da759236cc11798f4e0a5f7d4d59fbc"
                                                       (openpgp-fingerprint
                                                        "2A39 3FFF 68F4 EF7A 3D29  12AF 6F51 20A0 22FB B2D5"))))
-                                                   %default-channels)))))))
+                                                   %default-channels)))
+            ;; `(".xsession"
+            ;;   ,(local-file "config-files/xsession"))
+            ;`(".emacs.d"
+            ;  ,(local-file "config-files/emacs.d" #:recursive? #t))
+            ;`(".stumpwm.d"
+            ;  ,(local-file "config-files/stumpwm.d" #:recursive? #t))
+            `("dev/start-stump.lisp"
+              ,(local-file "config-files/start-stump.lisp"))
+            `(".sbclrc"
+              ,(local-file "config-files/sbclrc"))
+            `(".mbsyncrc"
+              ,(local-file "config-files/mbsyncrc"))
+            `(".screenlayout/docked.sh"
+              ,(local-file "config-files/docked.sh"))))))
   (packages
     (map (compose list specification->package+output)
          (list "mu"
