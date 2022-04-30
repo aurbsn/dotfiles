@@ -1,40 +1,15 @@
-;; This is an operating system configuration generated
-;; by the graphical installer.
-
-(use-modules (gnu))
+(use-modules (gnu)
+             (base-system))
 (use-service-modules desktop networking ssh xorg)
 
 (operating-system
-  (locale "en_US.utf8")
-  (timezone "America/New_York")
+  (inherit base-operating-system)
   (keyboard-layout (keyboard-layout "us"))
   (host-name "lisp-machine")
-  (users (cons* (user-account
-                  (name "arbn")
-                  (comment "Arbn")
-                  (group "users")
-                  (home-directory "/home/arbn")
-                  (supplementary-groups
-                    '("wheel" "netdev" "audio" "video")))
-                %base-user-accounts))
-  (packages
-    (append
-     (map specification->package 
-          (list "nss-certs"
-                "fontconfig"
-	        "font-dejavu"
-                "font-gnu-freefont"
-                "font-ghostscript"
-                "glibc-locales"
-
-                ;; X Settings Manager
-                "xsettingsd"))
-      %base-packages))
-  (services %desktop-services)
   (bootloader
     (bootloader-configuration
       (bootloader grub-bootloader)
-      (target "/dev/sda")
+      (targets '("/dev/sda"))
       (keyboard-layout keyboard-layout)))
   (mapped-devices
     (list (mapped-device

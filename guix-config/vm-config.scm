@@ -5,24 +5,9 @@
 (use-service-modules desktop networking ssh xorg)
 
 (operating-system
-  (locale "en_US.utf8")
-  (timezone "America/New_York")
+  (inherit base-operating-system)
   (keyboard-layout (keyboard-layout "us"))
   (host-name "guix-vm")
-  (users (cons* (user-account
-                  (name "arbn")
-                  (comment "Arbn")
-                  (group "users")
-                  (home-directory "/home/arbn")
-                  (supplementary-groups
-                    '("wheel" "netdev" "audio" "video")))
-                %base-user-accounts))
-  (packages
-    (append
-      (list (specification->package "nss-certs"))
-      %base-packages))
-  (services
-      %desktop-services)
   (bootloader
     (bootloader-configuration
       (bootloader grub-efi-bootloader)
