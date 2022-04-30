@@ -59,10 +59,7 @@
                                                       "897c1a470da759236cc11798f4e0a5f7d4d59fbc"
                                                       (openpgp-fingerprint
                                                        "2A39 3FFF 68F4 EF7A 3D29  12AF 6F51 20A0 22FB B2D5"))))
-                                                   %default-channels)))
-            (comment
-             `(".config/nyxt/init.lisp"
-               ))))))
+                                                   %default-channels)))))))
   (packages
     (map (compose list specification->package+output)
          (list "mu"
@@ -73,7 +70,7 @@
                "keepassxc"
                "acpi"
                "font-adobe-source-code-pro"
-               "emacs-native-comp"
+               ;"emacs-native-comp"
                "emacs-vterm"
                "nyxt"
                "unzip"))))
