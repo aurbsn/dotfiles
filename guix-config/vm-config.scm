@@ -22,9 +22,7 @@
       (list (specification->package "nss-certs"))
       %base-packages))
   (services
-    (append
-      (list (service dhcp-client-service-type))
-      %base-services))
+      %desktop-services)
   (bootloader
     (bootloader-configuration
       (bootloader grub-efi-bootloader)
