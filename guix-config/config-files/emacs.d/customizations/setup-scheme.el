@@ -7,6 +7,7 @@
 (setq user-full-name "Austin Robinson")
 (setq user-mail-address "arbn@arbn.nyc")
 ;; Assuming the Guix checkout is in ~/src/guix.
-(load-file "~/dev/guix/etc/copyright.el")
+(if (file-exists-p "~/dev/guix/etc/copyright.el")
+    (load-file "~/dev/guix/etc/copyright.el"))
 (setq copyright-names-regexp
       (format "%s <%s>" user-full-name user-mail-address))
