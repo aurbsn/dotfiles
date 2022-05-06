@@ -89,4 +89,5 @@
                "nyxt"
                "unzip"
                "nextcloud-client"
-               "libgnome-keyring"))))
+               "libgnome-keyring"
+               "hledger"))))
