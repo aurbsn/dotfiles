@@ -51,6 +51,6 @@
       *mode-line-border-color* "#4c83ff")
 
 (run-shell-command "setxkbmap -option ctrl:nocaps")
-(run-shell-command "/home/arbn/.screenlayout/docked.sh")
+(run-shell-command "/home/arbn/dev/dotfiles/guix-config/config-files/docked.sh")
 (run-shell-command "nextcloud &")
 (mode-line)
