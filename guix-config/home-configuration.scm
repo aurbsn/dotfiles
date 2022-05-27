@@ -90,4 +90,6 @@
                "unzip"
                "nextcloud-client"
                "libgnome-keyring"
-               "hledger"))))
+               "hledger"
+               "rust"
+               "rust-cargo"))))

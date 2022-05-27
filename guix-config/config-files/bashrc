@@ -103,3 +103,5 @@ export EDITOR='emacsclient'
 # users are encouraged to define aliases within the OSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
+GUIX_PROFILE="/home/arbn/.guix-profile"
+. "$GUIX_PROFILE/etc/profile"
