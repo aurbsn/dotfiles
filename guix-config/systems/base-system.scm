@@ -1,6 +1,7 @@
 (define-module (base-system)
   #:use-module (gnu)
-  #:use-module (srfi srfi-1))
+  #:use-module (srfi srfi-1)
+  #:use-module (gnu system locale))
 (use-service-modules desktop networking ssh xorg)
 
 (define %xorg-libinput-config
@@ -31,6 +32,12 @@ EndSection
    (keyboard-layout (keyboard-layout "us"))
    (host-name "nobody")
 
+   (locale-definitions 
+    (list 
+     (locale-definition 
+      (name "en_US.utf8") (source "en_US"))
+     (locale-definition 
+      (name "zh_CN.utf8") (source "zh_CN"))))
 
    ;; Use the UEFI variant of GRUB with the EFI System
    ;; Partition mounted on /boot/efi.

@@ -95,4 +95,11 @@
                "rust"
                "rust-cargo"
                "fcitx5"
-               "fcitx5-chinese-addons"))))
+               "fcitx5-configtool"
+               "fcitx5-chinese-addons"
+               "fcitx5-qt"
+               "fcitx5-gtk"
+               "font-wqy-zenhei"
+               "font-wqy-microhei"
+               "font-adobe-source-han-sans:cn" 
+               "xlsfonts"))))
