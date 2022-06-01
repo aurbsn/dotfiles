@@ -87,6 +87,7 @@
                "emacs-native-comp"
                "emacs-vterm"
                "nyxt"
+               "firefox"
                "unzip"
                "nextcloud-client"
                "libgnome-keyring"
