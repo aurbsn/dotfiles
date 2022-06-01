@@ -93,4 +93,6 @@
                "libgnome-keyring"
                "hledger"
                "rust"
-               "rust-cargo"))))
+               "rust-cargo"
+               "fcitx5"
+               "fcitx5-chinese-addons"))))
