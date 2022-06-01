@@ -80,4 +80,43 @@ EndSection
                 "emacs"
                 "git"))
      %base-packages))
-   (services %desktop-services)))
+   (services (cons* 
+              ;; Add udev rules for scanners.
+              (service sane-service-type)
+
+              ;; Add polkit rules, so that non-root users in the wheel group can
+              ;; perform administrative tasks (similar to "sudo").
+              polkit-wheel-service
+
+              ;; The global fontconfig cache directory can sometimes contain
+              ;; stale entries, possibly referencing fonts that have been GC'd,
+              ;; so mount it read-only.
+              fontconfig-file-system-service
+
+              ;; NetworkManager and its applet.
+              (service network-manager-service-type)
+              (service wpa-supplicant-service-type)    ;needed by NetworkManager
+              (simple-service 'network-manager-applet
+                              profile-service-type
+                              (list network-manager-applet))
+              (service modem-manager-service-type)
+              (service usb-modeswitch-service-type)
+
+              ;; The D-Bus clique.
+              (service avahi-service-type)
+              (udisks-service)
+              (service upower-service-type)
+              (accountsservice-service)
+              (service cups-pk-helper-service-type)
+              (service colord-service-type)
+              (geoclue-service)
+              (service polkit-service-type)
+              (elogind-service)
+              (dbus-service)
+
+              (service ntp-service-type)
+              x11-socket-directory-service
+              (service pulseaudio-service-type)
+              (service alsa-service-type)
+              %base-services
+              ))))

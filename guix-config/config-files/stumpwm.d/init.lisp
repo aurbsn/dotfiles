@@ -49,8 +49,8 @@
       *mode-line-background-color* "black"
       *mode-line-foreground-color* "#4c83ff"
       *mode-line-border-color* "#4c83ff")
-(run-shell-command "/home/arbn/dev/dotfiles/guix-config/config-files/docked.sh")
-(run-shell-command "setxkbmap -option ctrl:nocaps")
 (run-shell-command "fcitx5 &")
-(mode-line)
 (run-shell-command "nextcloud &")
+(run-shell-command "setxkbmap -option ctrl:nocaps" t)
+(run-shell-command "/home/arbn/dev/dotfiles/guix-config/config-files/docked.sh" t)
+(mode-line)
