@@ -2,7 +2,7 @@
   #:use-module (gnu)
   #:use-module (srfi srfi-1)
   #:use-module (gnu system locale))
-(use-service-modules desktop networking ssh xorg)
+(use-service-modules desktop networking ssh xorg avahi dbus sound)
 
 (define %xorg-libinput-config
   "Section \"InputClass\"
@@ -96,9 +96,6 @@ EndSection
               ;; NetworkManager and its applet.
               (service network-manager-service-type)
               (service wpa-supplicant-service-type)    ;needed by NetworkManager
-              (simple-service 'network-manager-applet
-                              profile-service-type
-                              (list network-manager-applet))
               (service modem-manager-service-type)
               (service usb-modeswitch-service-type)
 
