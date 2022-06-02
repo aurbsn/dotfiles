@@ -219,8 +219,6 @@
  '(erc-modules
    '(autojoin button completion fill irccontrols list match menu move-to-prompt netsplit networks noncommands readonly ring services stamp track))
  '(erc-prompt-for-nickserv-password t)
- '(mac-command-modifier 'super)
- '(mac-option-modifier '(:ordinary meta :function alt :mouse alt))
  '(ns-alternate-modifier '(:ordinary meta :function alt :mouse alt))
  '(ns-command-modifier 'super)
  '(package-selected-packages
