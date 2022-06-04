@@ -4,3 +4,8 @@ fi
 
 setxkbmap -option ctrl:nocaps
 export LSP_USE_PLISTS=true
+export LANG=en_US.UTF-8
+export EDITOR='emacsclient'
+
+GUIX_PROFILE="/home/arbn/.guix-profile"
+. "$GUIX_PROFILE/etc/profile"
