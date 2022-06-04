@@ -222,7 +222,7 @@
  '(ns-alternate-modifier '(:ordinary meta :function alt :mouse alt))
  '(ns-command-modifier 'super)
  '(package-selected-packages
-   '(smarty-mode gandalf-theme vterm vterm-toggle clhs trident-mode flycheck paredit rainbow-delimiters geiser geiser-guile clojure-mode php-mode company-php clojure-mode-extra-font-locking cider slime slime-company cyberpunk-theme smex projectile rainbow-delimiters tagedit magit neotree company haskell-mode scala-mode rust-mode elfeed use-package nov pdf-tools lsp-mode lsp-ui lsp-metals sbt-mode yasnippet mustache-mode s f sicp org-roam exec-path-from-shell guix))
+   '(anki-editor smarty-mode gandalf-theme vterm vterm-toggle clhs trident-mode flycheck paredit rainbow-delimiters geiser geiser-guile clojure-mode php-mode company-php clojure-mode-extra-font-locking cider slime slime-company cyberpunk-theme smex projectile rainbow-delimiters tagedit magit neotree company haskell-mode scala-mode rust-mode elfeed use-package nov pdf-tools lsp-mode lsp-ui lsp-metals sbt-mode yasnippet mustache-mode s f sicp org-roam exec-path-from-shell guix))
  '(safe-local-variable-values
    '((eval modify-syntax-entry 43 "'")
      (eval modify-syntax-entry 36 "'")
