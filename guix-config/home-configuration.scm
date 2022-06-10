@@ -73,7 +73,9 @@
             `(".mbsyncrc"
               ,(local-file "config-files/mbsyncrc"))
             `(".screenlayout/docked.sh"
-              ,(local-file "config-files/docked.sh"))))))
+              ,(local-file "config-files/docked.sh"))
+            `(".Xresources"
+              ,(local-file "config-files/Xresources"))))))
   (packages
     (map (compose list specification->package+output)
          (list "mu"
@@ -87,7 +89,6 @@
                "emacs-native-comp"
                "emacs-vterm"
                "nyxt"
-               "firefox"
                "unzip"
                "nextcloud-client"
                "libgnome-keyring"
