@@ -110,6 +110,9 @@ EndSection
               (elogind-service)
               (dbus-service)
 
+              ;; Desktop stuff
+              (service gnome-keyring-service-type)
+
               (service ntp-service-type)
               x11-socket-directory-service
               (service pulseaudio-service-type)
