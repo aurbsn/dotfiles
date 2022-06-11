@@ -90,7 +90,6 @@
                "emacs-vterm"
                "nyxt"
                "unzip"
-               "nextcloud-client"
                "libgnome-keyring"
                "hledger"
                "rust"
@@ -98,9 +97,11 @@
                "fcitx5"
                "fcitx5-configtool"
                "fcitx5-chinese-addons"
-               "fcitx5-qt"
                "fcitx5-gtk"
+               "fcitx5-qt"
                "font-wqy-zenhei"
                "font-wqy-microhei"
                "font-adobe-source-han-sans:cn" 
-               "xlsfonts"))))
+               "xlsfonts"
+               "flatpak"
+               "sideload"))))
