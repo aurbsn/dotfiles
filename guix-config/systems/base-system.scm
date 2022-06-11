@@ -76,7 +76,7 @@ EndSection
                 ;; X Settings Manager
                 "xsettingsd"
                 "xf86-input-libinput"
-                "emacs"
+                "mg"
                 "git"))
      %base-packages))
    (services (cons* 
