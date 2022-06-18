@@ -1,9 +1,11 @@
 (use-modules (gnu)
-             (base-system))
+             (base-system)
+             (nongnu system linux-initrd))
 (use-service-modules desktop networking ssh xorg)
 
 (operating-system
   (inherit base-operating-system)
+  (initrd microcode-initrd)
   (keyboard-layout (keyboard-layout "us"))
   (host-name "lisp-machine")
   (bootloader
