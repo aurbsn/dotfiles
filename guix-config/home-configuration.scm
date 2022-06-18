@@ -103,4 +103,5 @@
                "font-wqy-microhei"
                "font-adobe-source-han-sans:cn" 
                "xlsfonts"
-               "flatpak"))))
+               "flatpak"
+               "syncthing"))))
