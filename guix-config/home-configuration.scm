@@ -41,7 +41,7 @@
      ; Configuration files
      (simple-service 'home-config
       home-files-service-type
-      (list `("config/guix/channels.scm"
+      (list `(".config/guix/channels.scm"
               ,(scheme-file "channels.scm" '(cons* (channel
                                                     (name 'flat)
                                                     (url "https://github.com/flatwhatson/guix-channel.git")

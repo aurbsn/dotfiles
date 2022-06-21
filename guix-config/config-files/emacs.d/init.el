@@ -8,6 +8,9 @@
 (setq read-process-output-max (* 1024 1024)) ;; 1mb
 (setq package-native-compile t)
 
+(add-to-list 'load-path "~/.emacs.d/vendor")
+(add-to-list 'load-path "~/.guix-home/profile/share/emacs/site-lisp")
+(add-to-list 'load-path "/usr/share/emacs/site-lisp")
 (add-to-list 'load-path "~/.guix-profile/share/emacs/site-lisp")
 (let ((default-directory "~/.guix-profile/share/emacs/site-lisp"))
   (if (file-exists-p default-directory)
@@ -32,10 +35,6 @@
     ;; Cheatsheet: http://www.emacswiki.org/emacs/PareditCheatsheet
     paredit
     rainbow-delimiters
-
-    ;; Scheme stuff
-    geiser
-    geiser-guile
 
     ;; key bindings and code colorization for Clojure
     ;; https://github.com/clojure-emacs/clojure-mode
@@ -144,6 +143,8 @@
 
 (customize-set-variable 'tramp-use-ssh-controlmaster-options nil)
 
+(add-to-list 'load-path "~/.emacs.d/customizations")
+
 ;; Place downloaded elisp files in ~/.emacs.d/vendor. You'll then be able
 ;; to load them.
 ;;
@@ -155,11 +156,6 @@
 ;; 
 ;; Adding this code will make Emacs enter yaml mode whenever you open
 ;; a .yml file
-(add-to-list 'load-path "~/.emacs.d/vendor")
-
-;; Add a directory to our load path so that when you `load` things
-;; below, Emacs knows where to look for the corresponding file.
-(add-to-list 'load-path "~/.emacs.d/customizations")
 ;; Sets up exec-path-from-shell so that Emacs will use the correct
 ;; environment variables
 (load "shell-integration.el")
