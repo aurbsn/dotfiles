@@ -14,9 +14,9 @@
 (setf (getenv "PATH") (concat "/home/arbn/bin:" (getenv "PATH")))
 
 ;; Message and input bar
-(ql:quickload "clx-truetype")
-(load-module "ttf-fonts")
-(setf xft:*font-dirs* '("~/.guix-profile/share/fonts"))
+(require :clx-truetype);
+(require :ttf-fonts)
+(setf xft:*font-dirs* '("~/.guix-home/profile/share/fonts"))
 (xft:cache-fonts)
 (set-font (make-instance 'xft:font :family "Source Code Pro" :subfamily "Regular" :size 18))
 (set-fg-color "#ACE6D7")
@@ -50,7 +50,7 @@
       *mode-line-foreground-color* "#4c83ff"
       *mode-line-border-color* "#4c83ff")
 (run-shell-command "fcitx5 &")
-(run-shell-command "nextcloud &")
 (run-shell-command "setxkbmap -option ctrl:nocaps" t)
+(run-shell-command "syncthing &")
 (run-shell-command "/home/arbn/dev/dotfiles/guix-config/config-files/docked.sh" t)
 (mode-line)

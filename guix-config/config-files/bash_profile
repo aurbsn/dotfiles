@@ -6,6 +6,7 @@ setxkbmap -option ctrl:nocaps
 export LSP_USE_PLISTS=true
 export LANG=en_US.UTF-8
 export EDITOR='emacsclient'
+export XDG_DATA_DIRS=/var/lib/flatpak/exports/share:/home/arbn/.local/share/flatpak/exports/share:$XDG_DATA_DIRS
 
 GUIX_PROFILE="/home/arbn/.guix-profile"
 . "$GUIX_PROFILE/etc/profile"

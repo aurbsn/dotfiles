@@ -1,6 +1,6 @@
-#-quicklisp
-(let ((quicklisp-init (merge-pathnames "quicklisp/setup.lisp"
-                                       (user-homedir-pathname))))
-  (when (probe-file quicklisp-init)
-    (load quicklisp-init)))
+(require :asdf)
+
+(setf asdf:*central-registry*
+  (list* '("/home/arbn/.guix-profile/share/common-lisp/systems/")))
+
 
