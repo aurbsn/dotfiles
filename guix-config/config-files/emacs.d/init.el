@@ -132,6 +132,8 @@
 
     ; guix
     guix
+
+    vterm
     ))
 
 (setq vc-handled-backends nil)
