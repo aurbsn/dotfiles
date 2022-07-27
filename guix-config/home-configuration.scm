@@ -91,9 +91,7 @@
                "nyxt"
                "unzip"
                "libgnome-keyring"
-               "hledger"
                "rust"
-               "rust-cargo"
                "fcitx5"
                "fcitx5-configtool"
                "fcitx5-chinese-addons"
@@ -104,4 +102,8 @@
                "font-adobe-source-han-sans:cn" 
                "xlsfonts"
                "flatpak"
-               "syncthing"))))
+               "syncthing"
+               "cmake"
+               "cl-stumpwm"
+               "cl-slime-swank"
+               "cl-clx-truetype"))))
