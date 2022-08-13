@@ -1,29 +1,47 @@
-;; This is an operating system configuration generated
-;; by the graphical installer.
-
-(use-modules (gnu))
-(use-service-modules desktop networking ssh xorg)
+(use-modules
+ (gnu)
+ (gnu packages certs)
+ (gnu packages ssh))
+(use-service-modules networking ssh)
 
 (operating-system
-  (inherit base-operating-system)
-  (keyboard-layout (keyboard-layout "us"))
-  (host-name "guix-vm")
-  (bootloader
-    (bootloader-configuration
-      (bootloader grub-efi-bootloader)
-      (target "/boot/efi")
-      (keyboard-layout keyboard-layout)))
-  (swap-devices
-    (list (uuid "e9e77139-bdc4-4ab0-b8b4-1dce535383fa")))
-  (file-systems
-    (cons* (file-system
-             (mount-point "/boot/efi")
-             (device (uuid "B50A-80FD" 'fat32))
-             (type "vfat"))
-           (file-system
-             (mount-point "/")
-             (device
-               (uuid "337fd89b-08fa-4e83-8519-a66d36dfc0a7"
-                     'ext4))
-             (type "ext4"))
-           %base-file-systems)))
+  (host-name "alien-1")
+  (timezone "America/New_York")
+  (locale "en_US.UTF-8")
+  (bootloader (bootloader-configuration
+               (bootloader grub-efi-bootloader)
+               (targets '("/boot/efi"))
+               (keyboard-layout (keyboard-layout "us"))))
+  (file-systems (cons (file-system
+                        (device "/dev/sda")
+                        (mount-point "/")
+                        (type "ext4"))
+                      %base-file-systems))
+  (swap-devices (list "/dev/sdb"))
+
+  (initrd-modules (cons "virtio_scsi"    ;needed to find the disk
+                        %base-initrd-modules))
+
+  (users (cons (user-account
+                (name "arbn")
+                (group "users")
+                ;; Adding the account to the "wheel" group
+                ;; makes it a sudoer.
+                (supplementary-groups '("wheel"))
+                (home-directory "/home/arbn"))
+               %base-user-accounts))
+
+  (packages (cons* nss-certs            ;for HTTPS access
+                   openssh-sans-x
+                   %base-packages))
+
+  (services (cons*
+             (service dhcp-client-service-type)
+             (service openssh-service-type
+                      (openssh-configuration
+                       (openssh openssh-sans-x)
+                       (password-authentication? #f)
+                       (authorized-keys
+                        `(("arbn" ,(local-file "config-files/arbn_rsa.pub"))
+                          ("root" ,(local-file "config-files/arbn_rsa.pub"))))))
+             %base-services)))
