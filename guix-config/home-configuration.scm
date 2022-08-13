@@ -101,5 +101,9 @@
                "cl-stumpwm"
                "cl-slime-swank"
                "cl-clx-truetype"
+               "cl-clx-truetype"
                "glibc-locales"
-               "glibc"))))
+               "glibc"
+               "qt5ct"
+               "ledger"
+               "emacs-ledger-mode"))))

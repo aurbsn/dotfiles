@@ -11,8 +11,8 @@
 (add-to-list 'load-path "~/.emacs.d/vendor")
 (add-to-list 'load-path "~/.guix-home/profile/share/emacs/site-lisp")
 (add-to-list 'load-path "/usr/share/emacs/site-lisp")
-(add-to-list 'load-path "~/.guix-profile/share/emacs/site-lisp")
-(let ((default-directory "~/.guix-profile/share/emacs/site-lisp"))
+(add-to-list 'load-path "~/.guix-home/profile/share/emacs/site-lisp")
+(let ((default-directory "~/.guix-home/profile/share/emacs/site-lisp"))
   (if (file-exists-p default-directory)
       (normal-top-level-add-subdirs-to-load-path)))
 

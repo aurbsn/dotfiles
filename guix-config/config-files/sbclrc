@@ -1,6 +1,6 @@
 (require :asdf)
 
 (setf asdf:*central-registry*
-  (list* '("/home/arbn/.guix-profile/share/common-lisp/systems/")))
+  (list* '("/home/arbn/.guix-home/profile/share/common-lisp/systems/")))
 
 
