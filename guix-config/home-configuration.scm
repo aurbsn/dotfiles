@@ -32,11 +32,6 @@
         (list (local-file
                "config-files/bash_logout"
                "bash_logout")))))
-     ; Redshift
-     (service
-      home-redshift-service-type
-      (home-redshift-configuration 
-       (location-provider 'geoclue2)))
 
      ; Configuration files
      (simple-service 'home-config
@@ -101,9 +96,10 @@
                "font-wqy-microhei"
                "font-adobe-source-han-sans:cn" 
                "xlsfonts"
-               "flatpak"
                "syncthing"
                "cmake"
                "cl-stumpwm"
                "cl-slime-swank"
-               "cl-clx-truetype"))))
+               "cl-clx-truetype"
+               "glibc-locales"
+               "glibc"))))
