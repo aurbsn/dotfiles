@@ -2,7 +2,6 @@
 (require 'package)
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
                          ("melpa" . "https://melpa.org/packages/")))
-
 ;; Performance tweaks for lsp-mode
 (setq gc-cons-threshold 100000000)
 (setq read-process-output-max (* 1024 1024)) ;; 1mb
@@ -142,8 +141,6 @@
 (package-install-selected-packages)
 
 (add-hook 'after-init-hook #'global-flycheck-mode)
-
-(customize-set-variable 'tramp-use-ssh-controlmaster-options nil)
 
 (add-to-list 'load-path "~/.emacs.d/customizations")
 

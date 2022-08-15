@@ -24,5 +24,5 @@
   (company-mode t)
   )
 
-(add-hook 'php-mode-hook #'lsp)
 (add-hook 'php-mode-hook 'php-mode-init)
+(add-hook 'php-mode-hook #'lsp)
