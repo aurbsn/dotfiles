@@ -106,4 +106,5 @@
                "glibc"
                "qt5ct"
                "ledger"
-               "emacs-ledger-mode"))))
+               "emacs-ledger-mode"
+               "xlsx2csv"))))
