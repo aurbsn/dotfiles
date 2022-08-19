@@ -86,7 +86,6 @@
                "nyxt"
                "unzip"
                "libgnome-keyring"
-               "rust"
                "fcitx5"
                "fcitx5-configtool"
                "fcitx5-chinese-addons"
@@ -107,4 +106,5 @@
                "qt5ct"
                "ledger"
                "emacs-ledger-mode"
-               "xlsx2csv"))))
+               "xlsx2csv"
+               "git"))))
