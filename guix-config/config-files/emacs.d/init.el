@@ -133,6 +133,8 @@
     guix
 
     vterm
+
+    clhs
     ))
 
 (setq vc-handled-backends nil)

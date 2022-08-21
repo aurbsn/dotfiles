@@ -5,6 +5,6 @@
       erc-nick "arbn"
       erc-user-full-name "arbn"
       erc-track-shorten-start 8
-      erc-autojoin-channels-alist '(("libera.chat" "#systemcrafters" "#emacs" "#stumpwm" "#lisp" "#gnu" "#erc" "#guix" "#guile"))
+      erc-autojoin-channels-alist '(("libera.chat" "#systemcrafters" "#emacs" "#stumpwm" "#lisp" "#commonlisp" "#erc" "#guix" "#guile" "#clschool" "#scheme"))
       erc-kill-buffer-on-part t
       erc-auto-query 'bury)
