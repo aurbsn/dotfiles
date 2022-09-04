@@ -102,11 +102,10 @@
                "cl-clx-truetype"
                "cl-clx-truetype"
                "cl-fiveam"
-               "glibc-locales"
-               "glibc"
                "qt5ct"
                "ledger"
                "emacs-ledger-mode"
                "xlsx2csv"
                "git"
-               "exercism"))))
+               "exercism"
+               "libreoffice"))))
