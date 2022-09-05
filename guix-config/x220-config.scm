@@ -7,7 +7,7 @@
   (inherit base-operating-system)
   (initrd microcode-initrd)
   (keyboard-layout (keyboard-layout "us"))
-  (host-name "lisp-machine")
+  (host-name "hackpad")
   (bootloader
     (bootloader-configuration
       (bootloader grub-bootloader)
@@ -16,23 +16,13 @@
   (mapped-devices
     (list (mapped-device
             (source
-              (uuid "ddc2afe8-a5d4-47f5-ab49-98d1602769d0"))
+              (uuid "35309dd5-dbd2-41d7-92f1-e0cb53ba7ab9"))
             (target "cryptroot")
-            (type luks-device-mapping))
-          (mapped-device
-            (source
-              (uuid "94e3794e-81a4-41d7-8402-8e8402e0b221"))
-            (target "crypthome")
             (type luks-device-mapping))))
   (file-systems
     (cons* (file-system
              (mount-point "/")
              (device "/dev/mapper/cryptroot")
-             (type "ext4")
-             (dependencies mapped-devices))
-           (file-system
-             (mount-point "/home")
-             (device "/dev/mapper/crypthome")
              (type "ext4")
              (dependencies mapped-devices))
            %base-file-systems)))

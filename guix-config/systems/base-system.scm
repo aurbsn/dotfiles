@@ -66,7 +66,10 @@ EndSection
    (packages
     (append
      (map specification->package 
-          (list "nss-certs"
+          (list 
+		"xorg-server"
+		"xinit"
+		"nss-certs"
                 "fontconfig"
 	        "font-dejavu"
                 "font-gnu-freefont"
@@ -77,9 +80,26 @@ EndSection
                 "xsettingsd"
                 "xf86-input-libinput"
                 "mg"
-                "git"))
+                "git"
+
+                ;; gstreamer plugins
+                "gstreamer"
+                "gst-plugins-base"
+                "gst-plugins-good"
+                "gst-plugins-bad"
+                "gst-plugins-ugly"
+                "gst-libav"
+
+                ;; other
+                "curl"
+                "setxkbmap"
+                "openssh"
+                ))
      %base-packages))
    (services (cons* 
+	      ;; display manager
+	      (service slim-service-type)
+
               ;; Add udev rules for scanners.
               (service sane-service-type)
 
