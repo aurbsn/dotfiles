@@ -100,7 +100,7 @@
                "cl-stumpwm"
                "cl-slime-swank"
                "cl-clx-truetype"
-               "cl-clx-truetype"
+               "sbcl-stumpwm-ttf-fonts"
                "cl-fiveam"
                "qt5ct"
                "ledger"
