@@ -55,12 +55,18 @@
                                                       (openpgp-fingerprint
                                                        "2A39 3FFF 68F4 EF7A 3D29  12AF 6F51 20A0 22FB B2D5"))))
                                                    %default-channels)))
-            ;; `(".xsession"
-            ;;   ,(local-file "config-files/xsession"))
-            ;`(".emacs.d"
-            ;  ,(local-file "config-files/emacs.d" #:recursive? #t))
-            ;`(".stumpwm.d"
-            ;  ,(local-file "config-files/stumpwm.d" #:recursive? #t))
+            `(".xsession"
+              ,(local-file "config-files/xinitrc" #:recursive? #t))
+            `(".xinitrc"
+              ,(local-file "config-files/xinitrc" #:recursive? #t))
+            `(".emacs.d/init.el"
+             ,(local-file "config-files/emacs.d/init.el" #:recursive? #t))
+            `(".emacs.d/customizations"
+             ,(local-file "config-files/emacs.d/customizations" #:recursive? #t))
+            `(".stumpwm.d/init.lisp"
+             ,(local-file "config-files/stumpwm.d/init.lisp" #:recursive? #t))
+            `(".stumpwm.d/modules"
+             ,(local-file "config-files/stumpwm.d/modules" #:recursive? #t))
             `("dev/start-stump.lisp"
               ,(local-file "config-files/start-stump.lisp"))
             `(".sbclrc"
@@ -68,7 +74,7 @@
             `(".mbsyncrc"
               ,(local-file "config-files/mbsyncrc"))
             `(".screenlayout/docked.sh"
-              ,(local-file "config-files/docked.sh"))
+              ,(local-file "config-files/docked.sh" #:recursive? #t))
             `(".Xresources"
               ,(local-file "config-files/Xresources"))))))
   (packages
@@ -108,4 +114,5 @@
                "xlsx2csv"
                "git"
                "exercism"
-               "libreoffice"))))
+               "libreoffice"
+               "autorandr"))))
