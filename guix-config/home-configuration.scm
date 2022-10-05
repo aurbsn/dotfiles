@@ -85,6 +85,8 @@
                "nyxt"
                "unzip"
                "libgnome-keyring"
+               "glibc-locales"
+               "nss-certs"
                "fcitx5"
                "fcitx5-configtool"
                "fcitx5-chinese-addons"
@@ -108,4 +110,5 @@
                "git"
                "exercism"
                "libreoffice"
-               "autorandr"))))
+               "autorandr"
+               "sbcl-stumpwm-ttf-fonts"))))
