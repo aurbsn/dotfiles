@@ -48,6 +48,8 @@
                                                 (openpgp-fingerprint
                                                  "2A39 3FFF 68F4 EF7A 3D29  12AF 6F51 20A0 22FB B2D5"))))
                                              %default-channels)))
+            `(".config/common-lisp/source-registry.conf.d/arbn-lisp.conf"
+              ,(local-file "config-files/arbn-lisp.conf"))
             `(".xsession"
               ,(local-file "config-files/xinitrc" #:recursive? #t))
             `(".xinitrc"
@@ -101,8 +103,10 @@
                "cl-stumpwm"
                "cl-slime-swank"
                "cl-clx-truetype"
+               "cl-drakma"
                "sbcl-stumpwm-ttf-fonts"
                "cl-fiveam"
+               "cl-json"
                "qt5ct"
                ;"hledger"
                "emacs-hledger-mode"
