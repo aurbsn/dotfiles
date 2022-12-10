@@ -2,7 +2,7 @@
 (require 'package)
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
                          ("melpa" . "https://melpa.org/packages/")))
-;; Performance tweaks for lsp-mode
+;; Performance tweaks
 (setq gc-cons-threshold 100000000)
 (setq read-process-output-max (* 1024 1024)) ;; 1mb
 (setq package-native-compile t)
@@ -106,12 +106,6 @@
     ;; View and annotate PDFs
     pdf-tools
 
-    ;; Language Server Protocol
-    lsp-mode
-    lsp-ui
-    lsp-metals
-    sbt-mode
-
     yasnippet
 
     ;; Mustache
@@ -135,10 +129,9 @@
     vterm
 
     clhs
+
+    eglot
     ))
-
-(setq vc-handled-backends nil)
-
 
 (package-install-selected-packages)
 
@@ -162,10 +155,6 @@
 (load "shell-integration.el")
 
 (require 'use-package)
-
-;; LSP setup
-(require 'lsp-mode)
-(setq lsp-ui-doc-show-with-mouse nil)
 
 ;; Config branches based on env string value
 (load "setup-env.el")
@@ -223,7 +212,7 @@
  '(ns-alternate-modifier '(:ordinary meta :function alt :mouse alt))
  '(ns-command-modifier 'super)
  '(package-selected-packages
-   '(web-mode csv csv-mode hledger-mode anki-editor smarty-mode gandalf-theme vterm vterm-toggle clhs trident-mode flycheck paredit rainbow-delimiters geiser geiser-guile clojure-mode php-mode company-php clojure-mode-extra-font-locking cider slime slime-company cyberpunk-theme smex projectile rainbow-delimiters tagedit magit neotree company haskell-mode scala-mode rust-mode elfeed use-package nov pdf-tools lsp-mode lsp-ui lsp-metals sbt-mode yasnippet mustache-mode f sicp org-roam exec-path-from-shell guix))
+   '(lsp-ui lsp-metals lsp-mode flycheck paredit rainbow-delimiters clojure-mode php-mode company-php clojure-mode-extra-font-locking cider slime slime-company cyberpunk-theme smex projectile rainbow-delimiters tagedit magit neotree company web-mode haskell-mode scala-mode rust-mode elfeed use-package nov pdf-tools yasnippet mustache-mode s f sicp org-roam exec-path-from-shell guix vterm clhs eglot))
  '(safe-local-variable-values
    '((eval modify-syntax-entry 43 "'")
      (eval modify-syntax-entry 36 "'")
