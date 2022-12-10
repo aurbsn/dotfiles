@@ -212,7 +212,7 @@
  '(ns-alternate-modifier '(:ordinary meta :function alt :mouse alt))
  '(ns-command-modifier 'super)
  '(package-selected-packages
-   '(lsp-ui lsp-metals lsp-mode flycheck paredit rainbow-delimiters clojure-mode php-mode company-php clojure-mode-extra-font-locking cider slime slime-company cyberpunk-theme smex projectile rainbow-delimiters tagedit magit neotree company web-mode haskell-mode scala-mode rust-mode elfeed use-package nov pdf-tools yasnippet mustache-mode s f sicp org-roam exec-path-from-shell guix vterm clhs eglot))
+   '(flycheck paredit rainbow-delimiters clojure-mode php-mode company-php clojure-mode-extra-font-locking cider slime slime-company cyberpunk-theme smex projectile rainbow-delimiters tagedit magit neotree company web-mode haskell-mode scala-mode rust-mode elfeed use-package nov pdf-tools yasnippet mustache-mode s f sicp org-roam exec-path-from-shell guix vterm clhs eglot))
  '(safe-local-variable-values
    '((eval modify-syntax-entry 43 "'")
      (eval modify-syntax-entry 36 "'")
@@ -235,12 +235,6 @@
      (eval setq-local guix-directory
            (locate-dominating-file default-directory ".dir-locals.el"))))
  '(tramp-remote-path
-   '(tramp-default-remote-path "/bin" "/usr/bin" "/sbin" "/usr/sbin" "/usr/local/bin" "/usr/local/sbin" "/local/bin" "/local/freeware/bin" "/local/gnu/bin" "/usr/freeware/bin" "/usr/pkg/bin" "/usr/contrib/bin" "/opt/bin" "/opt/sbin" "/opt/local/bin" tramp-own-remote-path))
+   '(tramp-default-remote-path "~/node_modules/.bin" tramp-own-remote-path))
  '(tramp-use-ssh-controlmaster-options nil)
  '(warning-suppress-types '((comp))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
