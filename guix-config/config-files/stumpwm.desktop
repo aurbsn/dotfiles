@@ -1,0 +1,7 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=XSession
+Exec=stumpwm
+TryExec=sbcl --load /home/arbn/dev/start-stump.lisp
+Name=StumpWM
+Comment=Stump window manager
