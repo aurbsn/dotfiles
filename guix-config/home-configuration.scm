@@ -57,7 +57,9 @@
             `(".emacs.d/init.el"
              ,(local-file "config-files/emacs.d/init.el" #:recursive? #t))
             `(".emacs.d/customizations"
-             ,(local-file "config-files/emacs.d/customizations" #:recursive? #t))
+              ,(local-file "config-files/emacs.d/customizations" #:recursive? #t))
+	    `(".emacs.d/env"
+	      ,(local-file "config-files/emacs.d/env" #:recursive? #t))
             `(".stumpwm.d/init.lisp"
              ,(local-file "config-files/stumpwm.d/init.lisp" #:recursive? #t))
             `(".stumpwm.d/modules"
