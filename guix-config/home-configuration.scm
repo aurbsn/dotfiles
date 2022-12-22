@@ -108,11 +108,13 @@
                "cl-fiveam"
                "cl-json"
                "qt5ct"
-               ;"hledger"
+               "hledger"
                "emacs-hledger-mode"
                "xlsx2csv"
                "git"
                "exercism"
                "libreoffice"
                "autorandr"
-               "sbcl-stumpwm-ttf-fonts"))))
+               "sbcl-stumpwm-ttf-fonts"
+               "borg"
+               "borgmatic"))))
