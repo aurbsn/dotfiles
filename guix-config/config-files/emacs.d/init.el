@@ -131,6 +131,8 @@
     clhs
 
     eglot
+
+    geiser-guile
     ))
 
 (package-install-selected-packages)
@@ -211,30 +213,5 @@
  '(erc-prompt-for-nickserv-password t)
  '(ns-alternate-modifier '(:ordinary meta :function alt :mouse alt))
  '(ns-command-modifier 'super)
- '(package-selected-packages
-   '(flycheck paredit rainbow-delimiters clojure-mode php-mode company-php clojure-mode-extra-font-locking cider slime slime-company cyberpunk-theme smex projectile rainbow-delimiters tagedit magit neotree company web-mode haskell-mode scala-mode rust-mode elfeed use-package nov pdf-tools yasnippet mustache-mode s f sicp org-roam exec-path-from-shell guix vterm clhs eglot))
- '(safe-local-variable-values
-   '((eval modify-syntax-entry 43 "'")
-     (eval modify-syntax-entry 36 "'")
-     (eval modify-syntax-entry 126 "'")
-     (eval let
-           ((root-dir-unexpanded
-             (locate-dominating-file default-directory ".dir-locals.el")))
-           (when root-dir-unexpanded
-             (let*
-                 ((root-dir
-                   (expand-file-name root-dir-unexpanded))
-                  (root-dir*
-                   (directory-file-name root-dir)))
-               (unless
-                   (boundp 'geiser-guile-load-path)
-                 (defvar geiser-guile-load-path 'nil))
-               (make-local-variable 'geiser-guile-load-path)
-               (require 'cl-lib)
-               (cl-pushnew root-dir* geiser-guile-load-path :test #'string-equal))))
-     (eval setq-local guix-directory
-           (locate-dominating-file default-directory ".dir-locals.el"))))
  '(tramp-remote-path
-   '(tramp-default-remote-path "~/node_modules/.bin" tramp-own-remote-path))
- '(tramp-use-ssh-controlmaster-options nil)
- '(warning-suppress-types '((comp))))
+   '(tramp-default-remote-path "~/node_modules/.bin" tramp-own-remote-path)))
