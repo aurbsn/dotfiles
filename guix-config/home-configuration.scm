@@ -71,7 +71,9 @@
             `(".mbsyncrc"
               ,(local-file "config-files/mbsyncrc"))
             `(".screenlayout/docked.sh"
-              ,(local-file "config-files/docked.sh" #:recursive? #t))))))
+              ,(local-file "config-files/docked.sh" #:recursive? #t))
+            `(".config/nyxt/init.lisp" 
+              ,(local-file "config-files/nyxt/init.lisp"))))))
   (packages
     (map (compose list specification->package+output)
          (list "mu"
@@ -116,4 +118,12 @@
                "borg"
                "borgmatic"
                "oath-toolkit"
-               "password-store"))))
+               "password-store"
+
+               ;; gstreamer plugins
+                "gstreamer"
+                "gst-plugins-base"
+                "gst-plugins-good"
+                "gst-plugins-bad"
+                "gst-plugins-ugly"
+                "gst-libav"))))
