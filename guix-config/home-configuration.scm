@@ -81,7 +81,6 @@
                "guile"
                "xclip"
                "sbcl"
-               "keepassxc"
                "acpi"
                "font-adobe-source-code-pro"
                "emacs"
@@ -106,7 +105,6 @@
                "cl-slime-swank"
                "cl-clx-truetype"
                "cl-drakma"
-               "sbcl-stumpwm-ttf-fonts"
                "cl-fiveam"
                "cl-json"
                "qt5ct"
@@ -117,6 +115,7 @@
                "exercism"
                "libreoffice"
                "autorandr"
-               "sbcl-stumpwm-ttf-fonts"
                "borg"
-               "borgmatic"))))
+               "borgmatic"
+               "oath-toolkit"
+               "password-store"))))

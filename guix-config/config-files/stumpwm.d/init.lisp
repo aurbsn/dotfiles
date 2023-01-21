@@ -14,7 +14,7 @@
 (setf (getenv "PATH") (concat "/home/arbn/bin:" (getenv "PATH")))
 
 ;; Message and input bar
-(require :clx-truetype);
+(require :clx-truetype)
 (require :ttf-fonts)
 (setf xft:*font-dirs* '("~/.guix-home/profile/share/fonts"))
 (xft:cache-fonts)
