@@ -71,9 +71,7 @@
             `(".mbsyncrc"
               ,(local-file "config-files/mbsyncrc"))
             `(".screenlayout/docked.sh"
-              ,(local-file "config-files/docked.sh" #:recursive? #t))
-            `(".Xresources"
-              ,(local-file "config-files/Xresources"))))))
+              ,(local-file "config-files/docked.sh" #:recursive? #t))))))
   (packages
     (map (compose list specification->package+output)
          (list "mu"
