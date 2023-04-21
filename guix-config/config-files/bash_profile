@@ -6,6 +6,10 @@ if [ -d "$HOME/android-cmdline-tools/bin" ] ; then
     PATH="$HOME/android-cmdline-tools/bin:$PATH"
 fi
 
+if [ -d "$HOME/.local/bin" ] ; then
+    PATH="$HOME/.local/bin:$PATH"
+fi
+
 . ~/.profile
 setxkbmap -option ctrl:nocaps
 export LSP_USE_PLISTS=true
