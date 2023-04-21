@@ -73,7 +73,9 @@
             `(".screenlayout/docked.sh"
               ,(local-file "config-files/docked.sh" #:recursive? #t))
             `(".config/nyxt/init.lisp" 
-              ,(local-file "config-files/nyxt/init.lisp"))))))
+              ,(local-file "config-files/nyxt/init.lisp"))
+            `(".Xresources" 
+              ,(local-file "config-files/Xresources"))))))
   (packages
     (map (compose list specification->package+output)
          (list "mu"
@@ -119,11 +121,12 @@
                "borgmatic"
                "oath-toolkit"
                "password-store"
+               "arandr"
 
                ;; gstreamer plugins
-                "gstreamer"
-                "gst-plugins-base"
-                "gst-plugins-good"
-                "gst-plugins-bad"
-                "gst-plugins-ugly"
-                "gst-libav"))))
+               "gstreamer"
+               "gst-plugins-base"
+               "gst-plugins-good"
+               "gst-plugins-bad"
+               "gst-plugins-ugly"
+               "gst-libav"))))
