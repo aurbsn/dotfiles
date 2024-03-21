@@ -86,6 +86,7 @@
                "borg"
                "borgmatic"
                "oath-toolkit"
+               "make"
 
                ;; gstreamer plugins
                "gstreamer"
