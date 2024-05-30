@@ -6,6 +6,11 @@
 (setq gc-cons-threshold 100000000)
 (setq read-process-output-max (* 1024 1024)) ;; 1mb
 (setq package-native-compile t)
+(setq vc-ignore-dir-regexp
+      (format "\\(%s\\)\\|\\(%s\\)"
+              vc-ignore-dir-regexp
+              tramp-file-name-regexp))
+(setq remote-file-name-inhibit-locks t)
 
 (add-to-list 'load-path "~/.emacs.d/vendor")
 (add-to-list 'load-path "~/.guix-home/profile/share/emacs/site-lisp")
@@ -214,7 +219,7 @@
  '(ns-alternate-modifier '(:ordinary meta :function alt :mouse alt))
  '(ns-command-modifier 'super)
  '(package-selected-packages
-   '(flycheck paredit rainbow-delimiters clojure-mode php-mode company-php clojure-mode-extra-font-locking cider slime slime-company cyberpunk-theme smex projectile rainbow-delimiters tagedit magit neotree company web-mode haskell-mode scala-mode rust-mode elfeed use-package nov pdf-tools yasnippet mustache-mode s f sicp org-roam exec-path-from-shell guix vterm clhs eglot geiser-guile))
+   '(guru-mode highlight2clipboard flycheck paredit rainbow-delimiters clojure-mode php-mode company-php clojure-mode-extra-font-locking cider slime slime-company cyberpunk-theme smex projectile rainbow-delimiters tagedit magit neotree company web-mode haskell-mode scala-mode rust-mode elfeed use-package nov pdf-tools yasnippet mustache-mode s f sicp org-roam exec-path-from-shell guix vterm clhs eglot geiser-guile))
  '(tramp-remote-path
    '(tramp-default-remote-path "~/node_modules/.bin" tramp-own-remote-path)))
 (custom-set-faces
