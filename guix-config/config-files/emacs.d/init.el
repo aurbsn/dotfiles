@@ -138,6 +138,8 @@
     eglot
 
     geiser-guile
+
+    restclient
     ))
 
 (package-install-selected-packages)
