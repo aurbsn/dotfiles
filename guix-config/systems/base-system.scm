@@ -2,7 +2,7 @@
   #:use-module (gnu)
   #:use-module (srfi srfi-1)
   #:use-module (gnu system locale))
-(use-service-modules desktop networking ssh xorg avahi dbus sound)
+(use-service-modules desktop networking ssh xorg avahi dbus sound pm)
 
 (define %xorg-libinput-config
   "Section \"InputClass\"
@@ -69,13 +69,12 @@ EndSection
           (list 
 		"xorg-server"
 		"xinit"
-		"nss-certs"
                 "fontconfig"
 	        "font-dejavu"
                 "font-gnu-freefont"
                 "font-ghostscript"
                 "glibc-locales"
-
+		
                 ;; X Settings Manager
                 "xsettingsd"
                 "xf86-input-libinput"
@@ -112,22 +111,21 @@ EndSection
 
               ;; The D-Bus clique.
               (service avahi-service-type)
-              (udisks-service)
+              (service udisks-service-type)
               (service upower-service-type)
-              (accountsservice-service)
+              (service accountsservice-service-type)
               (service cups-pk-helper-service-type)
               (service colord-service-type)
-              (geoclue-service)
+              (service geoclue-service-type)
               (service polkit-service-type)
-              (elogind-service)
-              (dbus-service)
+              (service elogind-service-type)
+              (service dbus-root-service-type)
 
               ;; Desktop stuff
               (service gnome-keyring-service-type)
 
               (service ntp-service-type)
-              x11-socket-directory-service
+              (service x11-socket-directory-service-type)
               (service pulseaudio-service-type)
               (service alsa-service-type)
-              %base-services
-              ))))
+	      (service thermald-service-type)))))
