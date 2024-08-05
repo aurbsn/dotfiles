@@ -129,7 +129,7 @@ EndSection
               (service pulseaudio-service-type)
               (service alsa-service-type)
 	      (service thermald-service-type)
-              (modify-services %desktop-services
+              (modify-services %base-services
                   (guix-service-type config => 
                                      (guix-configuration
                                       (inherit config)
