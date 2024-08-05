@@ -87,6 +87,7 @@ EndSection
                 "openssh"
                 ))
      %base-packages))
+
    (services (cons* 
 	      ;; display manager
 	      (service slim-service-type)
@@ -128,4 +129,14 @@ EndSection
               (service x11-socket-directory-service-type)
               (service pulseaudio-service-type)
               (service alsa-service-type)
-	      (service thermald-service-type)))))
+	      (service thermald-service-type)
+              (modify-services %desktop-services
+                  (guix-service-type config => 
+                                     (guix-configuration
+                                      (inherit config)
+                                      (substitute-urls
+                                       (append (list "https://substitutes.nonguix.org")
+                                               %default-substitute-urls))
+                                      (authorized-keys
+                                       (append (list (local-file "./signing-key.pub"))
+                                               %default-authorized-guix-keys)))))))))))
