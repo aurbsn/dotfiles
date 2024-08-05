@@ -120,7 +120,6 @@ EndSection
               (service geoclue-service-type)
               (service polkit-service-type)
               (service elogind-service-type)
-              (service dbus-root-service-type)
 
               ;; Desktop stuff
               (service gnome-keyring-service-type)
