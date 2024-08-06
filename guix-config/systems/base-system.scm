@@ -85,10 +85,12 @@ EndSection
                 "curl"
                 "setxkbmap"
                 "openssh"
+		"thermald"
                 ))
      %base-packages))
 
-   (services (cons* 
+   (services (cons*
+	      (service thermald-service-type)
 	      ;; display manager
 	      (service slim-service-type)
 
@@ -128,7 +130,6 @@ EndSection
               (service x11-socket-directory-service-type)
               (service pulseaudio-service-type)
               (service alsa-service-type)
-	      (service thermald-service-type)
               (modify-services %base-services
                   (guix-service-type config => 
                                      (guix-configuration
@@ -139,3 +140,4 @@ EndSection
                                       (authorized-keys
                                        (append (list (local-file "./signing-key.pub"))
                                                %default-authorized-guix-keys)))))))))))
+
