@@ -58,7 +58,8 @@
               ,(local-file "config-files/sbclrc"))))))
   (packages
     (map (compose list specification->package+output)
-         (list "guile"
+         (list "nss-certs"
+               "guile"
                "xclip"
                "sbcl"
                "font-adobe-source-code-pro"
@@ -68,13 +69,11 @@
                "unzip"
                "libgnome-keyring"
                "glibc-locales"
-               "nss-certs"
                "font-wqy-zenhei"
                "font-wqy-microhei"
                "font-adobe-source-han-sans:cn" 
                "xlsfonts"
                "syncthing"
-               "cmake"
                "cl-slime-swank"
                "cl-drakma"
                "cl-fiveam"
@@ -82,11 +81,10 @@
                "xlsx2csv"
                "git"
                "exercism"
-               "libreoffice"
-               "borg"
-               "borgmatic"
                "oath-toolkit"
-               "make"
+               "rust"
+               "rust-cargo"
+               "clang-toolchain"
 
                ;; gstreamer plugins
                "gstreamer"
