@@ -6,11 +6,8 @@
 (setq gc-cons-threshold 100000000)
 (setq read-process-output-max (* 1024 1024)) ;; 1mb
 (setq package-native-compile t)
-(setq vc-ignore-dir-regexp
-      (format "\\(%s\\)\\|\\(%s\\)"
-              vc-ignore-dir-regexp
-              tramp-file-name-regexp))
 (setq remote-file-name-inhibit-locks t)
+(setq tramp-default-method "rsync")
 
 (add-to-list 'load-path "~/.emacs.d/vendor")
 (add-to-list 'load-path "~/.guix-home/profile/share/emacs/site-lisp")
@@ -19,6 +16,7 @@
 (let ((default-directory "~/.guix-home/profile/share/emacs/site-lisp"))
   (if (file-exists-p default-directory)
       (normal-top-level-add-subdirs-to-load-path)))
+(setq large-file-warning-threshold 3000000)
 
 ;; Load and activate emacs packages. Do this first so that the
 ;; packages are loaded before you start trying to modify them.
@@ -32,9 +30,7 @@
   (package-refresh-contents))
 
 (customize-set-variable 'package-selected-packages
-  '(;; Flycheck
-    flycheck
-
+  '(
     ;; makes handling lisp expressions much, much easier
     ;; Cheatsheet: http://www.emacswiki.org/emacs/PareditCheatsheet
     paredit
@@ -47,9 +43,6 @@
     ;; PHP mode
     php-mode
 
-    ;; Company PHP
-    company-php
-
     ;; extra syntax highlighting for clojure
     clojure-mode-extra-font-locking
 
@@ -59,7 +52,6 @@
 
     ;; SLIME for Common LISP
     slime
-    slime-company
 
     ;; Themes
     cyberpunk-theme
@@ -85,9 +77,6 @@
 
     ;; Source tree viewer
     neotree
-
-    ;; Auto-complete
-    company
 
     ;; Web mode
     web-mode
@@ -145,8 +134,6 @@
     ))
 
 (package-install-selected-packages)
-
-(add-hook 'after-init-hook #'global-flycheck-mode)
 
 (add-to-list 'load-path "~/.emacs.d/customizations")
 
@@ -222,8 +209,6 @@
  '(erc-prompt-for-nickserv-password t)
  '(ns-alternate-modifier '(:ordinary meta :function alt :mouse alt))
  '(ns-command-modifier 'super)
- '(package-selected-packages
-   '(guru-mode highlight2clipboard flycheck paredit rainbow-delimiters clojure-mode php-mode company-php clojure-mode-extra-font-locking cider slime slime-company cyberpunk-theme smex projectile rainbow-delimiters tagedit magit neotree company web-mode haskell-mode scala-mode rust-mode elfeed use-package nov pdf-tools yasnippet mustache-mode s f sicp org-roam exec-path-from-shell guix vterm clhs eglot geiser-guile))
  '(tramp-remote-path
    '(tramp-default-remote-path "~/node_modules/.bin" tramp-own-remote-path)))
 (custom-set-faces
