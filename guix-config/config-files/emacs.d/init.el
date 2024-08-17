@@ -61,9 +61,11 @@
     slime
     slime-company
 
-    ;; The preferred color scheme
+    ;; Themes
     cyberpunk-theme
     hc-zenburn-theme
+    abyss-theme
+
     ;; Enhances M-x to allow easier execution of commands. Provides
     ;; a filterable list of possible commands in the minibuffer
     ;; http://www.emacswiki.org/emacs/Smex
