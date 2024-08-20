@@ -59,6 +59,7 @@
   (packages
     (map (compose list specification->package+output)
          (list "nss-certs"
+               "glibc-locales"
                "guile"
                "xclip"
                "sbcl"
@@ -66,4 +67,7 @@
                "emacs"
                "emacs-vterm"
                "nyxt"
+               "exercism"
+               "rust"
+               "rust-cargo"
                "exercism"))))
