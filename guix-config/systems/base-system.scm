@@ -85,12 +85,10 @@ EndSection
                 "curl"
                 "setxkbmap"
                 "openssh"
-		"thermald"
                 ))
      %base-packages))
 
    (services (cons*
-	      (service thermald-service-type)
 	      ;; display manager
 	      (service slim-service-type)
 
