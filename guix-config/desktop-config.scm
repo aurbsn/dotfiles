@@ -6,7 +6,7 @@
 
 (operating-system
  (inherit base-operating-system)
- ;(kernel linux)
+ (kernel linux)
  (initrd microcode-initrd)
  (firmware (list linux-firmware))
  (keyboard-layout (keyboard-layout "us"))

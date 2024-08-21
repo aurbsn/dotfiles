@@ -58,7 +58,11 @@
               ,(local-file "config-files/sbclrc"))))))
   (packages
     (map (compose list specification->package+output)
-         (list "nss-certs"
+         (list 
+               "git"
+               "nss-certs"
+               "glibc"
+               "glibc:static"
                "glibc-locales"
                "guile"
                "xclip"
