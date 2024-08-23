@@ -74,4 +74,9 @@
                "exercism"
                "rust"
                "rust-cargo"
-               "exercism"))))
+               "exercism"
+
+               "gnome-tweaks"
+               "firefox"
+               "syncthing"
+               "keepassxc"))))
