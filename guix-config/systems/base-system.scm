@@ -2,7 +2,7 @@
   #:use-module (gnu)
   #:use-module (srfi srfi-1)
   #:use-module (gnu system locale))
-(use-service-modules desktop networking ssh xorg avahi dbus sound pm)
+(use-service-modules cups desktop networking ssh xorg avahi dbus sound pm)
 
 (define %xorg-libinput-config
   "Section \"InputClass\"
@@ -88,47 +88,15 @@ EndSection
                 ))
      %base-packages))
 
-   (services (cons*
-	      ;; display manager
-	      (service slim-service-type)
+  (services
+   (append (list (service gnome-desktop-service-type)
+                 (service cups-service-type)
+                 (set-xorg-configuration
+                  (xorg-configuration (keyboard-layout keyboard-layout))))
 
-              ;; Add udev rules for scanners.
-              (service sane-service-type)
-
-              ;; Add polkit rules, so that non-root users in the wheel group can
-              ;; perform administrative tasks (similar to "sudo").
-              polkit-wheel-service
-
-              ;; The global fontconfig cache directory can sometimes contain
-              ;; stale entries, possibly referencing fonts that have been GC'd,
-              ;; so mount it read-only.
-              fontconfig-file-system-service
-
-              ;; NetworkManager and its applet.
-              (service network-manager-service-type)
-              (service wpa-supplicant-service-type)    ;needed by NetworkManager
-              (service modem-manager-service-type)
-              (service usb-modeswitch-service-type)
-
-              ;; The D-Bus clique.
-              (service avahi-service-type)
-              (service udisks-service-type)
-              (service upower-service-type)
-              (service accountsservice-service-type)
-              (service cups-pk-helper-service-type)
-              (service colord-service-type)
-              (service geoclue-service-type)
-              (service polkit-service-type)
-              (service elogind-service-type)
-
-              ;; Desktop stuff
-              (service gnome-keyring-service-type)
-
-              (service ntp-service-type)
-              (service x11-socket-directory-service-type)
-              (service pulseaudio-service-type)
-              (service alsa-service-type)
-              (modify-services %base-services
+           ;; This is the default list of services we
+           ;; are appending to.
+           (modify-services %desktop-services
                   (guix-service-type config => 
                                      (guix-configuration
                                       (inherit config)
@@ -137,5 +105,5 @@ EndSection
                                                %default-substitute-urls))
                                       (authorized-keys
                                        (append (list (local-file "./signing-key.pub"))
-                                               %default-authorized-guix-keys)))))))))))
+                                               %default-authorized-guix-keys)))))))))
 
