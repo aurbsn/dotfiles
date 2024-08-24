@@ -209,7 +209,6 @@
 (load "setup-org.el")
 
 (setq-default explicit-shell-file-name "/bin/bash")
-(setq-default vterm-shell "/bin/bash")
 (add-to-list 'tramp-connection-properties
              (list (regexp-quote "/rsync:arobinson.vm.dev.etsycloud.com")
                    "remote-shell" "/bin/bash"))
