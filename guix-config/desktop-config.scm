@@ -1,11 +1,17 @@
 (use-modules (gnu)
 	     (base-system)
 	     (nongnu system linux-initrd)
-	     (nongnu packages linux))
+	     (nongnu packages linux)
+             (nongnu packages nvidia)
+             (nongnu services nvidia))
 (use-service-modules cups desktop networking ssh xorg)
 
 (operating-system
  (inherit base-operating-system)
+ (kernel-arguments '("modprobe.blacklist=nouveau"
+                     ;; Set this if the card is not used for displaying or
+                     ;; you're using Wayland:
+                     "nvidia_drm.modeset=1"))
  (kernel linux)
  (initrd microcode-initrd)
  (firmware (list linux-firmware))
@@ -27,4 +33,32 @@
                          (mount-point "/")
                          (device "/dev/mapper/cryptroot")
                          (type "ext4")
-                         (dependencies mapped-devices)) %base-file-systems)))
+                         (dependencies mapped-devices)) %base-file-systems))
+ (services (append (list
+                    (service nvidia-service-type)
+                    ;; Configure desktop environment, GNOME for example.
+                    (service gnome-desktop-service-type)
+                    ;; Configure Xorg server, only do this when the card is used for
+                    ;; displaying.
+                    (set-xorg-configuration
+                     (xorg-configuration
+                      (modules (cons nvda %default-xorg-modules))
+                      (drivers '("nvidia"))))
+
+                    (service cups-service-type)
+                    (set-xorg-configuration
+                     (xorg-configuration (keyboard-layout keyboard-layout)))
+                    (service bluetooth-service-type))
+
+                   ;; This is the default list of services we
+                   ;; are appending to.
+                   (modify-services %desktop-services
+                                    (guix-service-type config => 
+                                                       (guix-configuration
+                                                        (inherit config)
+                                                        (substitute-urls
+                                                         (append (list "https://substitutes.nonguix.org")
+                                                                 %default-substitute-urls))
+                                                        (authorized-keys
+                                                         (append (list (local-file "./signing-key.pub"))
+                                                                 %default-authorized-guix-keys))))))))

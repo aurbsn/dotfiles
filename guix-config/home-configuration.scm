@@ -10,6 +10,7 @@
   (gnu services)
   (guix gexp)
   (gnu home services)
+  (gnu home services syncthing)
   (gnu home services shells)
   (gnu home services desktop))
 
@@ -32,6 +33,9 @@
         (list (local-file
                "config-files/bash_logout"
                "bash_logout")))))
+
+     ; Syncthing
+     (service home-syncthing-service-type)
 
      ; Configuration files
      (simple-service 'home-config
