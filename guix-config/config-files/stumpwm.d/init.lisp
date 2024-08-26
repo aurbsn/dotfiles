@@ -51,6 +51,4 @@
       *mode-line-border-color* "#4c83ff")
 (run-shell-command "fcitx5 &")
 (run-shell-command "setxkbmap -option ctrl:nocaps" t)
-(run-shell-command "syncthing &")
-(run-shell-command "/home/arbn/dev/dotfiles/guix-config/config-files/docked.sh" t)
 (mode-line)
