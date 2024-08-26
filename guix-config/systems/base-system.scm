@@ -1,29 +1,13 @@
 (define-module (base-system)
   #:use-module (gnu)
+  #:use-module (gnu packages terminals)
+  #:use-module (gnu packages xdisorg)
   #:use-module (srfi srfi-1)
-  #:use-module (gnu system locale))
+  #:use-module (gnu system locale)
+  #:use-module (nongnu packages nvidia)
+  #:use-module (nongnu services nvidia)
+  #:use-module (rosenthal packages wm))
 (use-service-modules cups desktop networking ssh xorg avahi dbus sound pm)
-
-(define %xorg-libinput-config
-  "Section \"InputClass\"
-  Identifier \"Touchpads\"
-  Driver \"libinput\"
-  MatchDevicePath \"/dev/input/event*\"
-  MatchIsTouchpad \"on\"
-
-  Option \"Tapping\" \"on\"
-  Option \"TappingDrag\" \"on\"
-  Option \"DisableWhileTyping\" \"on\"
-  Option \"MiddleEmulation\" \"on\"
-  Option \"ScrollMethod\" \"twofinger\"
-EndSection
-Section \"InputClass\"
-  Identifier \"Keyboards\"
-  Driver \"libinput\"
-  MatchDevicePath \"/dev/input/event*\"
-  MatchIsKeyboard \"on\"
-EndSection
-")
 
 (define-public base-operating-system
   (operating-system
@@ -64,27 +48,32 @@ EndSection
                    '("wheel" "netdev" "audio" "video")))
                  %base-user-accounts))
    (packages
-    (append
-     (map specification->package 
-          (list 
-		"xorg-server"
-		"xinit"
-                "fontconfig"
-	        "font-dejavu"
-                "font-gnu-freefont"
-                "font-ghostscript"
-                "glibc-locales"
-		
-                ;; X Settings Manager
-                "xsettingsd"
-                "xf86-input-libinput"
-                "mg"
-                "git"
-
-                ;; other
-                "curl"
-                "setxkbmap"
-                "openssh"
-                ))
-     %base-packages))))
+    (append (list (replace-mesa hyprland)
+                  xdg-desktop-portal-hyprland
+                  kitty
+                  wofi)
+            (append
+             (map specification->package 
+                  (list 
+                   "steam-devices-udev-rules"
+                   "fontconfig"
+	           "font-dejavu"
+                   "font-gnu-freefont"
+                   "font-ghostscript"
+                   "glibc-locales"
+		   
+                   ;; X Settings Manager
+                   "mg"
+                   "git"
+                   
+                   "blueman"
+                   "bluez"
+                   "bluez-alsa"
+                   "pulseaudio"
+                   ;; other
+                   "curl"
+                   "setxkbmap"
+                   "openssh"
+                   ))
+             %base-packages)))))
 

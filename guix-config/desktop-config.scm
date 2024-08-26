@@ -1,10 +1,12 @@
 (use-modules (gnu)
 	     (base-system)
+             (gnu packages gnome)
+             (gnu packages networking)
 	     (nongnu system linux-initrd)
 	     (nongnu packages linux)
              (nongnu packages nvidia)
              (nongnu services nvidia))
-(use-service-modules cups desktop networking ssh xorg)
+(use-service-modules cups desktop networking ssh xorg dbus)
 
 (operating-system
  (inherit base-operating-system)
@@ -36,29 +38,26 @@
                          (dependencies mapped-devices)) %base-file-systems))
  (services (append (list
                     (service nvidia-service-type)
-                    ;; Configure desktop environment, GNOME for example.
-                    (service gnome-desktop-service-type)
-                    ;; Configure Xorg server, only do this when the card is used for
-                    ;; displaying.
+                    (service cups-service-type)
+                    (service bluetooth-service-type
+                             (bluetooth-configuration
+                              (auto-enable? #t)))
                     (set-xorg-configuration
                      (xorg-configuration
                       (modules (cons nvda %default-xorg-modules))
-                      (drivers '("nvidia"))))
-
-                    (service cups-service-type)
-                    (set-xorg-configuration
-                     (xorg-configuration (keyboard-layout keyboard-layout)))
-                    (service bluetooth-service-type))
-
-                   ;; This is the default list of services we
-                   ;; are appending to.
+                      (drivers '("nvidia"))
+                      (keyboard-layout keyboard-layout))))
                    (modify-services %desktop-services
-                                    (guix-service-type config => 
-                                                       (guix-configuration
-                                                        (inherit config)
-                                                        (substitute-urls
-                                                         (append (list "https://substitutes.nonguix.org")
-                                                                 %default-substitute-urls))
-                                                        (authorized-keys
-                                                         (append (list (local-file "./signing-key.pub"))
-                                                                 %default-authorized-guix-keys))))))))
+                     (dbus-root-service-type config => 
+                                             (dbus-configuration (inherit config)
+                                                                 (services (list blueman))))
+                     (delete gdm-service-type)
+                     (guix-service-type config => 
+                                        (guix-configuration
+                                         (inherit config)
+                                         (substitute-urls
+                                          (append (list "https://substitutes.nonguix.org")
+                                                  %default-substitute-urls))
+                                         (authorized-keys
+                                          (append (list (local-file "./signing-key.pub"))
+                                                  %default-authorized-guix-keys))))))))

@@ -140,11 +140,6 @@
    :fetcher git
    :url "https://github.com/quelpa/quelpa-use-package.git"))
 (require 'quelpa-use-package)
-(use-package copilot
-  :quelpa (copilot :fetcher github
-                   :repo "copilot-emacs/copilot.el"
-                   :branch "main"
-                   :files ("*.el")))
 (add-to-list 'load-path "~/.emacs.d/customizations")
 
 ;; Place downloaded elisp files in ~/.emacs.d/vendor. You'll then be able
