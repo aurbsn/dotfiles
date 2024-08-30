@@ -1,12 +1,11 @@
 (define-module (base-system)
   #:use-module (gnu)
-  #:use-module (gnu packages terminals)
-  #:use-module (gnu packages xdisorg)
   #:use-module (srfi srfi-1)
   #:use-module (gnu system locale)
   #:use-module (nongnu packages nvidia)
   #:use-module (nongnu services nvidia)
   #:use-module (rosenthal packages wm))
+(use-package-modules package-management terminals xdisorg freedesktop)
 (use-service-modules cups desktop networking ssh xorg avahi dbus sound pm)
 
 (define-public base-operating-system
@@ -50,26 +49,30 @@
    (packages
     (append (list (replace-mesa hyprland)
                   xdg-desktop-portal-hyprland
+                  xdg-desktop-portal
+                  xdg-desktop-portal-gtk
                   kitty
-                  wofi)
+                  wofi
+                  (replace-mesa flatpak))
             (append
              (map specification->package 
                   (list 
-                   "steam-devices-udev-rules"
                    "fontconfig"
 	           "font-dejavu"
                    "font-gnu-freefont"
                    "font-ghostscript"
                    "glibc-locales"
 		   
-                   ;; X Settings Manager
                    "mg"
                    "git"
                    
+                   "nix"
+
                    "blueman"
                    "bluez"
                    "bluez-alsa"
                    "pulseaudio"
+
                    ;; other
                    "curl"
                    "setxkbmap"

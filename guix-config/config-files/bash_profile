@@ -18,9 +18,8 @@ export EDITOR='emacsclient'
 export XDG_DATA_DIRS=/var/lib/flatpak/exports/share:/home/arbn/.local/share/flatpak/exports/share:$XDG_DATA_DIRS
 export GUIX_LOCPATH=$HOME/.guix-home/profile/lib/locale
 export QT_QPA_PLATFORMTHEME=qt5ct
-export LEDGER_FILE=~/Sync/ledger/ledger.journal
-export PASSWORD_STORE_ENABLE_EXTENSIONS=true
-export PASSWORD_STORE_SYSTEM_EXTENSION_DIR=~/.local/bin
+
 
 GUIX_PROFILE="/home/arbn/.guix-home/profile"
 . "$GUIX_PROFILE/etc/profile"
+

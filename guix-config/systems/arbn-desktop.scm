@@ -1,23 +1,26 @@
-;; This "home-environment" file can be passed to 'guix home reconfigure'
-;; to reproduce the content of your profile.  This is "symbolic": it only
-;; specifies package names.  To reproduce the exact same profile, you also
-;; need to capture the channels being used, as returned by "guix describe".
-;; See the "Replicating Guix" section in the manual.
+(use-modules (gnu)
+	     (base-system)
+             (gnu packages gnome)
+             (gnu packages networking)
+	     (nongnu system linux-initrd)
+	     (nongnu packages linux)
+             (nongnu packages nvidia)
+             (nongnu services nvidia)
+             (gnu home)
+             (gnu packages)
+             (gnu packages wm)
+             (gnu services)
+             (guix gexp)
+             (gnu home services)
+             (gnu home services syncthing)
+             (gnu home services sound)
+             (gnu home services shells)
+             (gnu home services desktop))
+(use-service-modules cups desktop networking ssh xorg dbus nix)
 
-(use-modules
-  (gnu home)
-  (gnu packages)
-  (gnu packages wm)
-  (gnu services)
-  (guix gexp)
-  (gnu home services)
-  (gnu home services syncthing)
-  (gnu home services sound)
-  (gnu home services shells)
-  (gnu home services desktop))
-
-(home-environment
- (services
+(system-config
+ #:home
+ (home-environment (services
   (list 
    ; Bash
    (service
@@ -117,4 +120,4 @@
          "mako"
          "firefox"
          "syncthing"
-         "keepassxc"))))
+         "keepassxc")))))
