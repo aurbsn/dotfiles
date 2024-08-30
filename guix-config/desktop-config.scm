@@ -6,7 +6,7 @@
 	     (nongnu packages linux)
              (nongnu packages nvidia)
              (nongnu services nvidia))
-(use-service-modules cups desktop networking ssh xorg dbus)
+(use-service-modules cups desktop networking ssh xorg dbus nix)
 
 (operating-system
  (inherit base-operating-system)
@@ -37,6 +37,7 @@
                          (type "ext4")
                          (dependencies mapped-devices)) %base-file-systems))
  (services (append (list
+                    (service nix-service-type)
                     (service nvidia-service-type)
                     (service cups-service-type)
                     (service bluetooth-service-type
