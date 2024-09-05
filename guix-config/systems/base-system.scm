@@ -1,19 +1,20 @@
-(define-module (base-system)
+(define-module (arbn systems base-system)
   #:use-module (gnu)
   #:use-module (srfi srfi-1)
-  #:use-module (gnu system locale)
-  #:use-module (nongnu packages nvidia)
-  #:use-module (nongnu services nvidia)
-  #:use-module (rosenthal packages wm))
+  #:use-module (gnu system locale))
 (use-package-modules package-management terminals xdisorg freedesktop)
 (use-service-modules cups desktop networking ssh xorg avahi dbus sound pm)
 
 (define-public base-operating-system
+)
+
+(define* (system-config #:key system home)
   (operating-system
+   (inherit system)
+   
    (locale "en_US.utf8")
    (timezone "America/New_York")
    (keyboard-layout (keyboard-layout "us"))
-   (host-name "nobody")
 
    (locale-definitions 
     (list 
@@ -29,16 +30,6 @@
                 (targets '("/boot/efi"))
                 (keyboard-layout keyboard-layout)))
 
-    ;; Guix doesn't like it when there isn't a file-systems
-    ;; entry, so add one that is meant to be overridden
-    (file-systems (cons*
-                   (file-system
-                     (mount-point "/tmp")
-                     (device "none")
-                     (type "tmpfs")
-                     (check? #f))
-                   %base-file-systems))
-
    (users (cons* (user-account
                   (name "arbn")
                   (group "users")
@@ -47,36 +38,26 @@
                    '("wheel" "netdev" "audio" "video")))
                  %base-user-accounts))
    (packages
-    (append (list (replace-mesa hyprland)
-                  xdg-desktop-portal-hyprland
-                  xdg-desktop-portal
-                  xdg-desktop-portal-gtk
-                  kitty
-                  wofi
-                  (replace-mesa flatpak))
-            (append
-             (map specification->package 
-                  (list 
-                   "fontconfig"
-	           "font-dejavu"
-                   "font-gnu-freefont"
-                   "font-ghostscript"
-                   "glibc-locales"
-		   
-                   "mg"
-                   "git"
-                   
-                   "nix"
-
-                   "blueman"
-                   "bluez"
-                   "bluez-alsa"
-                   "pulseaudio"
-
-                   ;; other
-                   "curl"
-                   "setxkbmap"
-                   "openssh"
-                   ))
-             %base-packages)))))
-
+    (cons* 
+     mg
+     git
+     exfat-utils
+     fuse-exfat
+     gvfs ;; Enable user mounts
+     %base-packages))
+   
+   (services 
+    (append 
+     (service guix-home-service-type
+              `(("arbn" ,home)))
+     (modify-services 
+      %base-services
+      (guix-service-type config => 
+                         (guix-configuration
+                          (inherit config)
+                          (substitute-urls
+                           (append (list "https://substitutes.nonguix.org")
+                                   %default-substitute-urls))
+                          (authorized-keys
+                           (append (list (local-file "./signing-key.pub"))
+                                   %default-authorized-guix-keys)))))))))
