@@ -7,7 +7,7 @@
 (setq read-process-output-max (* 1024 1024)) ;; 1mb
 (setq package-native-compile t)
 (setq remote-file-name-inhibit-locks t)
-(setq tramp-default-method "rsync")
+(setq tramp-default-method "scp")
 
 (add-to-list 'load-path "~/.emacs.d/vendor")
 (add-to-list 'load-path "~/.guix-home/profile/share/emacs/site-lisp")
@@ -84,9 +84,6 @@
                           ;; Haskell
                           haskell-mode
 
-                          ;; Scala
-                          scala-mode
-
                           ;; Rust
                           rust-mode
 
@@ -120,7 +117,7 @@
                           exec-path-from-shell
 
                                         ; guix
-                          guix
+                         guix
 
                           vterm
 
