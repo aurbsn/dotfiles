@@ -68,7 +68,10 @@
                          "glibc-locales"
                          "guile"
                          "xclip"
+
                          "sbcl"
+                         "cl-fiveam"
+
                          "emacs"
                          "emacs-vterm"
                          "exercism"
