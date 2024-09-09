@@ -1,0 +1,10 @@
+(use-modules (gnu)
+             (gnu home)
+             (gnu packages)
+             (arbn modules package-lists)
+             (arbn modules service-lists))
+
+(home-environment (services
+                   (create-home-services '() '()))
+                  (packages
+                   %base-home-packages))
