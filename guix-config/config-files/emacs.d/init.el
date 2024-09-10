@@ -76,7 +76,7 @@
                           magit
 
                           ;; Source tree viewer
-                          neotree
+                          treemacs
 
                           ;; Web mode
                           web-mode
@@ -132,11 +132,6 @@
                           quelpa
                           ))
 (package-install-selected-packages)
-(quelpa
- '(quelpa-use-package
-   :fetcher git
-   :url "https://github.com/quelpa/quelpa-use-package.git"))
-(require 'quelpa-use-package)
 (add-to-list 'load-path "~/.emacs.d/customizations")
 
 ;; Place downloaded elisp files in ~/.emacs.d/vendor. You'll then be able
@@ -210,7 +205,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
-   '("a1c18db2838b593fba371cb2623abd8f7644a7811ac53c6530eebdf8b9a25a8d" "cf08ae4c26cacce2eebff39d129ea0a21c9d7bf70ea9b945588c1c66392578d1" "b89a4f5916c29a235d0600ad5a0849b1c50fab16c2c518e1d98f0412367e7f97" "5078e1845735a69b21b5effe083998dc368853320f449530c2616cf70bc3c47b" default))
+   '("7d1c7ea4f3e73402f012b7011fc4be389597922fa67ad4ec417816971bca6f9d" "a1c18db2838b593fba371cb2623abd8f7644a7811ac53c6530eebdf8b9a25a8d" "cf08ae4c26cacce2eebff39d129ea0a21c9d7bf70ea9b945588c1c66392578d1" "b89a4f5916c29a235d0600ad5a0849b1c50fab16c2c518e1d98f0412367e7f97" "5078e1845735a69b21b5effe083998dc368853320f449530c2616cf70bc3c47b" default))
  '(erc-modules
    '(autojoin button completion fill irccontrols list match menu move-to-prompt netsplit networks noncommands readonly ring services stamp track))
  '(erc-prompt-for-nickserv-password t)
