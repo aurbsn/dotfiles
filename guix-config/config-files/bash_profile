@@ -23,3 +23,7 @@ export GUILE_LOAD_PATH=~/dev/dotfiles/guix-config/:$GUILE_LOAD_PATH
 export GUIX_PROFILE="/home/arbn/.guix-home/profile"
 . "$GUIX_PROFILE/etc/profile"
 
+if test $TERM = "dumb"
+then
+   export PS1="*"
+fi
