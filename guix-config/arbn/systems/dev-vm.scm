@@ -7,4 +7,4 @@
 (home-environment (services
                    (create-home-services '() '()))
                   (packages
-                   %base-desktop-packages))
+                   %base-home-packages))
