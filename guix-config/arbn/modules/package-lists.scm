@@ -5,7 +5,9 @@
  version-control file-systems gnome certs lisp lisp-check emacs
  emacs-xyz education rust rust-apps fonts linux)
 
-(define-public %base-home-packages ; These packages will always be desired for Guix Home configs
+; These packages will always be desired for Guix Home configs,
+; include on servers
+(define-public %base-home-packages 
   (list
    git
    nss-certs
@@ -13,16 +15,20 @@
    (list glibc "static")
    glibc-locales
    guile-3.0
-   xclip
-   sbcl
-   cl-fiveam
    emacs
-   emacs-vterm
-   exercism
-   rust
-   rust-cargo
-   font-adobe-source-code-pro
-   ))
+   emacs-vterm))
+
+ ; Packages for a personal desktop development environment
+(define-public %desktop-home-packages
+  (append %base-home-packages
+          (list
+           xclip
+           sbcl
+           cl-fiveam
+           exercism
+           rust
+           rust-cargo
+           font-adobe-source-code-pro)))
 
 (define-public %base-system-packages ; All systems need these
   (append
