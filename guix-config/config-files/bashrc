@@ -82,3 +82,8 @@ plugins=(
 #  fi
 
 source "$OSH"/oh-my-bash.sh
+
+if test $TERM = "dumb"
+then
+   export PS1=">"
+fi
