@@ -20,7 +20,7 @@ export GUIX_LOCPATH=$HOME/.guix-home/profile/lib/locale
 export QT_QPA_PLATFORMTHEME=qt5ct
 export GUILE_LOAD_PATH=~/dev/dotfiles/guix-config/:$GUILE_LOAD_PATH
 
-export GUIX_PROFILE="~/.guix-home/profile"
+export GUIX_PROFILE="$HOME/.guix-home/profile"
 . "$GUIX_PROFILE/etc/profile"
 
 if test $TERM = "dumb"
