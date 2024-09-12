@@ -100,7 +100,6 @@
 
      gnome-themes-extra
      nordic-theme
-     lxappearance
      font-google-noto
      font-google-noto-serif-cjk
      font-google-noto-sans-cjk
