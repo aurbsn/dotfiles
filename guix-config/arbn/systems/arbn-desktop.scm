@@ -93,7 +93,7 @@
        ,(local-file "../../config-files/hyprland.conf")))))
   (packages
    (append 
-    %base-home-packages
+    %desktop-home-packages
     (list 
      steam-devices-udev-rules
      (specification->package "steam-nvidia")
