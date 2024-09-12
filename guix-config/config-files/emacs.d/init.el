@@ -29,108 +29,109 @@
 (when (not package-archive-contents)
   (package-refresh-contents))
 
-(customize-set-variable 'package-selected-packages
-                        '(
-                          ;; makes handling lisp expressions much, much easier
-                          ;; Cheatsheet: http://www.emacswiki.org/emacs/PareditCheatsheet
-                          paredit
-                          rainbow-delimiters
+(customize-set-variable 
+ 'package-selected-packages
+ '(
+   ;; makes handling lisp expressions much, much easier
+   ;; Cheatsheet: http://www.emacswiki.org/emacs/PareditCheatsheet
+   paredit
+   rainbow-delimiters
 
-                          ;; key bindings and code colorization for Clojure
-                          ;; https://github.com/clojure-emacs/clojure-mode
-                          clojure-mode
+   ;; key bindings and code colorization for Clojure
+   ;; https://github.com/clojure-emacs/clojure-mode
+   clojure-mode
 
-                          ;; PHP mode
-                          php-mode
+   ;; PHP mode
+   php-mode
 
-                          ;; extra syntax highlighting for clojure
-                          clojure-mode-extra-font-locking
+   ;; extra syntax highlighting for clojure
+   clojure-mode-extra-font-locking
 
-                          ;; integration with a Clojure REPL
-                          ;; https://github.com/clojure-emacs/cider
-                          cider
+   ;; integration with a Clojure REPL
+   ;; https://github.com/clojure-emacs/cider
+   cider
 
-                          ;; SLIME for Common LISP
-                          slime
+   ;; SLIME for Common LISP
+   slime
 
-                          ;; Themes
-                          cyberpunk-theme
-                          hc-zenburn-theme
-                          abyss-theme
+   ;; Themes
+   cyberpunk-theme
+   hc-zenburn-theme
+   abyss-theme
 
-                          ;; Enhances M-x to allow easier execution of commands. Provides
-                          ;; a filterable list of possible commands in the minibuffer
-                          ;; http://www.emacswiki.org/emacs/Smex
-                          smex
+   ;; Enhances M-x to allow easier execution of commands. Provides
+   ;; a filterable list of possible commands in the minibuffer
+   ;; http://www.emacswiki.org/emacs/Smex
+   smex
 
-                          ;; project navigation
-                          projectile
+   ;; project navigation
+   projectile
 
-                          ;; colorful parenthesis matching
-                          rainbow-delimiters
+   ;; colorful parenthesis matching
+   rainbow-delimiters
 
-                          ;; edit html tags like sexps
-                          tagedit
+   ;; edit html tags like sexps
+   tagedit
 
-                          ;; git integration
-                          magit
+   ;; git integration
+   magit
 
-                          ;; Source tree viewer
-                          treemacs
+   ;; Source tree viewer
+   treemacs
 
-                          ;; Web mode
-                          web-mode
+   ;; Web mode
+   web-mode
 
-                          ;; Haskell
-                          haskell-mode
+   ;; Haskell
+   haskell-mode
 
-                          ;; Rust
-                          rust-mode
+   ;; Rust
+   rust-mode
 
-                          ;; Fead reader
-                          elfeed
+   ;; Fead reader
+   elfeed
 
-                          ;; Dependency for conditional installs
-                          use-package
+   ;; Dependency for conditional installs
+   use-package
 
-                          ;; EPUB reader
-                          nov
+   ;; EPUB reader
+   nov
 
-                          ;; View and annotate PDFs
-                          pdf-tools
+   ;; View and annotate PDFs
+   pdf-tools
 
-                          yasnippet
+   yasnippet
 
-                          ;; Mustache
-                          mustache-mode
+   ;; Mustache
+   mustache-mode
 
-                          ;; Elisp libraries
-                          s
-                          f
+   ;; Elisp libraries
+   s
+   f
 
-                          ;; SICP
-                          sicp
+   ;; SICP
+   sicp
 
-                                        ; org-roam
-                          org-roam
+   ;; org-roam
+   org-roam
 
-                          exec-path-from-shell
+   exec-path-from-shell
 
-                                        ; guix
-                         guix
+   ;; guix
+   guix
 
-                          vterm
+   vterm
 
-                          clhs
+   clhs
 
-                          eglot
+   eglot
 
-                          geiser-guile
+   geiser-guile
 
-                          restclient
+   restclient
 
-                          quelpa
-                          ))
+   quelpa
+   ))
 (package-install-selected-packages)
 (add-to-list 'load-path "~/.emacs.d/customizations")
 
