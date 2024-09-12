@@ -11,7 +11,9 @@ if [ -d "$HOME/.local/bin" ] ; then
 fi
 
 . ~/.profile
-setxkbmap -option ctrl:nocaps
+if [ -x "$(command -v setxkmap)" ]; then
+  setxkbmap -option ctrl:nocaps
+fi
 export LSP_USE_PLISTS=true
 export LANG=en_US.UTF-8
 export EDITOR='emacsclient'
