@@ -131,7 +131,9 @@
    restclient
 
    quelpa
-   ))
+
+   ; kitty terminal protocol
+   kkp))
 (package-install-selected-packages)
 (add-to-list 'load-path "~/.emacs.d/customizations")
 

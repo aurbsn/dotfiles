@@ -30,7 +30,7 @@
                       ;; you're using Wayland:
                       "nvidia_drm.modeset=1"))
 
-  (kernel linux)
+  (kernel linux-6.6)
   (initrd microcode-initrd)
   (firmware (list linux-firmware))
   (keyboard-layout (keyboard-layout "us"))
@@ -119,7 +119,9 @@
  (append 
   (list
    (service nix-service-type)
-   (service nvidia-service-type)
+   (service nvidia-service-type
+            (nvidia-configuration
+             (module nvidia-module-open)))
    (service cups-service-type)
    (service bluetooth-service-type
             (bluetooth-configuration
