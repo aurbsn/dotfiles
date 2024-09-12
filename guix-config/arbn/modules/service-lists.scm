@@ -10,6 +10,7 @@
    (service
     home-bash-service-type
     (home-bash-configuration
+     (guix-defaults? #f)
      (bash-profile 
       (list (local-file
              "../../config-files/bash_profile"
