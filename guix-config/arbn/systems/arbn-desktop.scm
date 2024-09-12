@@ -132,8 +132,7 @@
        (drivers '("nvidia"))
        (keyboard-layout keyboard-layout)))))
   (modify-services 
-      (create-system-services %desktop-services)
-    (dbus-root-service-type config => 
-                            (dbus-configuration (inherit config)
-                                                (services (list blueman))))
-    (delete gdm-service-type))))
+   (create-system-services %desktop-services)
+   (dbus-root-service-type config => 
+                           (dbus-configuration (inherit config)
+                                               (services (list blueman)))))))
