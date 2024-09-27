@@ -14,15 +14,14 @@ fi
 if [ -x "$(command -v setxkmap)" ]; then
   setxkbmap -option ctrl:nocaps
 fi
-export LSP_USE_PLISTS=true
 export LANG=en_US.UTF-8
 export EDITOR='emacsclient'
 export XDG_DATA_DIRS=/var/lib/flatpak/exports/share:/home/arbn/.local/share/flatpak/exports/share:$XDG_DATA_DIRS
 export GUIX_LOCPATH=$HOME/.guix-home/profile/lib/locale
-export QT_QPA_PLATFORMTHEME=qt5ct
 export GUILE_LOAD_PATH=~/dev/dotfiles/guix-config/:$GUILE_LOAD_PATH
 PATH=$PATH:'~/node_modules/.bin/'
 NODE_OPTIONS="--max-old-space-size=8192"
+export GTK_THEME=Nordic
 
 export GUIX_PROFILE="$HOME/.guix-home/profile"
 . "$GUIX_PROFILE/etc/profile"
