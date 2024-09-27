@@ -28,7 +28,8 @@
            exercism
            rust
            rust-cargo
-           font-adobe-source-code-pro)))
+           font-adobe-source-code-pro
+           xsettingsd)))
 
 (define-public %base-system-packages ; All systems need these
   (append

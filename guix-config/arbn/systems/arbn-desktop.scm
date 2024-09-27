@@ -20,7 +20,7 @@
 (use-package-modules wm linux xdisorg package-management terminals
              freedesktop networking gnome audio pulseaudio curl
              xorg ssh games gnome-xyz lxde fonts compression admin
-             video syncthing password-utils)
+             video syncthing password-utils glib emacs-xyz fcitx5)
 
 (system-config
  #:system
@@ -30,7 +30,7 @@
                       ;; you're using Wayland:
                       "nvidia_drm.modeset=1"))
 
-  (kernel linux-6.6)
+  (kernel linux)
   (initrd microcode-initrd)
   (firmware (list linux-firmware))
   (keyboard-layout (keyboard-layout "us"))
@@ -95,8 +95,8 @@
    (append 
     %desktop-home-packages
     (list 
-     steam-devices-udev-rules
-     (specification->package "steam-nvidia")
+     (list glib "bin")
+     dconf
 
      gnome-themes-extra
      nordic-theme
@@ -105,6 +105,7 @@
      font-google-noto-sans-cjk
 
      zstd
+     unzip
 
      btop
      hyprcursor
@@ -113,7 +114,12 @@
      mako
      firefox
      syncthing
-     keepassxc))))
+     keepassxc
+     
+     ; IME
+     emacs-rime
+     fcitx5-rime
+     ))))
  #:my-system-services
  (append 
   (list
