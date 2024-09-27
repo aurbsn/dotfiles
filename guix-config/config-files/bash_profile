@@ -21,6 +21,8 @@ export XDG_DATA_DIRS=/var/lib/flatpak/exports/share:/home/arbn/.local/share/flat
 export GUIX_LOCPATH=$HOME/.guix-home/profile/lib/locale
 export QT_QPA_PLATFORMTHEME=qt5ct
 export GUILE_LOAD_PATH=~/dev/dotfiles/guix-config/:$GUILE_LOAD_PATH
+PATH=$PATH:'~/node_modules/.bin/'
+NODE_OPTIONS="--max-old-space-size=8192"
 
 export GUIX_PROFILE="$HOME/.guix-home/profile"
 . "$GUIX_PROFILE/etc/profile"

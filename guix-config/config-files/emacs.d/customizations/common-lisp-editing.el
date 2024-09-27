@@ -9,5 +9,4 @@
               (when (and buffer-file-name
                          (string-match-p "\\.paren\\>" buffer-file-name))
                 (unless (slime-connected-p)
-                  (save-excursion (slime)))
-                (trident-mode +1))))
+                  (save-excursion (slime))))))
