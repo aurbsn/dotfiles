@@ -20,7 +20,7 @@
 (use-package-modules wm linux xdisorg package-management terminals
              freedesktop networking gnome audio pulseaudio curl
              xorg ssh games gnome-xyz lxde fonts compression admin
-             video syncthing password-utils glib emacs-xyz fcitx5)
+             video syncthing password-utils glib emacs-xyz fcitx5 vulkan)
 
 (system-config
  #:system
@@ -119,10 +119,19 @@
      ; IME
      emacs-rime
      fcitx5-rime
-     ))))
+     )
+    ; vulkan
+    (map replace-mesa
+         (list
+          vulkan-tools
+          vulkan-loader
+          vulkan-validationlayers
+          spirv-tools)))))
  #:my-system-services
  (append 
   (list
+   (extra-special-file "/lib64/ld-linux-x86-64.so.2"
+	 (file-append glibc "/lib/ld-linux-x86-64.so.2"))
    (service nix-service-type)
    (service nvidia-service-type
             (nvidia-configuration
