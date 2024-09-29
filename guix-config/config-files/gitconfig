@@ -1,0 +1,6 @@
+[user]
+	email = arbn@arbn.nyc
+	name = Austin Robinson
+
+[init]
+  defaultBranch = main

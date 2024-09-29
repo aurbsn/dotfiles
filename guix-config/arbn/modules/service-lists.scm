@@ -71,7 +71,9 @@
            `(".emacs.d/env"
 	     ,(local-file "../../config-files/emacs.d/env" #:recursive? #t))
            `(".sbclrc"
-             ,(local-file "../../config-files/sbclrc")))))))
+             ,(local-file "../../config-files/sbclrc"))
+           `(".gitconfig"
+             ,(local-file "../../config-files/gitconfig")))))))
 
 (define-public (create-system-services my-services)
   (modify-services 
