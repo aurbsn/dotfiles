@@ -15,12 +15,14 @@
   #:use-module (gnu home services sound)
   #:use-module (gnu home services shells)
   #:use-module (gnu home services desktop)
+  #:use-module (guix-science-nonfree packages cuda)
   #:use-module (rosenthal packages wm))
 (use-service-modules cups desktop networking ssh xorg dbus nix)
 (use-package-modules wm linux xdisorg package-management terminals
              freedesktop networking gnome audio pulseaudio curl
-             xorg ssh games gnome-xyz lxde fonts compression admin
-             video syncthing password-utils glib emacs-xyz fcitx5 vulkan)
+             xorg ssh games gnome-xyz fonts compression admin
+             video syncthing password-utils glib emacs-xyz fcitx5 vulkan
+             gcc)
 
 (system-config
  #:system
@@ -59,7 +61,8 @@
                         (dependencies mapped-devices)) %base-file-systems))
   (packages
     (append 
-     (list (replace-mesa hyprland)
+     (list (replace-mesa cuda)
+           (replace-mesa hyprland)
            xdg-desktop-portal-hyprland
            xdg-desktop-portal
            xdg-desktop-portal-gtk
@@ -96,6 +99,7 @@
     %desktop-home-packages
     (list 
      (list glib "bin")
+     (list gcc "lib")
      dconf
 
      gnome-themes-extra
@@ -120,13 +124,14 @@
      emacs-rime
      fcitx5-rime
      )
-    ; vulkan
+    ; GPGPU
     (map replace-mesa
          (list
           vulkan-tools
           vulkan-loader
           vulkan-validationlayers
-          spirv-tools)))))
+          spirv-tools
+          cuda)))))
  #:my-system-services
  (append 
   (list

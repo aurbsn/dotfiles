@@ -3,7 +3,7 @@
 (use-package-modules 
  base guile package-management terminals xdisorg freedesktop text-editors 
  version-control file-systems gnome certs lisp lisp-check emacs
- emacs-xyz education rust rust-apps fonts linux)
+ emacs-xyz education rust rust-apps fonts linux python python-build)
 
 ; These packages will always be desired for Guix Home configs,
 ; include on servers
@@ -29,7 +29,9 @@
            rust
            rust-cargo
            font-adobe-source-code-pro
-           xsettingsd)))
+           xsettingsd
+           python-pip
+           python)))
 
 (define-public %base-system-packages ; All systems need these
   (append

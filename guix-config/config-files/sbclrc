@@ -3,4 +3,7 @@
 (setf asdf:*central-registry*
   (list* '("/home/arbn/.guix-home/profile/share/common-lisp/systems/")))
 
-
+(let ((quicklisp-init (merge-pathnames "quicklisp/setup.lisp"
+                                       (user-homedir-pathname))))
+  (when (probe-file quicklisp-init)
+    (load quicklisp-init)))

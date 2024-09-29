@@ -1,1 +1,5 @@
 (load "common-lisp-editing.el")
+(use-package gpt)
+(setq gpt-anthropic-key "[REDACTED-API-KEY]")
+(setq gpt-api-type 'anthropic)
+(setq gpt-python-path)
