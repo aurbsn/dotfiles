@@ -24,6 +24,7 @@
           (list
            xclip
            sbcl
+           roswell
            cl-fiveam
            exercism
            rust
