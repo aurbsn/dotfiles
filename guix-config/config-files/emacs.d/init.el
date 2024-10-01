@@ -56,13 +56,6 @@
 
    ;; Themes
    cyberpunk-theme
-   hc-zenburn-theme
-   abyss-theme
-
-   ;; Enhances M-x to allow easier execution of commands. Provides
-   ;; a filterable list of possible commands in the minibuffer
-   ;; http://www.emacswiki.org/emacs/Smex
-   smex
 
    ;; project navigation
    projectile
@@ -75,9 +68,6 @@
 
    ;; git integration
    magit
-
-   ;; Source tree viewer
-   treemacs
 
    ;; Web mode
    web-mode
@@ -99,7 +89,6 @@
 
    ;; View and annotate PDFs
    pdf-tools
-
    yasnippet
 
    ;; Mustache
