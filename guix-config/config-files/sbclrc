@@ -1,7 +1,15 @@
 (require :asdf)
 
 (setf asdf:*central-registry*
-  (list* '("/home/arbn/.guix-home/profile/share/common-lisp/systems/")))
+      (list* '("/home/arbn/.guix-home/profile/share/common-lisp/systems/")))
+
+(let ((guix-lib-dir (merge-pathnames "/home/your_username/.guix-profile/lib/"
+                                     (user-homedir-pathname))))
+  (when (and (probe-file guix-lib-dir)
+             (ignore-errors (asdf:load-system "cffi")))
+    (push guix-lib-dir
+          (symbol-value (find-symbol (string '*foreign-library-directories*)
+                                     (find-package 'cffi))))))
 
 (let ((quicklisp-init (merge-pathnames "quicklisp/setup.lisp"
                                        (user-homedir-pathname))))
