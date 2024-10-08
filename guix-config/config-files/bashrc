@@ -83,6 +83,8 @@ plugins=(
 
 source "$OSH"/oh-my-bash.sh
 
+export PATH="$HOME/.roswell/bin:$PATH"
+
 if test $TERM = "dumb"
 then
    export PS1=">"
