@@ -125,8 +125,7 @@
    ; kitty terminal protocol
    kkp
 
-   corfu
-   gpt))
+   corfu))
 
 (use-package corfu
   ;; Optional customizations
