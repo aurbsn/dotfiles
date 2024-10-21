@@ -3,8 +3,8 @@
 (use-package-modules 
  base guile package-management terminals xdisorg freedesktop text-editors 
  version-control file-systems gnome certs lisp lisp-check emacs
- emacs-xyz education rust rust-apps fonts linux python python-build
- rsync lisp-xyz tls guile-xyz)
+ emacs-xyz education rust rust-apps fonts linux python
+ rsync lisp-xyz tls guile-xyz games python-xyz python-web)
 
 ; These packages will always be desired for Guix Home configs,
 ; include on servers
@@ -32,10 +32,17 @@
            rust-cargo
            font-adobe-source-code-pro
            xsettingsd
-           python-pip
            python
            rsync
            openssl
+           q5go
+
+           ; katrain deps
+           python-kivy
+           python-urllib3
+           python-chardet
+           python-kivymd
+
            haunt)))
 
 (define-public %base-system-packages ; All systems need these
