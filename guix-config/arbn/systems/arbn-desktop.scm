@@ -8,6 +8,7 @@
   #:use-module (nongnu packages linux)
   #:use-module (nongnu packages mozilla)
   #:use-module (nongnu services nvidia)
+  #:use-module (nongnu packages game-client)
   #:use-module (gnu home)
   #:use-module (guix gexp)
   #:use-module (gnu home services)
@@ -22,12 +23,14 @@
              freedesktop networking gnome audio pulseaudio curl
              xorg ssh games gnome-xyz fonts compression admin
              video syncthing password-utils glib emacs-xyz fcitx5 vulkan
-             gcc)
+             gcc games)
 
 (system-config
  #:system
  (operating-system
   (kernel-arguments '("modprobe.blacklist=nouveau"
+                      "clearcpuid=514"
+                      "split_lock_detect=off"
                       ;; Set this if the card is not used for displaying or
                       ;; you're using Wayland:
                       "nvidia_drm.modeset=1"))
@@ -75,7 +78,11 @@
            pulseaudio
            curl
            setxkbmap
-           openssh)
+           mtdev
+           openssh
+           steam-nvidia
+           steam-devices-udev-rules
+           )
      %base-system-packages)))
  #:home
  (home-environment 
