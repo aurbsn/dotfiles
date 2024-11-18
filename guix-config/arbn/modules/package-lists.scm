@@ -4,7 +4,7 @@
  base guile package-management terminals xdisorg freedesktop text-editors 
  version-control file-systems gnome certs lisp lisp-check emacs
  emacs-xyz education rust rust-apps fonts linux python
- rsync lisp-xyz tls guile-xyz games python-xyz python-web)
+ rsync lisp-xyz tls guile-xyz games python-xyz python-web cmake)
 
 ; These packages will always be desired for Guix Home configs,
 ; include on servers
@@ -17,7 +17,8 @@
    glibc-locales
    guile-3.0
    emacs
-   emacs-vterm))
+   emacs-vterm
+   cmake))
 
  ; Packages for a personal desktop development environment
 (define-public %desktop-home-packages
