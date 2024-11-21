@@ -5,6 +5,7 @@
   #:use-module (arbn modules package-lists)
   #:use-module (nongnu system linux-initrd)
   #:use-module (nongnu packages nvidia)
+  #:use-module (nongnu packages chrome)
   #:use-module (nongnu packages linux)
   #:use-module (nongnu packages mozilla)
   #:use-module (nongnu services nvidia)
@@ -78,11 +79,7 @@
            pulseaudio
            curl
            setxkbmap
-           mtdev
-           openssh
-           steam-nvidia
-           steam-devices-udev-rules
-           )
+           openssh)
      %base-system-packages)))
  #:home
  (home-environment 
@@ -124,12 +121,15 @@
      waybar
      mako
      firefox
+     google-chrome-stable
      syncthing
      keepassxc
      
      ; IME
      emacs-rime
      fcitx5-rime
+
+     steam-nvidia
      )
     ; GPGPU
     (map replace-mesa
