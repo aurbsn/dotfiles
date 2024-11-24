@@ -19,6 +19,7 @@
    guile-3.0
    emacs
    emacs-vterm
+   libvterm
    cmake))
 
  ; Packages for a personal desktop development environment
@@ -37,13 +38,6 @@
            python
            rsync
            openssl
-           q5go
-
-           ; katrain deps
-           python-kivy
-           python-urllib3
-           python-chardet
-           python-kivymd
 
            haunt
            pandoc

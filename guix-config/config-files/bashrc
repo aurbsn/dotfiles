@@ -70,9 +70,7 @@ aliases=(
 # Custom plugins may be added to ~/.oh-my-bash/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(
-  git
-)
+plugins=()
 
 # Which plugins would you like to conditionally load? (plugins can be found in ~/.oh-my-bash/plugins/*)
 # Custom plugins may be added to ~/.oh-my-bash/custom/plugins/
@@ -82,8 +80,6 @@ plugins=(
 #  fi
 
 source "$OSH"/oh-my-bash.sh
-
-export PATH="$HOME/.roswell/bin:$PATH"
 
 if test $TERM = "dumb"
 then

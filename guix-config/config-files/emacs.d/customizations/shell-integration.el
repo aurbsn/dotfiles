@@ -9,5 +9,4 @@
 (exec-path-from-shell-initialize)
 (when (memq window-system '(mac ns))
   (exec-path-from-shell-copy-env "PATH"))
-(exec-path-from-shell-copy-env "LSP_USE_PLISTS")
 
