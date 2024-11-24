@@ -128,7 +128,9 @@
    corfu
 
    counsel
-   consult))
+   consult
+
+   gpt))
 
 (use-package corfu
   ;; Optional customizations
