@@ -2,12 +2,6 @@
 (require 'package)
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
                          ("melpa" . "https://melpa.org/packages/")))
-;; Performance tweaks
-(setq gc-cons-threshold 100000000)
-(setq read-process-output-max (* 1024 1024)) ;; 1mb
-(setq package-native-compile t)
-(setq remote-file-name-inhibit-locks t)
-(setq tramp-default-method "scp")
 
 (add-to-list 'load-path "~/.emacs.d/vendor")
 (add-to-list 'load-path "/usr/share/emacs/site-lisp")
@@ -16,7 +10,6 @@
 (let ((default-directory "~/.guix-home/profile/share/emacs/site-lisp"))
   (if (file-exists-p default-directory)
       (normal-top-level-add-subdirs-to-load-path)))
-(setq large-file-warning-threshold 3000000)
 
 ;; Load and activate emacs packages. Do this first so that the
 ;; packages are loaded before you start trying to modify them.
@@ -51,8 +44,12 @@
    ;; https://github.com/clojure-emacs/cider
    cider
 
-   ;; SLY for Common LISP
+   ;; Common LISP packages
+   aggressive-indent
    sly
+   sly-asdf
+   sly-quicklisp
+   sly-repl-ansi-color
 
    ;; Themes
    cyberpunk-theme
@@ -156,7 +153,7 @@
 (package-install-selected-packages)
 (require 'vterm)
 (add-to-list 'load-path "~/.emacs.d/customizations")
-(setq custom-file "customize.el")
+(setq custom-file "~/.emacs.d/customizations/customize.el")
 (load "customize.el")
 
 ;; Place downloaded elisp files in ~/.emacs.d/vendor. You'll then be able
