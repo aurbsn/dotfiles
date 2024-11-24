@@ -10,9 +10,9 @@
 (setq tramp-default-method "scp")
 
 (add-to-list 'load-path "~/.emacs.d/vendor")
-(add-to-list 'load-path "~/.guix-home/profile/share/emacs/site-lisp")
 (add-to-list 'load-path "/usr/share/emacs/site-lisp")
 (add-to-list 'load-path "~/.guix-home/profile/share/emacs/site-lisp")
+(add-to-list 'load-path "~/.guix-home/profile/lib")
 (let ((default-directory "~/.guix-home/profile/share/emacs/site-lisp"))
   (if (file-exists-p default-directory)
       (normal-top-level-add-subdirs-to-load-path)))
@@ -109,8 +109,6 @@
    ;; guix
    guix
 
-   vterm
-
    clhs
 
    eglot
@@ -156,6 +154,7 @@
   :init
   (global-corfu-mode))
 (package-install-selected-packages)
+(require 'vterm)
 (add-to-list 'load-path "~/.emacs.d/customizations")
 (setq custom-file "customize.el")
 (load "customize.el")
@@ -209,6 +208,7 @@
 (load "setup-css.el")
 (load "setup-scala.el")
 ;; Lisps :)
+(load "common-lisp-editing.el")
 (load "setup-clojure.el")
 (load "elisp-editing.el")
 (load "setup-scheme.el")

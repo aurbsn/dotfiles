@@ -1,3 +1,4 @@
+(define-module (arbn systems arbn-dev))
 (use-modules (gnu)
              (gnu home)
              (gnu packages)
