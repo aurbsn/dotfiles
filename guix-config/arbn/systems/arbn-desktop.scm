@@ -24,7 +24,7 @@
              freedesktop networking gnome audio pulseaudio curl
              xorg ssh games gnome-xyz fonts compression admin
              video syncthing password-utils glib emacs-xyz fcitx5 vulkan
-             gcc games)
+             gcc)
 
 (system-config
  #:system
@@ -70,7 +70,7 @@
            xdg-desktop-portal-hyprland
            xdg-desktop-portal
            xdg-desktop-portal-gtk
-           kitty
+           alacritty
            wofi
            (replace-mesa flatpak)
            blueman
@@ -130,6 +130,7 @@
      fcitx5-rime
 
      steam-nvidia
+     steam-devices-udev-rules
      )
     ; GPGPU
     (map replace-mesa
