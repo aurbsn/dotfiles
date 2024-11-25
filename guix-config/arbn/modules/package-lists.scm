@@ -30,6 +30,7 @@
            sbcl
            roswell
            cl-fiveam
+           cl-quickproject
            exercism
            rust
            rust-cargo
