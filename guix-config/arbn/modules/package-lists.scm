@@ -1,11 +1,12 @@
 (define-module (arbn modules package-lists)
-  #:use-module (gnu))
+  #:use-module (gnu)
+  #:use-module (nongnu packages fonts))
 (use-package-modules 
  base guile package-management terminals xdisorg freedesktop text-editors 
  version-control file-systems gnome certs lisp lisp-check emacs
  emacs-xyz education rust rust-apps fonts linux python
  rsync lisp-xyz tls guile-xyz games python-xyz python-web haskell-xyz 
- tex texlive cmake)
+ tex texlive cmake fonts)
 
 ; These packages will always be desired for Guix Home configs,
 ; include on servers
@@ -39,6 +40,9 @@
            python
            rsync
            openssl
+           font-apple-color-emoji
+           font-google-noto-serif-cjk
+           font-google-noto
 
            haunt
            pandoc
