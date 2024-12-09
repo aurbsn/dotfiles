@@ -153,8 +153,8 @@
 (package-install-selected-packages)
 (require 'vterm)
 (add-to-list 'load-path "~/.emacs.d/customizations")
-(setq custom-file "~/.emacs.d/customizations/customize.el")
-(load "customize.el")
+(setq custom-file "~/dev/dotfiles/guix-config/config-files/emacs.d/customize.el")
+(load "~/dev/dotfiles/guix-config/config-files/emacs.d/customize.el")
 
 ;; Place downloaded elisp files in ~/.emacs.d/vendor. You'll then be able
 ;; to load them.
