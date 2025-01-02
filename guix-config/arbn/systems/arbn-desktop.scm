@@ -45,7 +45,12 @@
   (bootloader (bootloader-configuration
                (bootloader grub-efi-bootloader)
                (targets '("/boot/efi"))
-               (keyboard-layout keyboard-layout)))
+               (keyboard-layout keyboard-layout)
+               (menu-entries (list (menu-entry
+                                (label "Ubuntu")
+                                (linux "/boot/vmlinuz")
+                                (linux-arguments '("root=/dev/nvme0n1p3"))
+                                (initrd "/boot/initrd.img"))))))
 
   (mapped-devices (list (mapped-device
                          (source (uuid
@@ -65,10 +70,8 @@
                         (dependencies mapped-devices)) %base-file-systems))
   (packages
     (append 
-     (list (replace-mesa cuda)
-           (replace-mesa hyprland)
+     (list (replace-mesa hyprland)
            xdg-desktop-portal-hyprland
-           xdg-desktop-portal
            xdg-desktop-portal-gtk
            alacritty
            wofi
@@ -121,17 +124,13 @@
      waybar
      mako
      firefox
-     google-chrome-stable
      syncthing
      keepassxc
      
      ; IME
      emacs-rime
      fcitx5-rime
-
-     steam-nvidia
-     steam-devices-udev-rules
-     )
+)
     ; GPGPU
     (map replace-mesa
          (list
