@@ -2,11 +2,13 @@
   #:use-module (gnu)
   #:use-module (gnu services)
   #:use-module (gnu home services)
-  #:use-module (gnu home services shells))
+  #:use-module (gnu home services shells)
+  #:use-module (gnu home services shepherd))
 (use-service-modules guix cups desktop networking ssh xorg avahi dbus sound pm)
 
 (define-public (create-home-services my-services my-files)
   (list
+   (service home-shepherd-service-type)
    (service
     home-bash-service-type
     (home-bash-configuration

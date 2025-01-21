@@ -1,6 +1,2 @@
 (load "common-lisp-editing.el")
-(use-package gpt)
-(setq gpt-anthropic-key "[REDACTED-API-KEY]")
-(setq gpt-api-type 'anthropic)
-(setq gpt-model "claude-3-5-sonnet-20240620")
-(setq gpt-python-path "python3")
+(load "setup-gpt.el")
