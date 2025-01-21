@@ -17,8 +17,7 @@
   #:use-module (gnu home services sound)
   #:use-module (gnu home services shells)
   #:use-module (gnu home services desktop)
-  #:use-module (guix-science-nonfree packages cuda)
-  #:use-module (rosenthal packages wm))
+  #:use-module (guix-science-nonfree packages cuda))
 (use-service-modules cups desktop networking ssh xorg dbus nix)
 (use-package-modules wm linux xdisorg package-management terminals
              freedesktop networking gnome audio pulseaudio curl
