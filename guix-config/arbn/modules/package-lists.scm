@@ -36,7 +36,6 @@
            rust
            rust-cargo
            font-adobe-source-code-pro
-           xsettingsd
            python
            rsync
            openssl
