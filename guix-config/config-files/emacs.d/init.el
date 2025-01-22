@@ -126,7 +126,9 @@
    consult
    vertico
 
-   gptel))
+   gptel
+
+   guru-mode))
 
 ;; Enable vertico
 (use-package vertico
@@ -259,6 +261,8 @@
 ;; Other
 (load "setup-git.el")
 (load "setup-org.el")
+
+(add-hook 'prog-mode-hook 'guru-mode)
 
 (setq-default explicit-shell-file-name "/bin/bash")
 (add-to-list 'tramp-connection-properties
