@@ -128,7 +128,11 @@
 
    gptel
 
-   guru-mode))
+   guru-mode
+
+   ; Python
+   
+   ))
 
 ;; Enable vertico
 (use-package vertico
