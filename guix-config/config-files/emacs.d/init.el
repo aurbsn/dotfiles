@@ -267,11 +267,3 @@
 (load "setup-org.el")
 
 (add-hook 'prog-mode-hook 'guru-mode)
-
-(setq-default explicit-shell-file-name "/bin/bash")
-(add-to-list 'tramp-connection-properties
-             (list (regexp-quote "/rsync:arobinson.vm.dev.etsycloud.com")
-                   "remote-shell" "/bin/bash"))
-(add-to-list 'tramp-connection-properties
-             (list (regexp-quote "/ssh:arobinson.vm.dev.etsycloud.com")
-                   "remote-shell" "/bin/bash"))
