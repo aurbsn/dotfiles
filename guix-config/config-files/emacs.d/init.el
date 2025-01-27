@@ -113,6 +113,8 @@
    geiser
    geiser-guile
 
+   markdown-mode
+
    restclient
 
    quelpa
