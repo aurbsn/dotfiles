@@ -1,29 +1,16 @@
-;; Define package repositories
-(require 'package)
-(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
-                         ("melpa" . "https://melpa.org/packages/")))
-
 (add-to-list 'load-path "~/.emacs.d/vendor")
 (add-to-list 'load-path "/usr/share/emacs/site-lisp")
 (add-to-list 'load-path "~/.guix-home/profile/share/emacs/site-lisp")
 (add-to-list 'load-path "~/.guix-home/profile/lib")
+(add-to-list 'load-path "~/.emacs.d/customizations")
+(load "init-straight.el")
+
 (let ((default-directory "~/.guix-home/profile/share/emacs/site-lisp"))
   (if (file-exists-p default-directory)
       (normal-top-level-add-subdirs-to-load-path)))
 
-;; Load and activate emacs packages. Do this first so that the
-;; packages are loaded before you start trying to modify them.
-;; This also sets the load path.
-(package-initialize)
-
-;; Download the ELPA archive description if needed.
-;; This informs Emacs about the latest versions of all packages, and
-;; makes them available for download.
-(when (not package-archive-contents)
-  (package-refresh-contents))
-
-(customize-set-variable 
- 'package-selected-packages
+(setq
+ my-packages
  '(
    ;; makes handling lisp expressions much, much easier
    ;; Cheatsheet: http://www.emacswiki.org/emacs/PareditCheatsheet
@@ -128,13 +115,14 @@
    consult
    vertico
 
+   ; LLMs
    gptel
 
    guru-mode
-
-   ; Python
-   
    ))
+
+(dolist (element my-packages)
+  (straight-use-package element))
 
 ;; Enable vertico
 (use-package vertico
@@ -201,9 +189,8 @@
   :init
   (global-corfu-mode))
 
-(package-install-selected-packages)
 (require 'vterm)
-(add-to-list 'load-path "~/.emacs.d/customizations")
+
 (setq custom-file "~/dev/dotfiles/guix-config/config-files/emacs.d/customize.el")
 (load "~/dev/dotfiles/guix-config/config-files/emacs.d/customize.el")
 
@@ -221,8 +208,6 @@
 ;; Sets up exec-path-from-shell so that Emacs will use the correct
 ;; environment variables
 (load "shell-integration.el")
-
-(require 'use-package)
 
 ;; Config branches based on env string value
 (load "setup-env.el")

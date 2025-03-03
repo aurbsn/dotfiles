@@ -57,6 +57,8 @@
                              (name 'guix-hpc-non-free)
                              (url "https://gitlab.inria.fr/guix-hpc/guix-hpc-non-free.git"))
                             %default-channels)))
+	   `(".emacs.d/early-init.el"
+             ,(local-file "../../config-files/emacs.d/early-init.el" #:recursive? #t))
            `(".emacs.d/init.el"
              ,(local-file "../../config-files/emacs.d/init.el" #:recursive? #t))
            `(".emacs.d/customizations"
