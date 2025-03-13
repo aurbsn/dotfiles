@@ -119,6 +119,8 @@
    gptel
 
    guru-mode
+
+   terraform-mode
    ))
 
 (dolist (element my-packages)
