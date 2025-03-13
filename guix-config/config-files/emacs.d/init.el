@@ -250,6 +250,7 @@
 (load "setup-clojure.el")
 (load "elisp-editing.el")
 (load "setup-scheme.el")
+(load "terraform.el")
 
 ;; Other
 (load "setup-git.el")
