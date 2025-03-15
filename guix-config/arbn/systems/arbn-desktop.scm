@@ -143,7 +143,6 @@
   (list
    (extra-special-file "/lib64/ld-linux-x86-64.so.2"
 	 (file-append glibc "/lib/ld-linux-x86-64.so.2"))
-   (service nix-service-type)
    (service nvidia-service-type
             (nvidia-configuration
              (module nvidia-module-open)))
