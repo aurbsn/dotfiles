@@ -5,7 +5,7 @@
   #:use-module (arbn modules package-lists)
   #:use-module (gnu home))
 (use-service-modules desktop networking ssh xorg)
-(use-package-modules wm)
+(use-package-modules audio curl networking pulseaudio linux wm)
 
 (system-config
  #:system
@@ -33,7 +33,16 @@
            (device "/dev/mapper/cryptroot")
            (type "ext4")
            (dependencies mapped-devices))
-          %base-file-systems)))
+          %base-file-systems))
+  
+  (packages
+   (append (list
+            blueman
+            bluez
+            bluez-alsa
+            pulseaudio
+            curl)
+           %base-system-packages)))
  #:home
  (home-environment 
   (services
