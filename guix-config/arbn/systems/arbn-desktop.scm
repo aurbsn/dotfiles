@@ -68,7 +68,7 @@
                         (type "ext4")
                         (dependencies mapped-devices)) %base-file-systems))
   (packages
-    (append 
+    (append
      (list (replace-mesa hyprland)
            xdg-desktop-portal-hyprland
            xdg-desktop-portal-gtk

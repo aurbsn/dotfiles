@@ -6,7 +6,7 @@
  version-control file-systems gnome certs lisp lisp-check emacs
  emacs-xyz education rust rust-apps fonts linux python
  rsync lisp-xyz tls guile-xyz games python-xyz python-web haskell-xyz 
- tex texlive cmake fonts syncthing)
+ tex texlive cmake fonts syncthing ssh)
 
 ; These packages will always be desired for Guix Home configs,
 ; include on servers
