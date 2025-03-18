@@ -46,7 +46,14 @@
  #:home
  (home-environment 
   (services
-   (create-home-services '() '() #:free #t))
+   (create-home-services 
+    '() 
+    (list
+     `("dev/start-stump.lisp"
+       ,(local-file "../../config-files/start-stump.lisp"))
+     `(".xinitrc"
+      ,(local-file "../../config-files/xinitrc")))
+    #:free #t))
   (packages
    (append
     %desktop-home-packages
