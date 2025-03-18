@@ -80,8 +80,7 @@
            bluez-alsa
            pulseaudio
            curl
-           setxkbmap
-           openssh)
+           setxkbmap)
      %base-system-packages)))
  #:home
  (home-environment 
