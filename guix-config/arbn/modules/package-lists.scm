@@ -52,6 +52,7 @@
 (define-public %base-system-packages ; All systems need these
   (append
    (list
+    openssh
     glibc-locales
     mg
     git
