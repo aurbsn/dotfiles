@@ -27,9 +27,9 @@
                   (supplementary-groups
                    '("wheel" "netdev" "audio" "video")))
                  %base-user-accounts))
-   
-   (services 
-    (append 
+
+   (services
+    (append
      (list
       (service guix-home-service-type
                `(("arbn" ,home))))
