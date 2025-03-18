@@ -5,7 +5,7 @@
   #:use-module (arbn modules package-lists)
   #:use-module (gnu home))
 (use-service-modules desktop networking ssh xorg)
-(use-package-modules audio curl networking pulseaudio linux wm)
+(use-package-modules audio curl networking pulseaudio linux wm xorg)
 
 (system-config
  #:system
@@ -41,7 +41,9 @@
             bluez
             bluez-alsa
             pulseaudio
-            curl)
+            curl
+            xorg-server
+            xinit)
            %base-system-packages)))
  #:home
  (home-environment 
@@ -57,6 +59,7 @@
   (packages
    (append
     %desktop-home-packages
-    (list cl-stumpwm))))
+    (list 
+     cl-stumpwm))))
  #:my-system-services
- (create-system-services %desktop-services))
+ (create-system-services %desktop-services #:free #t))
