@@ -1,6 +1,5 @@
 (define-module (arbn modules package-lists)
-  #:use-module (gnu)
-  #:use-module (nongnu packages fonts))
+  #:use-module (gnu))
 (use-package-modules 
  base guile package-management terminals xdisorg freedesktop text-editors 
  version-control file-systems gnome certs lisp lisp-check emacs
@@ -31,17 +30,12 @@
            sbcl
            roswell
            cl-fiveam
-           cl-quickproject
            exercism
            rust
            rust-cargo
-           font-adobe-source-code-pro
            python
            rsync
            openssl
-           font-apple-color-emoji
-           font-google-noto-serif-cjk
-           font-google-noto
 
            syncthing
            haunt

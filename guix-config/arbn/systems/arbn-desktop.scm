@@ -31,8 +31,6 @@
   (kernel-arguments '("modprobe.blacklist=nouveau"
                       "clearcpuid=514"
                       "split_lock_detect=off"
-                      ;; Set this if the card is not used for displaying or
-                      ;; you're using Wayland:
                       "nvidia_drm.modeset=1"))
 
   (kernel linux)

@@ -53,13 +53,14 @@
     (list
      `("dev/start-stump.lisp"
        ,(local-file "../../config-files/start-stump.lisp"))
-     `(".xinitrc"
-      ,(local-file "../../config-files/xinitrc")))
+     `(".xsession"
+      ,(local-file "../../config-files/xsession")))
     #:free #t))
   (packages
    (append
     %desktop-home-packages
     (list 
-     cl-stumpwm))))
+     cl-stumpwm
+     stumpwm))))
  #:my-system-services
  (create-system-services %desktop-services #:free #t))
