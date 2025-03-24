@@ -1,10 +1,11 @@
 (use-package gptel)
 (setq anthropic-api-key "[REDACTED-API-KEY]")
+(setq vody-anthropic-api-key "[REDACTED-WORK-API-KEY]")
 (setq
  gptel-model 'claude-3-sonnet-20241022 ;
  gptel-backend (gptel-make-anthropic "Claude" ; Any name you want
                  :stream t ; Streaming responses
-                 :key anthropic-api-key))
+                 :key vody-anthropic-api-key))
 
 (use-package aidermacs
   :straight (:host github :repo "MatthewZMD/aidermacs" :files ("*.el"))
@@ -15,6 +16,6 @@
   (aidermacs-setup-minor-mode)
   (setq aidermacs-use-architect-mode t)
   ; Ensure emacs can access *_API_KEY through .bashrc or setenv
-  (setenv "ANTHROPIC_API_KEY" anthropic-api-key)
+  (setenv "ANTHROPIC_API_KEY" vody-anthropic-api-key)
   (setq aidermacs-backend 'vterm)
   (setq aidermacs-vterm-multiline-newline-key "S-<return>"))
