@@ -1,3 +1,4 @@
+(define-module (arbn systems dev-vm))
 (use-modules (gnu)
              (gnu home)
              (gnu packages)

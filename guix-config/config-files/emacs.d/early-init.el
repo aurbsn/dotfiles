@@ -1,1 +1,1 @@
-/gnu/store/5xsfcwkayry7n24bk3zqg488wkcgy46s-early-init.el
+(setq package-enable-at-startup nil)
