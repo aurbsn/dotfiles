@@ -49,7 +49,7 @@
                                          (channel
                                           (name 'rosenthal)
                                           (url "https://codeberg.org/hako/rosenthal.git")
-                                          (branch "tnrunk")
+                                          (branch "trunk")
                                           (introduction
                                            (make-channel-introduction
                                             "7677db76330121a901604dfbad19077893865f35"
