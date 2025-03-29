@@ -41,26 +41,24 @@
             bluez
             bluez-alsa
             pulseaudio
-            curl
-            xorg-server
-            xinit)
+            curl)
            %base-system-packages)))
  #:home
  (home-environment 
   (services
    (create-home-services 
     '() 
-    (list
-     `("dev/start-stump.lisp"
-       ,(local-file "../../config-files/start-stump.lisp"))
-     `(".xsession"
-      ,(local-file "../../config-files/xsession")))
+    '()
     #:free #t))
   (packages
-   (append
-    %desktop-home-packages
-    (list 
-     cl-stumpwm
-     stumpwm))))
+   %desktop-home-packages))
  #:my-system-services
- (create-system-services %desktop-services #:free #t))
+ (create-system-services 
+ (append 
+  (list 
+   (service gnome-desktop-service-type))
+  (modify-services 
+   %desktop-services
+   (gdm-service-type config => (gdm-configuration
+             (wayland? #t)))))
+ #:free #t))
