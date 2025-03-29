@@ -17,7 +17,7 @@
    (list glibc "static")
    glibc-locales
    guile-3.0
-   emacs
+   emacs-pgtk-xwidgets
    emacs-vterm
    libvterm
    cmake))
@@ -36,6 +36,7 @@
            python
            rsync
            openssl
+           font-adobe-source-code-pro
 
            syncthing
            haunt
