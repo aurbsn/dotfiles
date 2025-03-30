@@ -155,6 +155,9 @@
        (keyboard-layout keyboard-layout)))))
   (modify-services 
    (create-system-services %desktop-services)
+   (gdm-service-type config =>
+                     (gdm-configuration
+                      (wayland? #t)))
    (dbus-root-service-type config => 
                            (dbus-configuration (inherit config)
                                                (services (list blueman)))))))
