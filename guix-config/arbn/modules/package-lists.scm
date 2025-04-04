@@ -14,7 +14,6 @@
    git
    nss-certs
    glibc
-   (list glibc "static")
    glibc-locales
    guile-3.0
    emacs-pgtk-xwidgets
