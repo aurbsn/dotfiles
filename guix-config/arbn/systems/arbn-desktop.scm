@@ -16,9 +16,8 @@
   #:use-module (gnu home services syncthing)
   #:use-module (gnu home services sound)
   #:use-module (gnu home services shells)
-  #:use-module (gnu home services desktop)
-  #:use-module (guix-science-nonfree packages cuda))
-(use-service-modules cups desktop networking ssh xorg dbus nix)
+  #:use-module (gnu home services desktop))
+(use-service-modules cups desktop networking ssh xorg dbus)
 (use-package-modules wm linux xdisorg package-management terminals
              freedesktop networking gnome audio pulseaudio curl
              xorg ssh games gnome-xyz fonts compression admin
@@ -29,8 +28,6 @@
  #:system
  (operating-system
   (kernel-arguments '("modprobe.blacklist=nouveau"
-                      "clearcpuid=514"
-                      "split_lock_detect=off"
                       "nvidia_drm.modeset=1"))
 
   (kernel linux)
@@ -66,20 +63,21 @@
                         (type "ext4")
                         (dependencies mapped-devices)) %base-file-systems))
   (packages
+   (map replace-mesa
     (append
-     (list (replace-mesa hyprland)
+     (list hyprland
            xdg-desktop-portal-hyprland
            xdg-desktop-portal-gtk
            alacritty
            wofi
-           (replace-mesa flatpak)
+           flatpak
            blueman
            bluez
            bluez-alsa
            pulseaudio
            curl
            setxkbmap)
-     %base-system-packages)))
+     %base-system-packages))))
  #:home
  (home-environment 
   (services
@@ -98,48 +96,37 @@
      `(".config/hypr/hyprland.conf"
        ,(local-file "../../config-files/hyprland.conf")))))
   (packages
-   (append 
-    %desktop-home-packages
-    (list 
-     (list glib "bin")
-     (list gcc "lib")
-     dconf
+   (map replace-mesa
+        (append 
+         %desktop-home-packages
+         (list 
+          dconf
 
-     gnome-themes-extra
-     nordic-theme
-     font-google-noto
-     font-google-noto-serif-cjk
-     font-google-noto-sans-cjk
+          gnome-themes-extra
+          nordic-theme
+          font-google-noto
+          font-google-noto-serif-cjk
+          font-google-noto-sans-cjk
+          
+          zstd
+          unzip
 
-     zstd
-     unzip
-
-     btop
-     hyprcursor
-     vlc
-     waybar
-     mako
-     firefox
-     syncthing
-     keepassxc
+          btop
+          hyprcursor
+          vlc
+          waybar
+          mako
+          firefox
+          syncthing
+          keepassxc
      
-     ; IME
-     emacs-rime
-     fcitx5-rime
-)
-    ; GPGPU
-    (map replace-mesa
-         (list
-          vulkan-tools
-          vulkan-loader
-          vulkan-validationlayers
-          spirv-tools
-          cuda)))))
+          ; IME
+          emacs-rime
+          fcitx5-rime
+          )))))
  #:my-system-services
  (append 
   (list
-   (extra-special-file "/lib64/ld-linux-x86-64.so.2"
-	 (file-append glibc "/lib/ld-linux-x86-64.so.2"))
    (service nvidia-service-type
             (nvidia-configuration
              (module nvidia-module-open)))
@@ -157,6 +144,7 @@
    (create-system-services %desktop-services)
    (gdm-service-type config =>
                      (gdm-configuration
+                      (inherit config)
                       (wayland? #t)))
    (dbus-root-service-type config => 
                            (dbus-configuration (inherit config)
