@@ -20,7 +20,7 @@
 (use-service-modules cups desktop networking ssh xorg dbus)
 (use-package-modules wm linux xdisorg package-management terminals
              freedesktop networking gnome audio pulseaudio curl
-             xorg ssh games gnome-xyz fonts compression admin
+             xorg ssh games gnome gnome-xyz fonts compression admin
              video syncthing password-utils glib emacs-xyz fcitx5 vulkan
              gcc)
 

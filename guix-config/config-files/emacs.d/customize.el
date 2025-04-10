@@ -5,9 +5,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(safe-local-variable-values
-   '((geiser-guile-binary "guix" "repl")
-     (geiser-insert-actual-lambda)
-     (eval progn
+   '((eval progn
            (require 'lisp-mode)
            (defun emacs27-lisp-fill-paragraph
                (&optional justify)
