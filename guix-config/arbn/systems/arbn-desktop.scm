@@ -116,6 +116,7 @@
    ;; GNOME
    (service gdm-service-type 
             (gdm-configuration
+             (gdm (replace-mesa gdm))
              (wayland? #t)))
    (service gnome-desktop-service-type
             (gnome-desktop-configuration
