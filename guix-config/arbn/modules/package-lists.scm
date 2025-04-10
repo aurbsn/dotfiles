@@ -52,6 +52,5 @@
     git
     exfat-utils
     fuse-exfat
-    gvfs ;; Enable user mounts
     )
    %base-packages))
