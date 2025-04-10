@@ -17,7 +17,7 @@
   #:use-module (gnu home services sound)
   #:use-module (gnu home services shells)
   #:use-module (gnu home services desktop))
-(use-service-modules cups desktop networking ssh xorg dbus)
+(use-service-modules cups desktop networking ssh xorg dbus avahi)
 (use-package-modules wm linux xdisorg package-management terminals
              freedesktop networking gnome audio pulseaudio curl
              xorg ssh games gnome gnome-xyz fonts compression admin
@@ -63,15 +63,7 @@
                         (type "ext4")
                         (dependencies mapped-devices)) %base-file-systems))
   (packages
-   (map replace-mesa
-    (append
-     (list 
-          alacritty
-          blueman
-          bluez
-          bluez-alsa
-          curl)
-     %base-system-packages))))
+     %base-system-packages))
  #:home
  (home-environment 
   (services
@@ -110,35 +102,68 @@
  #:my-system-services
  (append 
   (list
+   ;; NetworkManager and its applet.
+   (service network-manager-service-type
+            (network-manager-configuration
+             (network-manager (replace-mesa network-manager))))
+   (service wpa-supplicant-service-type)    ;needed by NetworkManager
+   (simple-service 'network-manager-applet
+                   profile-service-type
+                   (list (replace-mesa network-manager-applet)))
+   (service modem-manager-service-type)
+   (service usb-modeswitch-service-type)
+
+   ;; GNOME
+   (service gdm-service-type 
+            (gdm-configuration
+             (wayland? #t)))
    (service gnome-desktop-service-type
             (gnome-desktop-configuration
              (core-services
-              (map replace-mesa (list-of-packages (extract-propagated-inputs gnome-meta-core-services))))
+              (list
+               (replace-mesa gnome-meta-core-services)))
              (shell
-              (map replace-mesa (list-of-packages (extract-propagated-inputs gnome-meta-core-shell))))
+              (list (replace-mesa gnome-meta-core-shell)))
              (utilities
-              (map replace-mesa (list-of-packages (extract-propagated-inputs gnome-meta-core-utilities)))))
-  (gnome (maybe-package) "Deprecated.  Do not use.")
-  (extra-packages
-   (list-of-packages (extract-propagated-inputs gnome-essential-extras))))
+              (list (replace-mesa gnome-meta-core-utilities)))
+            (extra-packages
+             (list (replace-mesa gnome-essential-extras)))))
+
+   ;; The D-Bus clique.
+   (service avahi-service-type)
+   (service udisks-service-type)
+   (service upower-service-type
+            (upower-configuration
+             (upower (replace-mesa upower))))
+   (service accountsservice-service-type)
+   (service cups-pk-helper-service-type)
+   (service colord-service-type)
+   (service geoclue-service-type)
+   (service polkit-service-type)
+   (service elogind-service-type)
+   (service dbus-root-service-type
+            (dbus-configuration
+             (services (list blueman))))
+
+   ; NVIDIA
    (service nvidia-service-type
             (nvidia-configuration
              (module nvidia-module-open)))
+   
+   ; Printer
    (service cups-service-type)
+
+   ; Bluetooth
    (service bluetooth-service-type
             (bluetooth-configuration
              (auto-enable? #t)))
+   
+   ; XORG
    (let ((keyboard-layout (keyboard-layout "us")))
      (set-xorg-configuration
       (xorg-configuration
        (modules (cons nvda %default-xorg-modules))
        (drivers '("nvidia"))
        (keyboard-layout keyboard-layout)))))
-  (modify-services 
-   (create-system-services %desktop-services)
-   (gdm-service-type config =>
-                     (gdm-configuration
-                      (wayland? #t)))
-   (dbus-root-service-type config => 
-                           (dbus-configuration (inherit config)
-                                               (services (list blueman)))))))
+  (modify-services
+   (create-system-services %base-services))))
