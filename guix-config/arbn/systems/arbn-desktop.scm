@@ -30,7 +30,7 @@
   (kernel-arguments '("modprobe.blacklist=nouveau"
                       "nvidia_drm.modeset=1"))
 
-  (kernel linux)
+  (kernel linux-6.12)
   (initrd microcode-initrd)
   (firmware (list linux-firmware))
   (keyboard-layout (keyboard-layout "us"))
@@ -65,18 +65,12 @@
   (packages
    (map replace-mesa
     (append
-     (list hyprland
-           xdg-desktop-portal-hyprland
-           xdg-desktop-portal-gtk
-           alacritty
-           wofi
-           flatpak
-           blueman
-           bluez
-           bluez-alsa
-           pulseaudio
-           curl
-           setxkbmap)
+     (list 
+          alacritty
+          blueman
+          bluez
+          bluez-alsa
+          curl)
      %base-system-packages))))
  #:home
  (home-environment 
@@ -100,22 +94,11 @@
         (append 
          %desktop-home-packages
          (list 
-          dconf
-
-          gnome-themes-extra
-          nordic-theme
-          font-google-noto
-          font-google-noto-serif-cjk
-          font-google-noto-sans-cjk
-          
           zstd
           unzip
 
-          btop
           hyprcursor
           vlc
-          waybar
-          mako
           firefox
           syncthing
           keepassxc
@@ -127,6 +110,17 @@
  #:my-system-services
  (append 
   (list
+   (service gnome-desktop-service-type
+            (gnome-desktop-configuration
+             (core-services
+              (map replace-mesa (list-of-packages (extract-propagated-inputs gnome-meta-core-services))))
+             (shell
+              (map replace-mesa (list-of-packages (extract-propagated-inputs gnome-meta-core-shell))))
+             (utilities
+              (map replace-mesa (list-of-packages (extract-propagated-inputs gnome-meta-core-utilities)))))
+  (gnome (maybe-package) "Deprecated.  Do not use.")
+  (extra-packages
+   (list-of-packages (extract-propagated-inputs gnome-essential-extras))))
    (service nvidia-service-type
             (nvidia-configuration
              (module nvidia-module-open)))
@@ -144,7 +138,6 @@
    (create-system-services %desktop-services)
    (gdm-service-type config =>
                      (gdm-configuration
-                      (inherit config)
                       (wayland? #t)))
    (dbus-root-service-type config => 
                            (dbus-configuration (inherit config)
