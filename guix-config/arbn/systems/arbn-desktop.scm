@@ -88,7 +88,9 @@
           vlc
           firefox
           keepassxc
-     
+
+          yaru-theme
+
           ; IME
           emacs-rime
           fcitx5-rime
@@ -120,7 +122,9 @@
              (greeters (list
                         (lightdm-gtk-greeter-configuration
                          (lightdm-gtk-greeter (replace-mesa lightdm-gtk-greeter))
-                         (assets (map replace-mesa (list adwaita-icon-theme gnome-themes-extra hicolor-icon-theme))))))))
+                         (assets (map replace-mesa (list adwaita-icon-theme gnome-themes-extra hicolor-icon-theme)))
+                         (theme-name "Adwaita-dark")
+                         (extra-config '("xft-dpi = 300")))))))
    (service gnome-desktop-service-type
             (gnome-desktop-configuration
              (core-services
