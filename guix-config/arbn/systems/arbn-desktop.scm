@@ -74,24 +74,16 @@
      (service home-dbus-service-type))
 
     ; System-specific home configuration files
-    (list 
-     `("bin/wrappedhl.sh"
-       ,(local-file "../../config-files/wrappedhl.sh"))
-     `(".config/waybar/config"
-       ,(local-file "../../config-files/waybar/conf"))
-     `(".config/hypr/hyprland.conf"
-       ,(local-file "../../config-files/hyprland.conf")))))
+    '()))
   (packages
    (map replace-mesa
         (append 
          %desktop-home-packages
          (list 
-          zstd
           unzip
 
-          hyprcursor
           vlc
-          firefox
+          nyxt
           syncthing
           keepassxc
      
