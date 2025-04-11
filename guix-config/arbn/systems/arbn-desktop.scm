@@ -61,7 +61,12 @@
                         (type "ext4")
                         (dependencies mapped-devices)) %base-file-systems))
   (packages
-     %base-system-packages))
+   (map replace-mesa
+        (append
+         (list 
+          gnome-tweaks
+          gnome-shell-extensions)
+         %base-system-packages))))
  #:home
  (home-environment 
   (services
@@ -81,7 +86,7 @@
           unzip
 
           vlc
-          nyxt
+          firefox
           keepassxc
      
           ; IME
