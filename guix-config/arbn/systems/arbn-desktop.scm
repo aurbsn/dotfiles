@@ -89,6 +89,7 @@
           firefox
           keepassxc
 
+          pavucontrol
           yaru-theme
 
           ; IME
