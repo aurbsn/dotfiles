@@ -19,10 +19,8 @@
   #:use-module (gnu home services desktop))
 (use-service-modules cups desktop networking ssh xorg dbus avahi)
 (use-package-modules wm linux xdisorg package-management terminals
-             freedesktop networking gnome audio pulseaudio curl
-             xorg ssh games gnome gnome-xyz fonts compression admin
-             video syncthing password-utils glib emacs-xyz fcitx5 vulkan
-             gcc)
+             freedesktop networking gnome audio pulseaudio curl ssh gnome gnome-xyz fonts compression admin
+             video syncthing password-utils emacs-xyz fcitx5 gcc web-browsers xorg)
 
 (system-config
  #:system
@@ -84,7 +82,6 @@
 
           vlc
           nyxt
-          syncthing
           keepassxc
      
           ; IME
@@ -106,6 +103,13 @@
    (service usb-modeswitch-service-type)
 
    ;; GNOME
+   (let ((keyboard-layout (keyboard-layout "us")))
+     (set-xorg-configuration
+      (xorg-configuration
+       (modules (cons nvda %default-xorg-modules))
+       (drivers '("nvidia"))
+       (keyboard-layout keyboard-layout)
+       (server (replace-mesa xorg-server)))))
    (service gdm-service-type 
             (gdm-configuration
              (gdm (replace-mesa gdm))
@@ -149,14 +153,6 @@
    ; Bluetooth
    (service bluetooth-service-type
             (bluetooth-configuration
-             (auto-enable? #t)))
-   
-   ; XORG
-   (let ((keyboard-layout (keyboard-layout "us")))
-     (set-xorg-configuration
-      (xorg-configuration
-       (modules (cons nvda %default-xorg-modules))
-       (drivers '("nvidia"))
-       (keyboard-layout keyboard-layout)))))
+             (auto-enable? #t))))
   (modify-services
    (create-system-services %base-services))))

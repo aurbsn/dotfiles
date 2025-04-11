@@ -27,7 +27,6 @@
           (list
            xclip
            sbcl
-           roswell
            cl-fiveam
            exercism
            rust
@@ -38,10 +37,7 @@
            font-adobe-source-code-pro
 
            syncthing
-           haunt
-           pandoc
-           texlive
-           texlive-context)))
+           haunt)))
 
 (define-public %base-system-packages ; All systems need these
   (append
