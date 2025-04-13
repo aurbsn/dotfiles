@@ -20,7 +20,7 @@
 (use-service-modules cups desktop networking ssh xorg dbus avahi lightdm)
 (use-package-modules wm linux xdisorg package-management terminals
              freedesktop networking gnome audio pulseaudio curl ssh gnome gnome-xyz fonts compression admin
-             video syncthing password-utils emacs-xyz fcitx5 gcc web-browsers xorg display-managers)
+             video syncthing password-utils emacs-xyz fcitx5 gcc web-browsers xorg display-managers authentication)
 
 (system-config
  #:system
@@ -91,6 +91,8 @@
 
           pavucontrol
           yaru-theme
+
+          oath-toolkit
 
           ; IME
           emacs-rime
