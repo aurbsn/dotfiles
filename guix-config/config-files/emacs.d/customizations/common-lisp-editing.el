@@ -7,7 +7,6 @@
   ;; have multiple instances of common lisp installed, for example,
   ;; both CLISP and SBCL. In this case, we are assuming SBCL.
   ;; (setq inferior-lisp-program "/usr/bin/sbcl")
-  (require 'sly-quicklisp "sly-quicklisp" :no-error)
   (require 'sly-repl-ansi-color "sly-repl-ansi-color" :no-error)
   (require 'sly-asdf "sly-asdf" :no-error))
 

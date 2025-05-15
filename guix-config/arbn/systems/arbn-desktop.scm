@@ -97,6 +97,9 @@
           ; IME
           emacs-rime
           fcitx5-rime
+          
+          ;; games
+          steam-nvidia
           )))))
  #:my-system-services
  (append 
