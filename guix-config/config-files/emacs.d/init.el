@@ -35,7 +35,6 @@
    aggressive-indent
    sly
    sly-asdf
-   sly-quicklisp
    sly-repl-ansi-color
 
    ;; Themes

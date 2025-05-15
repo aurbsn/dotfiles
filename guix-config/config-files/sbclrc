@@ -10,8 +10,3 @@
     (push guix-lib-dir
           (symbol-value (find-symbol (string '*foreign-library-directories*)
                                      (find-package 'cffi))))))
-
-(let ((quicklisp-init (merge-pathnames "quicklisp/setup.lisp"
-                                       (user-homedir-pathname))))
-  (when (probe-file quicklisp-init)
-    (load quicklisp-init)))
