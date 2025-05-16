@@ -5,6 +5,7 @@
   #:use-module (gnu home services shells)
   #:use-module (gnu home services shepherd)
   #:use-module (ice-9 curried-definitions))
+(use-package-modules security-token)
 (use-service-modules guix cups desktop networking ssh xorg avahi dbus sound pm)
 
 (define*-public (create-home-services my-services my-files #:key (free #f))

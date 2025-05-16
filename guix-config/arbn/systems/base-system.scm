@@ -25,7 +25,7 @@
                   (group "users")
                   (home-directory "/home/arbn")
                   (supplementary-groups
-                   '("wheel" "netdev" "audio" "video")))
+                   '("wheel" "netdev" "audio" "video" "plugdev")))
                  %base-user-accounts))
 
    (services
