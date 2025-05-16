@@ -97,6 +97,9 @@
           ; IME
           emacs-rime
           fcitx5-rime
+
+          ; Yubikey
+          yubikey-manager-qt
           
           ;; games
           steam-nvidia
