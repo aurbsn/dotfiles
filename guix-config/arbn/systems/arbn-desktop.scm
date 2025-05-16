@@ -17,10 +17,16 @@
   #:use-module (gnu home services sound)
   #:use-module (gnu home services shells)
   #:use-module (gnu home services desktop))
-(use-service-modules cups desktop networking ssh xorg dbus avahi lightdm)
-(use-package-modules wm linux xdisorg package-management terminals
-             freedesktop networking gnome audio pulseaudio curl ssh gnome gnome-xyz fonts compression admin
-             video syncthing password-utils emacs-xyz fcitx5 gcc web-browsers xorg display-managers authentication)
+(use-service-modules cups desktop networking ssh xorg dbus avahi lightdm security-token)
+(use-package-modules 
+ authentication wm linux terminals freedesktop networking gnome audio pulseaudio
+ curl ssh gnome gnome-xyz fonts compression admin video syncthing emacs-xyz web-browsers
+ display-managers security-token xorg)
+
+(define %fido2-rule
+  (udev-rule
+   "90-fido2.rules"
+   (string-append "KERNEL==\"hidraw*\", SUBSYSTEM==\"hidraw\", ATTRS{idProduct}==\"0407\", GROUP=\"plugdev\", ATTRS{idVendor}==\"1050\" TAG+=\"uaccess\"" "\n")))
 
 (system-config
  #:system
@@ -87,7 +93,6 @@
 
           vlc
           firefox
-          keepassxc
 
           pavucontrol
           yaru-theme
@@ -96,10 +101,6 @@
 
           ; IME
           emacs-rime
-          fcitx5-rime
-
-          ; Yubikey
-          yubikey-manager-qt
           
           ;; games
           steam-nvidia
@@ -173,6 +174,13 @@
    ; Bluetooth
    (service bluetooth-service-type
             (bluetooth-configuration
-             (auto-enable? #t))))
+             (auto-enable? #t)))
+   
+   
+   ; Smart Cards (Yubikey)
+  (service pcscd-service-type)
+  (udev-rules-service 'fido2 libfido2 #:groups '("plugdev"))
+  (udev-rules-service 'u2f %fido2-rule #:groups '("plugdev")))
+
   (modify-services
    (create-system-services %base-services))))
