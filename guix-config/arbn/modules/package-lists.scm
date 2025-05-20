@@ -25,13 +25,9 @@
 (define-public %desktop-home-packages
   (append %base-home-packages
           (list
-           xclip
            sbcl
            cl-fiveam
            exercism
-           rust
-           rust-cargo
-           python
            rsync
            openssl
            font-adobe-source-code-pro
