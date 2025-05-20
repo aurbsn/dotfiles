@@ -3,127 +3,10 @@
 (add-to-list 'load-path "~/.guix-home/profile/share/emacs/site-lisp")
 (add-to-list 'load-path "~/.guix-home/profile/lib")
 (add-to-list 'load-path "~/.emacs.d/customizations")
-(load "init-straight.el")
 
 (let ((default-directory "~/.guix-home/profile/share/emacs/site-lisp"))
   (if (file-exists-p default-directory)
       (normal-top-level-add-subdirs-to-load-path)))
-
-(setq
- my-packages
- '(
-   ;; makes handling lisp expressions much, much easier
-   ;; Cheatsheet: http://www.emacswiki.org/emacs/PareditCheatsheet
-   paredit
-   rainbow-delimiters
-
-   ;; key bindings and code colorization for Clojure
-   ;; https://github.com/clojure-emacs/clojure-mode
-   clojure-mode
-
-   ;; PHP mode
-   php-mode
-
-   ;; extra syntax highlighting for clojure
-   clojure-mode-extra-font-locking
-
-   ;; integration with a Clojure REPL
-   ;; https://github.com/clojure-emacs/cider
-   cider
-
-   ;; Common LISP packages
-   aggressive-indent
-   sly
-   sly-asdf
-   sly-repl-ansi-color
-
-   ;; Themes
-   cyberpunk-theme
-
-   ;; project navigation
-   projectile
-
-   ;; colorful parenthesis matching
-   rainbow-delimiters
-
-   ;; edit html tags like sexps
-   tagedit
-
-   ;; git integration
-   magit
-
-   ;; Web mode
-   web-mode
-
-   ;; Haskell
-   haskell-mode
-
-   ;; Rust
-   rust-mode
-
-   ;; Fead reader
-   elfeed
-
-   ;; Dependency for conditional installs
-   use-package
-
-   ;; EPUB reader
-   nov
-
-   ;; View and annotate PDFs
-   pdf-tools
-   yasnippet
-
-   ;; Mustache
-   mustache-mode
-
-   ;; Elisp libraries
-   s
-   f
-
-   ;; SICP
-   sicp
-
-   ;; org-roam
-   org-roam
-
-   exec-path-from-shell
-
-   ;; guix
-   guix
-
-   clhs
-
-   eglot
-
-   geiser
-   geiser-guile
-
-   markdown-mode
-
-   restclient
-
-   quelpa
-
-   ; kitty terminal protocol
-   kkp
-
-   corfu
-
-   counsel
-   consult
-   vertico
-
-   ; LLMs
-   gptel
-
-   guru-mode
-
-   terraform-mode
-   ))
-
-(dolist (element my-packages)
-  (straight-use-package element))
 
 ;; Enable vertico
 (use-package vertico
@@ -239,7 +122,6 @@
 ;; Langauage-specific
 (load "setup-c.el")
 (load "setup-js.el")
-(load "setup-php.el")
 (load "setup-rs.el")
 (load "setup-html.el")
 (load "setup-css.el")

@@ -1,11 +1,11 @@
 (define-module (arbn modules package-lists)
-  #:use-module (gnu))
+  #:use-module (gnu)
+  #:use-module (nongnu packages emacs))
 (use-package-modules 
  base guile package-management terminals xdisorg freedesktop text-editors 
- version-control file-systems gnome certs lisp lisp-check emacs
- emacs-xyz education rust rust-apps fonts linux python
- rsync lisp-xyz tls guile-xyz games python-xyz python-web haskell-xyz 
- tex texlive cmake fonts syncthing ssh)
+ version-control file-systems gnome certs lisp lisp-check emacs emacs-xyz fonts 
+ linux python rsync lisp-xyz tls guile-xyz python-xyz python-web cmake fonts 
+ syncthing ssh scheme education)
 
 ; These packages will always be desired for Guix Home configs,
 ; include on servers
@@ -16,14 +16,81 @@
    glibc
    glibc-locales
    guile-3.0
-   emacs-pgtk-xwidgets
-   emacs-vterm
    libvterm
    cmake))
 
- ; Packages for a personal desktop development environment
+(define-public %emacs-packages
+  (list
+   emacs-pgtk-xwidgets
+   emacs-vterm
+
+   ; Lisp parentheses
+   emacs-paredit
+   emacs-rainbow-delimiters
+
+   ; Clojure
+   emacs-clojure-mode
+   emacs-cider
+
+   ; Common Lisp
+   emacs-aggressive-indent
+   emacs-sly
+   emacs-sly-asdf
+   ;emacs-sly-repl-ansi-color
+
+   emacs-spacemacs-theme
+   emacs-abyss-theme
+   emacs-projectile
+
+   emacs-tagedit
+
+   emacs-magit
+
+   emacs-web-mode
+
+   emacs-use-package
+
+   emacs-nov-el
+
+   emacs-pdf-tools
+
+   emacs-yasnippet
+
+   emacs-s
+   emacs-f
+
+   emacs-org-roam
+
+   emacs-exec-path-from-shell
+
+   emacs-guix
+   
+   emacs-geiser
+   emacs-geiser-guile
+
+   emacs-markdown-mode
+
+   emacs-restclient
+
+   emacs-corfu
+   emacs-counsel
+   emacs-consult
+   emacs-vertico
+
+   emacs-gptel
+   emacs-terraform-mode
+
+   ;emacs-eglot
+
+   ; emacs-guru-mode
+   ; emacs-kkp
+   ; emacs-quelpa
+   ))
+
+; Packages for a personal desktop development environment
 (define-public %desktop-home-packages
   (append %base-home-packages
+	  %emacs-packages
           (list
            sbcl
            cl-fiveam
@@ -33,7 +100,10 @@
            font-adobe-source-code-pro
 
            syncthing
-           haunt)))
+           haunt
+
+           sicp
+           clhs)))
 
 (define-public %base-system-packages ; All systems need these
   (append
@@ -43,6 +113,5 @@
     mg
     git
     exfat-utils
-    fuse-exfat
-    )
+    fuse-exfat)
    %base-packages))
