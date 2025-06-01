@@ -24,6 +24,9 @@
    emacs-pgtk-xwidgets
    emacs-vterm
 
+   ; Python
+   python-lsp-server
+
    ; Lisp parentheses
    emacs-paredit
    emacs-rainbow-delimiters
@@ -80,9 +83,11 @@
    emacs-gptel
    emacs-terraform-mode
 
+   emacs-yaml-mode
+
    ;emacs-eglot
 
-   ; emacs-guru-mode
+   ;emacs-guru-mode
    ; emacs-kkp
    ; emacs-quelpa
    ))
