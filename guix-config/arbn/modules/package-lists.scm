@@ -5,7 +5,7 @@
  base guile package-management terminals xdisorg freedesktop text-editors 
  version-control file-systems gnome certs lisp lisp-check emacs emacs-xyz fonts 
  linux python rsync lisp-xyz tls guile-xyz python-xyz python-web cmake fonts 
- syncthing ssh scheme education)
+ syncthing ssh scheme education java)
 
 ; These packages will always be desired for Guix Home configs,
 ; include on servers
@@ -108,7 +108,8 @@
            haunt
 
            sicp
-           clhs)))
+           clhs
+           openjdk)))
 
 (define-public %base-system-packages ; All systems need these
   (append
