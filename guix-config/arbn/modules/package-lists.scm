@@ -85,6 +85,8 @@
 
    emacs-yaml-mode
 
+   emacs-typescript-mode
+
    ;emacs-eglot
 
    ;emacs-guru-mode
