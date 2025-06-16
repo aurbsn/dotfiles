@@ -126,6 +126,7 @@
 (load "setup-html.el")
 (load "setup-css.el")
 (load "setup-scala.el")
+
 ;; Lisps :)
 (load "common-lisp-editing.el")
 (load "setup-clojure.el")
@@ -137,4 +138,4 @@
 (load "setup-git.el")
 (load "setup-org.el")
 
-(add-hook 'prog-mode-hook 'guru-mode)
+;(add-hook 'prog-mode-hook 'guru-mode) 

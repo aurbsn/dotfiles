@@ -108,7 +108,12 @@
 
            sicp
            clhs
-           openjdk)))
+
+           openjdk
+           font-adobe-source-han-sans
+           flatpak
+           xdg-desktop-portal
+           xdg-desktop-portal-gnome)))
 
 (define-public %base-system-packages ; All systems need these
   (append
