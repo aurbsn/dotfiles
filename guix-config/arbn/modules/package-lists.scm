@@ -21,7 +21,7 @@
 
 (define-public %emacs-packages
   (list
-   emacs-pgtk-xwidgets
+   emacs-pgtk
    emacs-vterm
 
    ; Python
@@ -58,9 +58,6 @@
    emacs-pdf-tools
 
    emacs-yasnippet
-
-   emacs-s
-   emacs-f
 
    emacs-org-roam
 
