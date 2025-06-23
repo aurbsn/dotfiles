@@ -84,8 +84,6 @@
 
    emacs-typescript-mode
 
-   ;emacs-eglot
-
    ;emacs-guru-mode
    ; emacs-kkp
    ; emacs-quelpa
