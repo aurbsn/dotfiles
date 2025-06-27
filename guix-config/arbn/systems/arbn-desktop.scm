@@ -101,10 +101,6 @@
 
           ; IME
           emacs-rime
-          
-          ;; games
-          heroic-nvidia
-          steam-nvidia
           )))))
  #:my-system-services
  (append 
