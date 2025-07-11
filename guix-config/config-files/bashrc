@@ -81,6 +81,26 @@ plugins=()
 
 source "$OSH"/oh-my-bash.sh
 
+if [ -d "$HOME/bin" ] ; then
+    PATH="~/.npm-global/bin:$HOME/bin:$PATH"
+fi
+
+if [ -d "$HOME/.local/bin" ] ; then
+    PATH="$HOME/.local/bin:$PATH"
+fi
+
+. ~/.profile
+if [ -x "$(command -v setxkmap)" ]; then
+  setxkbmap -option ctrl:nocaps
+fi
+export LANG=en_US.UTF-8
+export EDITOR='emacsclient'
+export GUIX_LOCPATH=$HOME/.guix-home/profile/lib/locale
+export GUILE_LOAD_PATH=~/dev/dotfiles/guix-config/:$GUILE_LOAD_PATH
+
+export GUIX_PROFILE="$HOME/.guix-home/profile"
+. "$GUIX_PROFILE/etc/profile"
+
 if test $TERM = "dumb"
 then
    export PS1=">"

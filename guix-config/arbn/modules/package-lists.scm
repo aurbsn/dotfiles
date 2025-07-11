@@ -1,6 +1,5 @@
 (define-module (arbn modules package-lists)
-  #:use-module (gnu)
-  #:use-module (nongnu packages emacs))
+  #:use-module (gnu))
 (use-package-modules 
  base guile package-management terminals xdisorg freedesktop text-editors 
  version-control file-systems gnome certs lisp lisp-check emacs emacs-xyz fonts 
@@ -51,9 +50,7 @@
 
    emacs-web-mode
 
-   emacs-use-package
-
-   emacs-nov-el
+   ;emacs-nov-el
 
    emacs-pdf-tools
 
@@ -105,7 +102,6 @@
            haunt
 
            sicp
-           clhs
 
            openjdk
            font-adobe-source-han-sans
