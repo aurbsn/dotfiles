@@ -50,8 +50,6 @@
 
    emacs-web-mode
 
-   ;emacs-nov-el
-
    emacs-pdf-tools
 
    emacs-yasnippet
@@ -81,9 +79,7 @@
 
    emacs-typescript-mode
 
-   ;emacs-guru-mode
-   ; emacs-kkp
-   ; emacs-quelpa
+   ; emacs-guru-mode
    ))
 
 ; Packages for a personal desktop development environment
