@@ -23,9 +23,6 @@
    emacs-pgtk
    emacs-vterm
 
-   ; Python
-   python-lsp-server
-
    ; Lisp parentheses
    emacs-paredit
    emacs-rainbow-delimiters
@@ -90,20 +87,10 @@
            sbcl
            cl-fiveam
            exercism
-           rsync
-           openssl
            font-adobe-source-code-pro
-
-           syncthing
            haunt
-
            sicp
-
-           openjdk
-           font-adobe-source-han-sans
-           flatpak
-           xdg-desktop-portal
-           xdg-desktop-portal-gnome)))
+           font-adobe-source-han-sans)))
 
 (define-public %base-system-packages ; All systems need these
   (append
