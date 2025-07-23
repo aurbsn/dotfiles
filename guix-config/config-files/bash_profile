@@ -1,0 +1,27 @@
+if [ -d "$HOME/bin" ] ; then
+    PATH="$HOME/bin:$PATH"
+fi
+
+if [ -d "$HOME/android-cmdline-tools/bin" ] ; then
+    PATH="$HOME/android-cmdline-tools/bin:$PATH"
+fi
+
+if [ -d "$HOME/.local/bin" ] ; then
+    PATH="$HOME/.local/bin:$PATH"
+fi
+
+. ~/.profile
+if [ -x "$(command -v setxkmap)" ]; then
+  setxkbmap -option ctrl:nocaps
+fi
+export LANG=en_US.UTF-8
+export EDITOR='emacsclient'
+export XDG_DATA_DIRS=/var/lib/flatpak/exports/share:/home/arbn/.local/share/flatpak/exports/share:$XDG_DATA_DIRS
+export GUIX_LOCPATH=$HOME/.guix-home/profile/lib/locale
+export GUILE_LOAD_PATH=~/dev/dotfiles/guix-config/:$GUILE_LOAD_PATH
+PATH=$PATH:'~/node_modules/.bin/'
+PATH=$PATH:'.local/share/uv/tools/aider-chat/bin'
+NODE_OPTIONS="--max-old-space-size=8192"
+
+export GUIX_PROFILE="$HOME/.guix-home/profile"
+. "$GUIX_PROFILE/etc/profile"
