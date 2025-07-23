@@ -21,7 +21,7 @@
 (use-package-modules 
  authentication wm linux terminals freedesktop networking gnome audio pulseaudio
  curl ssh gnome gnome-xyz fonts compression admin video syncthing emacs-xyz web-browsers
- display-managers security-token xorg virtualization)
+ display-managers security-token xorg virtualization package-management)
 
 (define %fido2-rule
   (udev-rule
@@ -71,6 +71,7 @@
         (append
          (list 
           gnome-tweaks
+          virt-manager
           gnome-shell-extensions)
          %base-system-packages))))
  #:home
@@ -93,12 +94,13 @@
 
           vlc
           firefox
-          gnome-boxes
 
           pavucontrol
           yaru-theme
 
           oath-toolkit
+
+          flatpak
 
           ; IME
           emacs-rime
