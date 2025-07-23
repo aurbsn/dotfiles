@@ -87,6 +87,7 @@
            sbcl
            cl-fiveam
            exercism
+           rsync
            font-adobe-source-code-pro
            haunt
            sicp

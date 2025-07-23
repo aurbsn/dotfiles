@@ -97,6 +97,7 @@ export LANG=en_US.UTF-8
 export EDITOR='emacsclient'
 export GUIX_LOCPATH=$HOME/.guix-home/profile/lib/locale
 export GUILE_LOAD_PATH=~/dev/dotfiles/guix-config/:$GUILE_LOAD_PATH
+export GDK_SCALE=2
 
 export GUIX_PROFILE="$HOME/.guix-home/profile"
 . "$GUIX_PROFILE/etc/profile"
