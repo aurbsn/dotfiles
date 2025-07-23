@@ -17,11 +17,11 @@
   #:use-module (gnu home services sound)
   #:use-module (gnu home services shells)
   #:use-module (gnu home services desktop))
-(use-service-modules cups desktop networking ssh xorg dbus avahi lightdm security-token)
+(use-service-modules cups desktop networking ssh xorg dbus avahi lightdm security-token virtualization)
 (use-package-modules 
  authentication wm linux terminals freedesktop networking gnome audio pulseaudio
  curl ssh gnome gnome-xyz fonts compression admin video syncthing emacs-xyz web-browsers
- display-managers security-token xorg)
+ display-managers security-token xorg virtualization)
 
 (define %fido2-rule
   (udev-rule
@@ -93,6 +93,7 @@
 
           vlc
           firefox
+          gnome-boxes
 
           pavucontrol
           yaru-theme
@@ -177,7 +178,13 @@
    ; Smart Cards (Yubikey)
   (service pcscd-service-type)
   (udev-rules-service 'fido2 libfido2 #:groups '("plugdev"))
-  (udev-rules-service 'u2f %fido2-rule #:groups '("plugdev")))
+  (udev-rules-service 'u2f %fido2-rule #:groups '("plugdev"))
+
+  ; Virtualization
+  (service libvirt-service-type
+           (libvirt-configuration
+            (unix-sock-group "libvirt")
+            (tls-port "16555"))))
 
   (modify-services
    (create-system-services %base-services))))
