@@ -3,6 +3,9 @@
   #:use-module (arbn systems base-system)
   #:use-module (arbn modules service-lists)
   #:use-module (arbn modules package-lists)
+  #:use-module (nongnu system linux-initrd)
+  #:use-module (nongnu packages chrome)
+  #:use-module (nongnu packages linux)
   #:use-module (gnu home))
 (use-service-modules desktop networking ssh xorg)
 (use-package-modules audio curl networking pulseaudio linux wm xorg)
@@ -11,6 +14,9 @@
  #:system
  (operating-system
   (host-name "arbn-dev")
+  (kernel linux)
+  (initrd microcode-initrd)
+  (firmware (list linux-firmware))
 
   (keyboard-layout (keyboard-layout "us"))
 
