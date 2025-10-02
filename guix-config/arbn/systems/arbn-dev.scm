@@ -11,7 +11,8 @@
   #:use-module (gnu home services sound)
   #:use-module (gnu home services desktop))
 (use-service-modules desktop networking ssh xorg syncthing dbus security-token)
-(use-package-modules audio curl networking pulseaudio linux wm xorg gnome web-browsers security-token)
+(use-package-modules audio curl networking pulseaudio linux wm xorg gnome web-browsers 
+                     security-token package-management)
 
 (define %fido2-rule
   (udev-rule
@@ -72,6 +73,7 @@
   (packages
    (append
     (list 
+     flatpak
      nyxt)
     %desktop-home-packages)))
  #:my-system-services

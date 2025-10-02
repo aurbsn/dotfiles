@@ -101,5 +101,6 @@
     mg
     git
     exfat-utils
+    efibootmgr
     fuse-exfat)
    %base-packages))
