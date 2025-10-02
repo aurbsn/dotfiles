@@ -8,17 +8,9 @@
    '("7d1c7ea4f3e73402f012b7011fc4be389597922fa67ad4ec417816971bca6f9d"
      "bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476"
      default))
- '(package-selected-packages
-   '(eglot typescript-mode yaml-mode jq-mode helm diminish use-package
-           llama async abyss-theme spacemacs-theme pkg-info a vterm
-           yasnippet web-mode vertico terraform-mode tagedit
-           sly-repl-ansi-color sly-quicklisp sly-asdf sicp rust-mode
-           restclient rainbow-delimiters quelpa projectile php-mode
-           pdf-tools paredit org-roam nov mustache-mode markdown-mode
-           magit kkp haskell-mode guru-mode guix gptel geiser-guile f
-           exec-path-from-shell elfeed cyberpunk-theme counsel corfu
-           consult clojure-mode-extra-font-locking clhs cider
-           aggressive-indent))
+ '(package-selected-packages nil)
+ '(package-vc-selected-packages
+   '((claude-code :url "https://github.com/stevemolitor/claude-code.el")))
  '(safe-local-variable-directories '("/home/arbn/dev/nonguix/"))
  '(safe-local-variable-values
    '((eval progn (require 'lisp-mode)
