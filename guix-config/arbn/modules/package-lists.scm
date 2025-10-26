@@ -2,8 +2,8 @@
   #:use-module (gnu))
 (use-package-modules 
  base guile package-management text-editors version-control certs lisp lisp-check lisp-xyz 
- emacs emacs-xyz fonts linux rsync guile-xyz cmake ssh scheme education nss books)
-
+ emacs emacs-xyz fonts linux rsync guile-xyz cmake ssh scheme education nss books terminals
+ tex file-systems)
 ; These packages will always be desired for Guix Home configs,
 ; include on servers
 (define-public %base-home-packages 
@@ -89,7 +89,8 @@
            font-adobe-source-code-pro
            haunt
            book-sicp
-           font-adobe-source-han-sans)))
+           font-adobe-source-han-sans
+           texlive-collection-latexrecommended)))
 
 (define-public %base-system-packages ; All systems need these
   (append
