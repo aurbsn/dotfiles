@@ -90,7 +90,16 @@
            haunt
            book-sicp
            font-adobe-source-han-sans
-           texlive-collection-latexrecommended)))
+           texlive-collection-latexrecommended
+           texlive-wasysym
+           texlive-was
+           texlive-wasy
+           texlive-lastpage
+           texlive-xifthen
+           texlive-ifmtarg
+           texlive-isodate
+           texlive-substr
+           texlive-cleveref)))
 
 (define-public %base-system-packages ; All systems need these
   (append
