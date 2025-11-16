@@ -4,3 +4,9 @@
 
 [init]
   defaultBranch = main
+
+[git]
+  signingKey = 30298DA2EEB5DE28
+
+[commit]
+  gpgsign = true
