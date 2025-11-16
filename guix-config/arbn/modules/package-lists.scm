@@ -77,10 +77,24 @@
    ; emacs-guru-mode
    ))
 
+(define-public %texlive-packages
+  (list texlive-collection-latexrecommended
+        texlive-wasysym
+        texlive-was
+        texlive-wasy
+        texlive-lastpage
+        texlive-xifthen
+        texlive-ifmtarg
+        texlive-isodate
+        texlive-substr
+        texlive-cleveref
+        texlive-pgfplots))
+
 ; Packages for a personal desktop development environment
 (define-public %desktop-home-packages
   (append %base-home-packages
 	  %emacs-packages
+          %texlive-packages
           (list
            sbcl
            cl-fiveam
@@ -89,17 +103,7 @@
            font-adobe-source-code-pro
            haunt
            book-sicp
-           font-adobe-source-han-sans
-           texlive-collection-latexrecommended
-           texlive-wasysym
-           texlive-was
-           texlive-wasy
-           texlive-lastpage
-           texlive-xifthen
-           texlive-ifmtarg
-           texlive-isodate
-           texlive-substr
-           texlive-cleveref)))
+           font-adobe-source-han-sans)))
 
 (define-public %base-system-packages ; All systems need these
   (append
