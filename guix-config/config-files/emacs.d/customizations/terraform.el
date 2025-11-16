@@ -1,9 +1,4 @@
 (use-package terraform-mode
-  ;; if using straight
-  ;; :straight t
-
-  ;; if using package.el
-  ;; :ensure t
   :custom (terraform-indent-level 4)
   :config
   (defun my-terraform-mode-init ()
