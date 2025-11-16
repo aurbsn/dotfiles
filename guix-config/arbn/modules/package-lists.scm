@@ -1,5 +1,6 @@
 (define-module (arbn modules package-lists)
-  #:use-module (gnu))
+  #:use-module (gnu)
+  #:use-module (arbn packages emacs))
 (use-package-modules 
  base guile package-management text-editors version-control certs lisp lisp-check lisp-xyz 
  emacs emacs-xyz fonts linux rsync guile-xyz cmake ssh scheme education nss books terminals
@@ -73,6 +74,8 @@
    emacs-yaml-mode
 
    emacs-typescript-mode
+
+   emacs-minuet
 
    ; emacs-guru-mode
    ))
