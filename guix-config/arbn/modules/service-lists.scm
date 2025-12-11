@@ -49,7 +49,7 @@
                                              "2A39 3FFF 68F4 EF7A 3D29  12AF 6F51 20A0 22FB B2D5")))))
                                      (channel
                                       (name 'arbn)
-                                      (url "https://github.com/aurbsn/arbn-guix-channel")
+                                      (url "https://git.disroot.org/arbn/arbn-guix-channel")
                                       (branch "main")
                                       (introduction
                                        (make-channel-introduction
