@@ -88,6 +88,7 @@
   (packages
    (map replace-mesa
         (append 
+         %desktop-system-home-packages
          %desktop-home-packages
          (list 
           unzip
@@ -186,7 +187,11 @@
   (service libvirt-service-type
            (libvirt-configuration
             (unix-sock-group "libvirt")
-            (tls-port "16555"))))
+            (tls-port "16555")))
+  
+  (service virtlog-service-type
+           (virtlog-configuration
+            (max-clients 1000))))
 
   (modify-services
    (create-system-services %base-services))))
