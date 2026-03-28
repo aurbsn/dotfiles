@@ -4,8 +4,9 @@
   #:use-module (gnu home services)
   #:use-module (gnu home services shells)
   #:use-module (gnu home services shepherd)
+  #:use-module (gnu home services gnupg)
   #:use-module (ice-9 curried-definitions))
-(use-package-modules security-token)
+(use-package-modules security-token gnupg)
 (use-service-modules guix cups desktop networking ssh xorg avahi dbus sound pm)
 
 (define*-public (create-home-services my-services my-files #:key (free #f))
@@ -27,7 +28,9 @@
               (list (local-file
                      "../../config-files/bash_logout"
                      "bash_logout")))))
-
+           (service home-gpg-agent-service-type
+                    (home-gpg-agent-configuration 
+                     (pinentry-program (file-append pinentry "/bin/pinentry"))))
            ; Configuration files
            (simple-service 
             'home-config
