@@ -4,7 +4,7 @@
 (use-package-modules 
  base guile package-management text-editors version-control certs lisp lisp-check lisp-xyz 
  emacs emacs-xyz fonts linux rsync guile-xyz cmake ssh scheme education nss books terminals
- tex file-systems)
+ tex file-systems java gnupg)
 ; These packages will always be desired for Guix Home configs,
 ; include on servers
 (define-public %base-home-packages 
@@ -15,7 +15,8 @@
    glibc-locales
    guile-3.0
    libvterm
-   cmake))
+   cmake
+   pinentry))
 
 (define-public %emacs-packages
   (list
@@ -75,7 +76,7 @@
 
    emacs-typescript-mode
 
-   emacs-minuet
+   ;emacs-minuet
 
    ; emacs-guru-mode
    ))
