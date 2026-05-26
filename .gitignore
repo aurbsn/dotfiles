@@ -1,1 +1,2 @@
 .DS_Store
+guix-config/config-files/emacs.d/customizations/secrets.el

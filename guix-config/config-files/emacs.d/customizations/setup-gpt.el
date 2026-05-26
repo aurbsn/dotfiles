@@ -1,3 +1,22 @@
+(defvar minuet-openai-compatible-options
+    `(:end-point "https://api.deepseek.com"
+      :api-key "DEEPSEEK_API_KEY"
+      :model "deepseek-chat"
+      :system
+      (:template minuet-default-system-template
+       :prompt minuet-default-prompt
+       :guidelines minuet-default-guidelines
+       :n-completions-template minuet-default-n-completion-template)
+      :fewshots minuet-default-fewshots
+      :chat-input
+      (:template minuet-default-chat-input-template
+       :language-and-tab minuet--default-chat-input-language-and-tab-function
+       :context-before-cursor minuet--default-chat-input-before-cursor-function
+       :context-after-cursor minuet--default-chat-input-after-cursor-function)
+      :transform ()
+      :optional nil)
+    "Config options for Minuet OpenAI compatible provider.")
+
 (use-package minuet
     :bind
     (("M-y" . #'minuet-complete-with-minibuffer) ;; use minibuffer for completion
@@ -20,6 +39,11 @@
 
     :config
     ;; You can use M-x minuet-configure-provider to interactively configure provider and model
-    (setq minuet-provider 'openai-fim-compatible)
+    (setq minuet-provider 'openai-compatible)
 
-    (minuet-set-optional-options minuet-openai-fim-compatible-options :max_tokens 64))
+    (minuet-set-optional-options minuet-openai-compatible-options :max_tokens 256)
+    (minuet-set-optional-options minuet-openai-compatible-options :top_p 0.9)
+    (minuet-set-optional-options
+     minuet-openai-compatible-options
+     :reasoning
+     '(:enabled :false)))
