@@ -76,7 +76,7 @@
 
    emacs-typescript-mode
 
-   ;emacs-minuet
+   emacs-minuet
 
    ; emacs-guru-mode
    ))

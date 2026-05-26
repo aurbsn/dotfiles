@@ -113,6 +113,10 @@
 ;; Hard-to-categorize customizations
 (load "misc.el")
 
+;; Secrets (API keys, etc.) - not tracked in git
+(when (file-exists-p (expand-file-name "~/.emacs.d/customizations/secrets.el"))
+  (load "secrets.el"))
+
 ;; Coding assistant integration
 (load "setup-gpt.el")
 
