@@ -16,7 +16,8 @@
   #:use-module (gnu home services syncthing)
   #:use-module (gnu home services sound)
   #:use-module (gnu home services shells)
-  #:use-module (gnu home services desktop))
+  #:use-module (gnu home services desktop)
+  #:use-module (gnu packages games))
 (use-service-modules cups desktop networking ssh xorg dbus avahi lightdm security-token virtualization)
 (use-package-modules 
  authentication wm linux terminals freedesktop networking gnome audio pulseaudio
@@ -105,6 +106,10 @@
 
           ; IME
           emacs-rime
+
+          ; games
+          steam-nvidia
+          steam-devices-udev-rules
           )))))
  #:my-system-services
  (append 
