@@ -77,20 +77,6 @@
 
 (setq custom-file "~/dev/dotfiles/guix-config/config-files/emacs.d/customize.el")
 (load "~/dev/dotfiles/guix-config/config-files/emacs.d/customize.el")
-
-;; Place downloaded elisp files in ~/.emacs.d/vendor. You'll then be able
-;; to load them.
-;;
-;; For example, if you download yaml-mode.el to ~/.emacs.d/vendor,
-;; then you can add the following code to this file:
-;;
-;; (require 'yaml-mode)
-;; (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
-;; 
-;; Adding this code will make Emacs enter yaml mode whenever you open
-;; a .yml file
-;; Sets up exec-path-from-shell so that Emacs will use the correct
-;; environment variables
 (load "shell-integration.el")
 
 ;; Config branches based on env string value

@@ -7,5 +7,4 @@
 ;; Personal vs work separation here
 (let ((this-env (get-string-from-file "~/.emacs.d/env")))
   (cond
-   ((equal this-env "etsy") (load "setup-etsy.el"))
    ((equal this-env "personal") (load "setup-personal.el"))))

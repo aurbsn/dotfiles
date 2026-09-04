@@ -37,8 +37,7 @@
    emacs-sly-asdf
    ;emacs-sly-repl-ansi-color
 
-   emacs-spacemacs-theme
-   emacs-abyss-theme
+   emacs-ef-themes
    emacs-projectile
 
    emacs-tagedit
@@ -76,9 +75,7 @@
 
    emacs-typescript-mode
 
-   emacs-minuet
-
-   ; emacs-guru-mode
+   ;emacs-guru-mode
    ))
 
 (define-public %texlive-packages
