@@ -4,7 +4,7 @@
 (use-package-modules 
  base guile package-management text-editors version-control certs lisp lisp-check lisp-xyz 
  emacs emacs-xyz fonts linux rsync guile-xyz cmake ssh scheme education nss books terminals
- tex file-systems java gnupg wine)
+ tex file-systems java gnupg wine imagemagick)
 ; These packages will always be desired for Guix Home configs,
 ; include on servers
 (define-public %base-home-packages 
@@ -110,7 +110,8 @@
 (define-public %desktop-system-home-packages
   (list
    openjdk
-   wine))
+   wine
+   imagemagick))
 
 (define-public %base-system-packages ; All systems need these
   (append
