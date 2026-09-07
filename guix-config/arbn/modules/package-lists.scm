@@ -109,7 +109,8 @@
 ; Desktop packages when not using Guix on a foreign distro
 (define-public %desktop-system-home-packages
   (list
-   openjdk))
+   openjdk
+   wine))
 
 (define-public %base-system-packages ; All systems need these
   (append
