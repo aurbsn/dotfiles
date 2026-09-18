@@ -1,12 +1,10 @@
 [user]
 	email = arbn@arbn.nyc
 	name = Austin Robinson
+	signingkey = 30298DA2EEB5DE28
 
 [init]
   defaultBranch = main
-
-[git]
-  signingKey = 30298DA2EEB5DE28
 
 [commit]
   gpgsign = true

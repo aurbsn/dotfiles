@@ -82,8 +82,8 @@
 
 (use-package eat)
 
-(setq custom-file "~/dev/dotfiles/guix-config/config-files/emacs.d/customize.el")
-(load "~/dev/dotfiles/guix-config/config-files/emacs.d/customize.el")
+(setq custom-file (expand-file-name "customize.el" user-emacs-directory))
+(load custom-file t)
 (load "shell-integration.el")
 
 ;; Setup ERC
@@ -104,8 +104,7 @@
 (load "misc.el")
 
 ;; Secrets (API keys, etc.) - not tracked in git
-(when (file-exists-p (expand-file-name "~/.emacs.d/customizations/secrets.el"))
-  (load "secrets.el"))
+(load (expand-file-name "secrets.el" user-emacs-directory) t)
 
 ;; Coding assistant integration
 (load "setup-gpt.el")

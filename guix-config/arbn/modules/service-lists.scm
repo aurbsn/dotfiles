@@ -12,6 +12,19 @@
 (define*-public (create-home-services my-services my-files #:key (free #f))
   (append (list
 	   (service home-shepherd-service-type)
+           (simple-service 'home-env-vars
+                           home-environment-variables-service-type
+                           `(("EDITOR" . "emacsclient")
+                             ("LANG" . "en_US.UTF-8")
+                             ("GUILE_LOAD_PATH" . "$HOME/dev/dotfiles/guix-config:$GUILE_LOAD_PATH")
+                             ("NODE_OPTIONS" . "--max-old-space-size=8192")
+                             ("GDK_SCALE" . "2")
+                             ("XDG_DATA_DIRS" . "/var/lib/flatpak/exports/share:$HOME/.local/share/flatpak/exports/share:$XDG_DATA_DIRS")
+                             ("GTK_IM_MODULE" . "fcitx")
+                             ("QT_IM_MODULE" . "fcitx")
+                             ("XMODIFIERS" . "@im=fcitx")
+                             ("SDL_IM_MODULE" . "fcitx")
+                             ("PATH" . "$HOME/.local/bin:$HOME/.npm-global/bin:$HOME/bin:$PATH")))
            (service
             home-bash-service-type
             (home-bash-configuration
@@ -38,7 +51,8 @@
                                (let ((dest (string-append (getenv "HOME")
                                                           "/.local/share/fonts/guix")))
                                  (mkdir-p dest)
-                                 (system* "cp" "-rfL"
+                                 (system* "chmod" "-R" "u+w" dest)
+                                 (system* "cp" "-rfL" "--no-preserve=mode"
                                           (string-append (getenv "HOME")
                                                          "/.guix-home/profile/share/fonts/.")
                                           dest))))
@@ -86,8 +100,6 @@
                      ,(local-file "../../config-files/emacs.d/init.el" #:recursive? #t))
                    `(".emacs.d/customizations"
                      ,(local-file "../../config-files/emacs.d/customizations" #:recursive? #t))
-                   `(".emacs.d/env"
-	             ,(local-file "../../config-files/emacs.d/env" #:recursive? #t))
                    `(".sbclrc"
                      ,(local-file "../../config-files/sbclrc"))
                    `(".gitconfig"
