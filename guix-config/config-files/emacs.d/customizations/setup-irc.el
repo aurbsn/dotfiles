@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 (require 'erc-join) ; autojoin support is implemented by erc-join.el
 (erc-autojoin-enable) ; enable channel autojoin support, by default
 (setq erc-server "irc.libera.chat"

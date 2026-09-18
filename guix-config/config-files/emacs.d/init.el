@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 (unless (file-exists-p "~/.guix-home/profile")
   (require 'package)
   (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
@@ -113,11 +114,11 @@
 (load "setup-eshell.el")
 
 ;; Langauage-specific
-(load "setup-c.el")
 (load "setup-js.el")
 (load "setup-rs.el")
 (load "setup-html.el")
 (load "setup-css.el")
+(load "setup-php.el")
 
 ;; Lisps :)
 (load "common-lisp-editing.el")
@@ -129,7 +130,5 @@
 ;; Other
 (load "setup-git.el")
 (load "setup-org.el")
-(load "setup-css.el")
-(load "setup-php.el")
 
 ;(add-hook 'prog-mode-hook 'guru-mode) 

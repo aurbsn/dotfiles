@@ -7,8 +7,8 @@
  '(package-selected-packages
    '(clojure-mode-extra-font-locking consult corfu erc-join
                                      exec-path-from-shell gptel
-                                     paredit projectile sly-asdf
-                                     sly-repl-ansi-color
+                                     paredit projectile rainbow-mode
+                                     sly-asdf sly-repl-ansi-color
                                      terraform-mode uniquify vertico
                                      vterm)))
 (custom-set-faces
