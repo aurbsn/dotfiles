@@ -79,9 +79,6 @@
 (load "~/dev/dotfiles/guix-config/config-files/emacs.d/customize.el")
 (load "shell-integration.el")
 
-;; Config branches based on env string value
-(load "setup-env.el")
-
 ;; Setup ERC
 (load "setup-irc.el")
 
@@ -115,7 +112,6 @@
 (load "setup-rs.el")
 (load "setup-html.el")
 (load "setup-css.el")
-(load "setup-scala.el")
 
 ;; Lisps :)
 (load "common-lisp-editing.el")
@@ -127,5 +123,7 @@
 ;; Other
 (load "setup-git.el")
 (load "setup-org.el")
+(load "setup-css.el")
+(load "setup-php.el")
 
 ;(add-hook 'prog-mode-hook 'guru-mode) 
