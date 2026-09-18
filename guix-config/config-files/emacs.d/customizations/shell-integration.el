@@ -6,7 +6,9 @@
 ;; This library works around this problem by copying important
 ;; environment variables from the user's shell.
 ;; https://github.com/purcell/exec-path-from-shell
-(exec-path-from-shell-initialize)
-(when (memq window-system '(mac ns))
-  (exec-path-from-shell-copy-env "PATH"))
+(use-package exec-path-from-shell
+  :config
+  (exec-path-from-shell-initialize)
+  (when (memq window-system '(mac ns))
+    (exec-path-from-shell-copy-env "PATH")))
 

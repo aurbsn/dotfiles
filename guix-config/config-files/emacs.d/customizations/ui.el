@@ -80,7 +80,6 @@
      (when (not (frame-parameter nil 'fullscreen)) 'fullboth)))
 
 (use-package ef-themes
-  :ensure nil
   :init
   ;; This makes the Modus commands listed below consider only the Ef
   ;; themes.  For an alternative that includes Modus and all

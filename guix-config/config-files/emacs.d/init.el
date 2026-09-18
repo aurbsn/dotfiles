@@ -1,3 +1,9 @@
+(unless (file-exists-p "~/.guix-home/profile")
+  (require 'package)
+  (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+  (unless package-archive-contents
+    (package-refresh-contents))
+  (setq use-package-always-ensure t))
 (add-to-list 'load-path "~/.emacs.d/vendor")
 (add-to-list 'load-path "/usr/share/emacs/site-lisp")
 (add-to-list 'load-path "~/.guix-home/profile/share/emacs/site-lisp")
@@ -73,7 +79,7 @@
   :init
   (global-corfu-mode))
 
-(use-package vterm)
+(use-package eat)
 
 (setq custom-file "~/dev/dotfiles/guix-config/config-files/emacs.d/customize.el")
 (load "~/dev/dotfiles/guix-config/config-files/emacs.d/customize.el")
