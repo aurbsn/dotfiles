@@ -14,14 +14,11 @@
    glibc
    glibc-locales
    guile-3.0
-   libvterm
-   cmake
    pinentry))
 
 (define-public %emacs-packages
   (list
    emacs-pgtk
-   emacs-vterm
 
    ; Lisp parentheses
    emacs-paredit
@@ -74,6 +71,12 @@
    emacs-yaml-mode
 
    emacs-typescript-mode
+
+   emacs-agent-shell
+
+   emacs-rainbow-mode
+
+   emacs-eat
 
    ;emacs-guru-mode
    ))
