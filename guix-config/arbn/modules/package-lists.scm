@@ -42,8 +42,10 @@
    emacs-magit
 
    emacs-web-mode
+   emacs-php-mode
 
    emacs-pdf-tools
+   emacs-nov
 
    emacs-yasnippet
 
