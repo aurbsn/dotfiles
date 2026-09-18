@@ -73,7 +73,7 @@
   :init
   (global-corfu-mode))
 
-(require 'vterm)
+(use-package vterm)
 
 (setq custom-file "~/dev/dotfiles/guix-config/config-files/emacs.d/customize.el")
 (load "~/dev/dotfiles/guix-config/config-files/emacs.d/customize.el")

@@ -5,6 +5,6 @@
 (setq js-indent-level 4)
 (eval-after-load "sgml-mode"
   '(progn
-     (require 'tagedit)
+     (use-package tagedit)
      (tagedit-add-paredit-like-keybindings)
      (add-hook 'html-mode-hook (lambda () (tagedit-mode 1)))))

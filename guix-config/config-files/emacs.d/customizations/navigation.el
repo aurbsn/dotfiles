@@ -8,7 +8,7 @@
 ;; The forward naming method includes part of the file's directory
 ;; name at the beginning of the buffer name
 ;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Uniquify.html
-(require 'uniquify)
+(use-package uniquify)
 (setq uniquify-buffer-name-style 'forward)
 
 (use-package consult
@@ -119,7 +119,7 @@
 ;; Turn on recent file mode so that you can more easily switch to
 ;; recently edited files when you first start emacs
 (setq recentf-save-file (concat user-emacs-directory ".recentf"))
-(require 'recentf)
+(use-package recentf)
 (recentf-mode 1)
 (setq recentf-max-menu-items 40)
 
