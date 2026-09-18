@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 (when (locate-library "aggressive-indent")
   (add-hook 'lisp-mode-hook #'aggressive-indent-mode))
 

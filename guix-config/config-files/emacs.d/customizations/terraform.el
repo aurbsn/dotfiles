@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 (use-package terraform-mode
   :custom (terraform-indent-level 4)
   :config

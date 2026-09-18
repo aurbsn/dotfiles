@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 (use-package gptel
   :config
   ;; --- Local: Ollama ---

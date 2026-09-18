@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 (with-eval-after-load 'geiser-guile
   (add-to-list 'geiser-guile-load-path "~/dev/guix"))
 

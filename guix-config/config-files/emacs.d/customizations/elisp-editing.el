@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 (use-package paredit
   :hook ((emacs-lisp-mode . enable-paredit-mode)
          (eval-expression-minibuffer-setup . enable-paredit-mode)

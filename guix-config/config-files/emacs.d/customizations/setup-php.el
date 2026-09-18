@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 (add-to-list 'auto-mode-alist '("\\.php$" . php-mode))
 (with-eval-after-load 'eglot
   (add-to-list 'eglot-server-programs

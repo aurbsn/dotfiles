@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 ;; Customizations relating to editing a buffer.
 
 ;; Key binding to use "hippie expand" for text autocompletion
@@ -32,9 +33,9 @@
 ;; was when you previously visited the same file.
 ;; http://www.emacswiki.org/emacs/SavePlace
 (use-package saveplace)
-(setq-default save-place t)
 ;; keep track of saved places in ~/.emacs.d/places
 (setq save-place-file (concat user-emacs-directory "places"))
+(save-place-mode 1)
 
 ;; Emacs can automatically create backup files. This tells Emacs to
 ;; put all backups in ~/.emacs.d/backups. More info:
