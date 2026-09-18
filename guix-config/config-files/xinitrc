@@ -1,5 +1,0 @@
-export GDK_CORE_DEVICE_EVENTS=1
-export GTK_IM_MODULE=fcitx
-export QT_IM_MODULE=fcitx
-export XMODIFIERS=@im=fcitx
-exec sbcl --load ~/dev/start-stump.lisp

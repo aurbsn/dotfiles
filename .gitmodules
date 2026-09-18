@@ -1,3 +1,0 @@
-[submodule "guix-config/config-files/stumpwm.d/modules"]
-	path = guix-config/config-files/stumpwm.d/modules
-	url = https://github.com/stumpwm/stumpwm-contrib.git

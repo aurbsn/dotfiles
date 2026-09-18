@@ -1,2 +1,0 @@
-sh export GDK_CORE_DEVICE_EVENTS=1
-exec sbcl --load ~/dev/start-stump.lisp
