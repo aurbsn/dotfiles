@@ -18,3 +18,5 @@
   ;; Default to local/free
   (setq gptel-backend (gptel-get-backend "Ollama")
         gptel-model 'qwen2.5-coder:14b))
+
+(use-package agent-shell)
