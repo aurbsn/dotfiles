@@ -32,7 +32,7 @@
    emacs-aggressive-indent
    emacs-sly
    emacs-sly-asdf
-   ;emacs-sly-repl-ansi-color
+   emacs-sly-repl-ansi-color
 
    emacs-ef-themes
    emacs-projectile
@@ -80,7 +80,7 @@
 
    emacs-eat
 
-   ;emacs-guru-mode
+   emacs-guru-mode
    ))
 
 (define-public %texlive-packages

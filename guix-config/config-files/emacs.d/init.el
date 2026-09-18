@@ -130,4 +130,4 @@
 (load "setup-git.el")
 (load "setup-org.el")
 
-;(add-hook 'prog-mode-hook 'guru-mode) 
+(add-hook 'prog-mode-hook 'guru-mode)
