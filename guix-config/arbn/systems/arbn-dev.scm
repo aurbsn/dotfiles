@@ -14,11 +14,6 @@
 (use-package-modules audio curl networking pulseaudio linux wm xorg gnome web-browsers 
                      security-token package-management)
 
-(define %fido2-rule
-  (udev-rule
-   "90-fido2.rules"
-   (string-append "KERNEL==\"hidraw*\", SUBSYSTEM==\"hidraw\", ATTRS{idProduct}==\"0407\", GROUP=\"plugdev\", ATTRS{idVendor}==\"1050\" TAG+=\"uaccess\"" "\n")))
-
 (system-config
  #:system
  (operating-system
@@ -72,9 +67,7 @@
     #:free #f))
   (packages
    (append
-    (list 
-     flatpak
-     nyxt)
+    (list flatpak)
     %desktop-home-packages)))
  #:my-system-services
  (create-system-services 
@@ -83,11 +76,8 @@
    (service bluetooth-service-type
             (bluetooth-configuration
              (auto-enable? #t)))
-   ; Smart Cards (Yubikey)
-  (service pcscd-service-type)
-  (udev-rules-service 'fido2 libfido2 #:groups '("plugdev"))
-  (udev-rules-service 'u2f %fido2-rule #:groups '("plugdev"))
    (service gnome-desktop-service-type))
+  %yubikey-services
   (modify-services 
    %desktop-services
    (gdm-service-type config => (gdm-configuration

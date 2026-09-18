@@ -7,7 +7,39 @@
   #:use-module (gnu home services gnupg)
   #:use-module (ice-9 curried-definitions))
 (use-package-modules security-token gnupg fcitx5)
-(use-service-modules guix cups desktop networking ssh xorg avahi dbus sound pm)
+(use-service-modules guix cups desktop networking ssh xorg avahi dbus sound pm
+                     security-token)
+
+(define-public %nonguix-channel
+  '(channel
+    (name 'nonguix)
+    (url "https://gitlab.com/nonguix/nonguix")
+    (introduction
+     (make-channel-introduction
+      "897c1a470da759236cc11798f4e0a5f7d4d59fbc"
+      (openpgp-fingerprint
+       "2A39 3FFF 68F4 EF7A 3D29  12AF 6F51 20A0 22FB B2D5")))))
+
+(define-public %arbn-channel
+  '(channel
+    (name 'arbn)
+    (url "https://github.com/aurbsn/arbn-guix-channel.git")
+    (branch "main")
+    (introduction
+     (make-channel-introduction
+      "3cc6977711fa11f94760bfd97be6723e56a51222"
+      (openpgp-fingerprint
+       "FD2F 077F 9BD6 CBB3 471A  D63A 3029 8DA2 EEB5 DE28")))))
+
+(define %fido2-rule
+  (udev-rule
+   "90-fido2.rules"
+   (string-append "KERNEL==\"hidraw*\", SUBSYSTEM==\"hidraw\", ATTRS{idProduct}==\"0407\", GROUP=\"plugdev\", ATTRS{idVendor}==\"1050\" TAG+=\"uaccess\"" "\n")))
+
+(define-public %yubikey-services
+  (list (service pcscd-service-type)
+        (udev-rules-service 'fido2 libfido2 #:groups '("plugdev"))
+        (udev-rules-service 'u2f %fido2-rule #:groups '("plugdev"))))
 
 (define*-public (create-home-services my-services my-files #:key (free #f))
   (append (list
@@ -73,27 +105,9 @@
              my-files
              (list `(".config/guix/channels.scm"
                      ,(scheme-file "channels.scm"
-                                   `(cons* 
-                                     ,(if (not free)
-                                         '(channel
-                                          (name 'nonguix)
-                                          (url "https://gitlab.com/nonguix/nonguix")
-                                          ;; Enable signature verification:
-                                          (introduction
-                                           (make-channel-introduction
-                                            "897c1a470da759236cc11798f4e0a5f7d4d59fbc"
-                                            (openpgp-fingerprint
-                                             "2A39 3FFF 68F4 EF7A 3D29  12AF 6F51 20A0 22FB B2D5")))))
-                                     (channel
-                                      (name 'arbn)
-                                      (url "https://github.com/aurbsn/arbn-guix-channel.git")
-                                      (branch "main")
-                                      (introduction
-                                       (make-channel-introduction
-                                        "3cc6977711fa11f94760bfd97be6723e56a51222"
-                                        (openpgp-fingerprint
-                                         "FD2F 077F 9BD6 CBB3 471A  D63A 3029 8DA2 EEB5 DE28"))))
-                                     %default-channels)))
+                                   `(cons* ,@(if free '() (list %nonguix-channel))
+                                           ,%arbn-channel
+                                           %default-channels)))
 	           `(".emacs.d/early-init.el"
                      ,(local-file "../../config-files/emacs.d/early-init.el" #:recursive? #t))
                    `(".emacs.d/init.el"

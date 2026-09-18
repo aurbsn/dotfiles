@@ -6,7 +6,8 @@
   #:export (system-config))
 (use-service-modules guix)
 
-(define* (system-config #:key system my-system-services home)
+(define* (system-config #:key system my-system-services home
+                        (extra-user-groups '()))
   (operating-system
    (inherit system)
    
@@ -25,7 +26,8 @@
                   (group "users")
                   (home-directory "/home/arbn")
                   (supplementary-groups
-                   '("wheel" "netdev" "audio" "video" "libvirt" "kvm")))
+                   (append '("wheel" "netdev" "audio" "video" "kvm")
+                           extra-user-groups)))
                  %base-user-accounts))
 
    (services
