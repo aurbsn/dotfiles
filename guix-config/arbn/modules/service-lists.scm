@@ -6,7 +6,7 @@
   #:use-module (gnu home services shepherd)
   #:use-module (gnu home services gnupg)
   #:use-module (ice-9 curried-definitions))
-(use-package-modules security-token gnupg)
+(use-package-modules security-token gnupg fcitx5)
 (use-service-modules guix cups desktop networking ssh xorg avahi dbus sound pm)
 
 (define*-public (create-home-services my-services my-files #:key (free #f))
@@ -31,6 +31,26 @@
            (service home-gpg-agent-service-type
                     (home-gpg-agent-configuration 
                      (pinentry-program (file-append pinentry "/bin/pinentry"))))
+           (simple-service 'flatpak-visible-fonts
+                           home-activation-service-type
+                           #~(begin
+                               (use-modules (guix build utils))
+                               (let ((dest (string-append (getenv "HOME")
+                                                          "/.local/share/fonts/guix")))
+                                 (mkdir-p dest)
+                                 (system* "cp" "-rfL"
+                                          (string-append (getenv "HOME")
+                                                         "/.guix-home/profile/share/fonts/.")
+                                          dest))))
+           (simple-service 'fcitx5-daemon
+                    home-shepherd-service-type
+                    (list (shepherd-service
+                           (provision '(fcitx5))
+                           (documentation "Fcitx5 input method daemon.")
+                           (start #~(make-forkexec-constructor
+                                     (list #$(file-append fcitx5 "/bin/fcitx5"))))
+                           (stop #~(make-kill-destructor)))))
+           
            ; Configuration files
            (simple-service 
             'home-config

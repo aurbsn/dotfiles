@@ -4,7 +4,7 @@
 (use-package-modules 
  base guile package-management text-editors version-control certs lisp lisp-check lisp-xyz 
  emacs emacs-xyz fonts linux rsync guile-xyz cmake ssh scheme education nss books terminals
- tex file-systems java gnupg imagemagick virtualization hardware file)
+ tex file-systems java gnupg imagemagick virtualization hardware file fcitx5 node)
 ; These packages will always be desired for Guix Home configs,
 ; include on servers
 (define-public %base-home-packages 
@@ -104,13 +104,22 @@
            font-adobe-source-code-pro
            haunt
            book-sicp
-           font-adobe-source-han-sans)))
+           font-adobe-source-han-sans
+           font-adobe-source-han-serif
+           font-google-noto-sans-cjk
+           font-wqy-zenhei
+           font-wqy-microhei)))
 
 ; Desktop packages when not using Guix on a foreign distro
 (define-public %desktop-system-home-packages
   (list
    openjdk
-   imagemagick))
+   imagemagick
+   fcitx5
+   fcitx5-chinese-addons
+   fcitx5-configtool
+   fcitx5-gtk
+   fcitx5-qt))
 
 (define-public %base-system-packages ; All systems need these
   (append

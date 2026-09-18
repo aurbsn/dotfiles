@@ -2,10 +2,6 @@ if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
 
-if [ -d "$HOME/android-cmdline-tools/bin" ] ; then
-    PATH="$HOME/android-cmdline-tools/bin:$PATH"
-fi
-
 if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
@@ -23,6 +19,10 @@ PATH=$PATH:'~/node_modules/.bin/'
 PATH=$PATH:'.local/share/uv/tools/aider-chat/bin'
 PATH=$PATH:'.local/bin'
 NODE_OPTIONS="--max-old-space-size=8192"
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
+export SDL_IM_MODULE=fcitx
 
 export GUIX_PROFILE="$HOME/.guix-home/profile"
 . "$GUIX_PROFILE/etc/profile"

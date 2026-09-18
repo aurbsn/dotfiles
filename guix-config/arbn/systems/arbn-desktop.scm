@@ -106,10 +106,6 @@
 
           ; IME
           emacs-rime
-
-          ; games
-          steam-nvidia
-          steam-devices-udev-rules
           )))))
  #:my-system-services
  (append 
