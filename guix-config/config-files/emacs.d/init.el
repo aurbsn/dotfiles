@@ -120,10 +120,12 @@
 (load "setup-php.el")
 
 ;; Lisps :)
+(load "lisp-common.el")
 (load "common-lisp-editing.el")
 (load "setup-clojure.el")
 (load "elisp-editing.el")
 (load "setup-scheme.el")
+(load "setup-racket.el")
 (load "terraform.el")
 
 ;; Other
