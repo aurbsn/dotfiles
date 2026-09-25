@@ -78,6 +78,7 @@
   ;; be used globally (M-/).  See also the customization variable
   ;; `global-corfu-modes' to exclude certain modes.
   :init
+  (setq tab-always-indent 'complete)
   (global-corfu-mode))
 
 (use-package eat)
