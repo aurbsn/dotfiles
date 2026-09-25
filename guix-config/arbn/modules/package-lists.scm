@@ -4,7 +4,7 @@
 (use-package-modules 
  base guile package-management text-editors version-control certs lisp lisp-check lisp-xyz 
  emacs emacs-xyz fonts linux rsync guile-xyz cmake ssh scheme education nss books terminals
- tex file-systems java gnupg imagemagick virtualization hardware file fcitx5 node
+ tex file-systems java gnupg imagemagick virtualization hardware file fcitx5 node libcanberra
  racket)
 ; These packages will always be desired for Guix Home configs,
 ; include on servers
@@ -109,6 +109,7 @@
            sbcl
            cl-fiveam
            racket
+           libcanberra
            exercism
            rsync
            font-adobe-source-code-pro
