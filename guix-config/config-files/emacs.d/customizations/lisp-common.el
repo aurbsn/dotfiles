@@ -37,3 +37,11 @@ WHERE is `source', `repl', or nil for both."
 ;; aggressive-indent reindents around point, which fights REPL prompts and
 ;; output regions
 (arbn-add-lisp-hook #'aggressive-indent-mode 'source)
+
+(defun arbn-prettify-lambda ()
+  (add-to-list 'prettify-symbols-alist '("lambda" . ?λ))
+  (prettify-symbols-mode 1))
+
+(arbn-add-lisp-hook #'arbn-prettify-lambda)
+
+(setq prettify-symbols-unprettify-at-point 'right-edge)
