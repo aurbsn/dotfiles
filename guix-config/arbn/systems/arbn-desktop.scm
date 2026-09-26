@@ -28,49 +28,49 @@
  #:extra-user-groups '("libvirt")
  #:system
  (operating-system
-  (kernel-arguments '("modprobe.blacklist=nouveau"
-                      "nvidia_drm.modeset=1"))
+   (kernel-arguments '("modprobe.blacklist=nouveau"
+                       "nvidia_drm.modeset=1"))
 
-  (kernel linux-6.12)
-  (initrd microcode-initrd)
-  (firmware (list linux-firmware))
-  (keyboard-layout (keyboard-layout "us"))
-  (host-name "arbn-desktop")
+   (kernel linux-6.12)
+   (initrd microcode-initrd)
+   (firmware (list linux-firmware))
+   (keyboard-layout (keyboard-layout "us"))
+   (host-name "arbn-desktop")
 
-  (bootloader (bootloader-configuration
-               (bootloader grub-efi-bootloader)
-               (targets '("/boot/efi"))
-               (keyboard-layout keyboard-layout)
-               (menu-entries (list (menu-entry
-                                (label "Ubuntu")
-                                (linux "/boot/vmlinuz")
-                                (linux-arguments '("root=/dev/nvme0n1p3"))
-                                (initrd "/boot/initrd.img"))))))
+   (bootloader (bootloader-configuration
+                (bootloader grub-efi-bootloader)
+                (targets '("/boot/efi"))
+                (keyboard-layout keyboard-layout)
+                (menu-entries (list (menu-entry
+                                     (label "Ubuntu")
+                                     (linux "/boot/vmlinuz")
+                                     (linux-arguments '("root=/dev/nvme0n1p3"))
+                                     (initrd "/boot/initrd.img"))))))
 
-  (mapped-devices (list (mapped-device
-                         (source (uuid
-                                  "c300b946-fd97-4dc1-b4ab-b2fd7cdb2891"))
-                         (target "cryptroot")
-                         (type luks-device-mapping))))
+   (mapped-devices (list (mapped-device
+                          (source (uuid
+                                   "c300b946-fd97-4dc1-b4ab-b2fd7cdb2891"))
+                          (target "cryptroot")
+                          (type luks-device-mapping))))
 
-  (file-systems (cons* (file-system
-                        (mount-point "/boot/efi")
-                        (device (uuid "F1DB-22A3"
-                                      'fat32))
-                        (type "vfat"))
-                       (file-system
-                        (mount-point "/")
-                        (device "/dev/mapper/cryptroot")
-                        (type "ext4")
-                        (dependencies mapped-devices)) %base-file-systems))
-  (packages
-   (map replace-mesa
-        (append
-         (list 
-          gnome-tweaks
-          virt-manager
-          gnome-shell-extensions)
-         %base-system-packages))))
+   (file-systems (cons* (file-system
+                          (mount-point "/boot/efi")
+                          (device (uuid "F1DB-22A3"
+                                        'fat32))
+                          (type "vfat"))
+                        (file-system
+                          (mount-point "/")
+                          (device "/dev/mapper/cryptroot")
+                          (type "ext4")
+                          (dependencies mapped-devices)) %base-file-systems))
+   (packages
+    (map replace-mesa
+         (append
+          (list 
+           gnome-tweaks
+           virt-manager
+           gnome-shell-extensions)
+          %base-system-packages))))
  #:home
  (home-environment 
   (services
@@ -80,7 +80,7 @@
      (service home-pipewire-service-type)
      (service home-dbus-service-type))
 
-    ; System-specific home configuration files
+                                        ; System-specific home configuration files
     '()))
   (packages
    (map replace-mesa
@@ -100,7 +100,7 @@
 
           flatpak
 
-          ; IME
+                                        ; IME
           emacs-rime
           )))))
  #:my-system-services
@@ -123,10 +123,10 @@
              (lightdm (replace-mesa lightdm))
              (xorg-configuration
               (xorg-configuration
-              (modules (cons nvda %default-xorg-modules))
-              (drivers '("nvidia"))
-              (keyboard-layout (keyboard-layout "us"))
-              (server (replace-mesa xorg-server))))
+               (modules (cons nvda %default-xorg-modules))
+               (drivers '("nvidia"))
+               (keyboard-layout (keyboard-layout "us"))
+               (server (replace-mesa xorg-server))))
              (greeters (list
                         (lightdm-gtk-greeter-configuration
                          (lightdm-gtk-greeter (replace-mesa lightdm-gtk-greeter))
@@ -142,8 +142,8 @@
               (list (replace-mesa gnome-meta-core-shell)))
              (utilities
               (list (replace-mesa gnome-meta-core-utilities)))
-            (extra-packages
-             (list (replace-mesa gnome-essential-extras)))))
+             (extra-packages
+              (list (replace-mesa gnome-essential-extras)))))
 
    ;; The D-Bus clique.
    (service avahi-service-type)
@@ -160,31 +160,20 @@
    (service dbus-root-service-type
             (dbus-configuration
              (services (list blueman))))
-
-   ; NVIDIA
-   (service nvidia-service-type
+   
+   (service nvidia-service-type ; NVIDIA
             (nvidia-configuration
              (module nvidia-module-open)))
    
-   ; Printer
-   (service cups-service-type)
-
-   ; Bluetooth
-   (service bluetooth-service-type
-            (bluetooth-configuration
-             (auto-enable? #t)))
+   (service libvirt-service-type ; Virtualization
+            (libvirt-configuration
+             (unix-sock-group "libvirt")
+             (tls-port "16555")))
    
-   
-  ; Virtualization
-  (service libvirt-service-type
-           (libvirt-configuration
-            (unix-sock-group "libvirt")
-            (tls-port "16555")))
-  
-  (service virtlog-service-type
-           (virtlog-configuration
-            (max-clients 1000))))
+   (service virtlog-service-type
+            (virtlog-configuration
+             (max-clients 1000))))
 
   %yubikey-services
 
-  (create-system-services %base-services)))
+  (create-system-desktop-services %base-services)))

@@ -5,6 +5,7 @@
   #:use-module (gnu home services shells)
   #:use-module (gnu home services shepherd)
   #:use-module (gnu home services gnupg)
+  #:use-module (guix channels)
   #:use-module (ice-9 curried-definitions))
 (use-package-modules security-token gnupg fcitx5)
 (use-service-modules guix cups desktop networking ssh xorg avahi dbus sound pm
@@ -48,7 +49,6 @@
                            home-environment-variables-service-type
                            `(("EDITOR" . "emacsclient")
                              ("LANG" . "en_US.UTF-8")
-                             ("GUILE_LOAD_PATH" . "$HOME/dev/dotfiles/guix-config:$GUILE_LOAD_PATH")
                              ("NODE_OPTIONS" . "--max-old-space-size=8192")
                              ("GDK_SCALE" . "2")
                              ("GTK_PATH" . "$HOME/.guix-home/profile/lib/gtk-3.0${GTK_PATH:+:$GTK_PATH}")
@@ -90,15 +90,15 @@
                                                          "/.guix-home/profile/share/fonts/.")
                                           dest))))
            (simple-service 'fcitx5-daemon
-                    home-shepherd-service-type
-                    (list (shepherd-service
-                           (provision '(fcitx5))
-                           (documentation "Fcitx5 input method daemon.")
-                           (start #~(make-forkexec-constructor
-                                     (list #$(file-append fcitx5 "/bin/fcitx5"))))
-                           (stop #~(make-kill-destructor)))))
+                           home-shepherd-service-type
+                           (list (shepherd-service
+                                  (provision '(fcitx5))
+                                  (documentation "Fcitx5 input method daemon.")
+                                  (start #~(make-forkexec-constructor
+                                            (list #$(file-append fcitx5 "/bin/fcitx5"))))
+                                  (stop #~(make-kill-destructor)))))
            
-           ; Configuration files
+                                        ; Configuration files
            (simple-service 
             'home-config
             home-files-service-type
@@ -121,17 +121,26 @@
                      ,(local-file "../../config-files/gitconfig"))))))
           my-services))
 
+(define*-public (create-system-desktop-services my-services #:key (free #f))
+  (append
+   (list
+    (service bluetooth-service-type ; Bluetooth
+             (bluetooth-configuration
+              (auto-enable? #t)))
+    (service cups-service-type)) ; Printer
+   (create-system-services my-services #:free free)))
+
 (define*-public (create-system-services my-services #:key (free #f))
   (if (not free)
       (modify-services 
-       my-services
-       (guix-service-type config => 
-                          (guix-configuration
-                           (inherit config)
-                           (substitute-urls
-                            (append (list "https://substitutes.nonguix.org")
-                                    %default-substitute-urls))
-                           (authorized-keys
-                            (append (list (local-file "../../signing-key.pub"))
-                                    %default-authorized-guix-keys)))))
+          my-services
+        (guix-service-type config => 
+                           (guix-configuration
+                            (inherit config)
+                            (substitute-urls
+                             (append (list "https://substitutes.nonguix.org")
+                                     %default-substitute-urls))
+                            (authorized-keys
+                             (append (list (local-file "../../signing-key.pub"))
+                                     %default-authorized-guix-keys)))))
       my-services))
