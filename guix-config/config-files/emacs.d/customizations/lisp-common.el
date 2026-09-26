@@ -18,8 +18,7 @@
   "Hooks for interactive Lisp buffers.")
 
 (defun arbn-add-lisp-hook (fn &optional where)
-  "Add FN to Lisp mode hooks.
-WHERE is `source', `repl', or nil for both."
+  "Add fn to Lisp mode hooks. where is `source', `repl', or nil for both."
   (dolist (hook (pcase where
                   ('source arbn-lisp-source-hooks)
                   ('repl arbn-lisp-repl-hooks)
@@ -34,8 +33,6 @@ WHERE is `source', `repl', or nil for both."
 (arbn-add-lisp-hook #'enable-paredit-mode)
 (arbn-add-lisp-hook #'rainbow-delimiters-mode)
 
-;; aggressive-indent reindents around point, which fights REPL prompts and
-;; output regions
 (arbn-add-lisp-hook #'aggressive-indent-mode 'source)
 
 (defun arbn-prettify-lambda ()
