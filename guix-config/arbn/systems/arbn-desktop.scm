@@ -36,16 +36,10 @@
    (firmware (list linux-firmware))
    (keyboard-layout (keyboard-layout "us"))
    (host-name "arbn-desktop")
-
    (bootloader (bootloader-configuration
-                (bootloader grub-efi-bootloader)
-                (targets '("/boot/efi"))
-                (keyboard-layout keyboard-layout)
-                (menu-entries (list (menu-entry
-                                     (label "Ubuntu")
-                                     (linux "/boot/vmlinuz")
-                                     (linux-arguments '("root=/dev/nvme0n1p3"))
-                                     (initrd "/boot/initrd.img"))))))
+               (bootloader grub-efi-bootloader)
+               (targets '("/boot/efi"))
+               (keyboard-layout keyboard-layout)))
 
    (mapped-devices (list (mapped-device
                           (source (uuid
