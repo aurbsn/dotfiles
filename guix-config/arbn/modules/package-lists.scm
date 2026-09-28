@@ -21,68 +21,44 @@
 (define-public %emacs-packages
   (list
    emacs-pgtk
-
-   ; Lisp parentheses
+   ;; Lisp parentheses
    emacs-paredit
    emacs-rainbow-delimiters
-
-   ; Clojure
+   ;; Clojure
    emacs-clojure-mode
    emacs-cider
-
-   ; Common Lisp
+   ;; Common Lisp
    emacs-aggressive-indent
    emacs-sly
    emacs-sly-asdf
    emacs-sly-repl-ansi-color
-
-   ; Racket
+   ;; Racket
    emacs-racket-mode
 
    emacs-ef-themes
    emacs-projectile
-
    emacs-tagedit
-
    emacs-magit
-
    emacs-web-mode
-   emacs-php-mode
-
    emacs-pdf-tools
    emacs-nov
-
    emacs-yasnippet
-
    emacs-org-roam
-
    emacs-exec-path-from-shell
-
    emacs-guix
-   
    emacs-geiser
    emacs-geiser-guile
-
    emacs-markdown-mode
-
    emacs-restclient
-
    emacs-corfu
    emacs-counsel
    emacs-consult
    emacs-vertico
-
    emacs-gptel
    emacs-terraform-mode
-
    emacs-yaml-mode
-
-   emacs-typescript-mode
-
    emacs-agent-shell
-
    emacs-rainbow-mode
-
    emacs-eat
    emacs-guru-mode
    emacs-elfeed
@@ -107,16 +83,16 @@
 	  %emacs-packages
           %texlive-packages
           (list
+           book-sicp
            sbcl
-           cl-fiveam
            racket
+           mit-scheme
            libcanberra
            exercism
+           cl-fiveam
            rsync
            font-adobe-source-code-pro
-           haunt
-           book-sicp
-           font-adobe-source-han-sans
+           font-adobe-source-han-sans ; Chinese fonts
            font-adobe-source-han-serif
            font-google-noto-sans-cjk
            font-wqy-zenhei

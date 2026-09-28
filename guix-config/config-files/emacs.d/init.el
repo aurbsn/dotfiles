@@ -108,7 +108,7 @@
 (load (expand-file-name "secrets.el" user-emacs-directory) t)
 
 ;; Coding assistant integration
-(load "setup-gpt.el")
+(load "setup-llm-integration.el")
 
 ;; The emacs shell
 (load "setup-eshell.el")
@@ -118,16 +118,16 @@
 (load "setup-rs.el")
 (load "setup-html.el")
 (load "setup-css.el")
+(load "setup-terraform.el")
 (load "setup-php.el")
 
 ;; Lisps :)
-(load "lisp-common.el")
-(load "common-lisp-editing.el")
+(load "setup-lisps.el")
+(load "setup-common-lisp.el")
 (load "setup-clojure.el")
-(load "elisp-editing.el")
+(load "setup-elisp.el")
 (load "setup-scheme.el")
 (load "setup-racket.el")
-(load "terraform.el")
 
 ;; Other
 (load "setup-git.el")
