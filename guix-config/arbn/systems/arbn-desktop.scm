@@ -24,18 +24,19 @@
  curl ssh gnome gnome-xyz fonts compression admin video syncthing emacs-xyz web-browsers
  display-managers security-token xorg virtualization package-management)
 
+(define host-name "arbn-desktop")
+
 (system-config
  #:extra-user-groups '("libvirt")
  #:system
  (operating-system
    (kernel-arguments '("modprobe.blacklist=nouveau"
                        "nvidia_drm.modeset=1"))
-
    (kernel linux-6.12)
    (initrd microcode-initrd)
    (firmware (list linux-firmware))
    (keyboard-layout (keyboard-layout "us"))
-   (host-name "arbn-desktop")
+   (host-name host-name)
    (bootloader (bootloader-configuration
                (bootloader grub-efi-bootloader)
                (targets '("/boot/efi"))
@@ -98,76 +99,78 @@
           emacs-rime
           )))))
  #:my-system-services
- (append 
-  (list
-   ;; NetworkManager and its applet.
-   (service network-manager-service-type
-            (network-manager-configuration
-             (network-manager (replace-mesa network-manager))))
-   (service wpa-supplicant-service-type)    ;needed by NetworkManager
-   (simple-service 'network-manager-applet
-                   profile-service-type
-                   (list (replace-mesa network-manager-applet)))
-   (service modem-manager-service-type)
-   (service usb-modeswitch-service-type)
+ (modify-services 
+  (create-system-desktop-services 
+                   (append %base-services
+                           (list
+                            ;; NetworkManager and its applet.
+                            (service network-manager-service-type
+                                     (network-manager-configuration
+                                      (network-manager (replace-mesa network-manager))))
+                            (service wpa-supplicant-service-type) ;needed by NetworkManager
+                            (simple-service 'network-manager-applet
+                                            profile-service-type
+                                            (list (replace-mesa network-manager-applet)))
+                            (service modem-manager-service-type)
+                            (service usb-modeswitch-service-type)
 
-   ;; GNOME
-   (service lightdm-service-type
-            (lightdm-configuration
-             (lightdm (replace-mesa lightdm))
-             (xorg-configuration
-              (xorg-configuration
-               (modules (cons nvda %default-xorg-modules))
-               (drivers '("nvidia"))
-               (keyboard-layout (keyboard-layout "us"))
-               (server (replace-mesa xorg-server))))
-             (greeters (list
-                        (lightdm-gtk-greeter-configuration
-                         (lightdm-gtk-greeter (replace-mesa lightdm-gtk-greeter))
-                         (assets (map replace-mesa (list adwaita-icon-theme gnome-themes-extra hicolor-icon-theme)))
-                         (theme-name "Adwaita-dark")
-                         (extra-config '("xft-dpi = 300")))))))
-   (service gnome-desktop-service-type
-            (gnome-desktop-configuration
-             (core-services
-              (list
-               (replace-mesa gnome-meta-core-services)))
-             (shell
-              (list (replace-mesa gnome-meta-core-shell)))
-             (utilities
-              (list (replace-mesa gnome-meta-core-utilities)))
-             (extra-packages
-              (list (replace-mesa gnome-essential-extras)))))
+                            ;; GNOME
+                            (service lightdm-service-type
+                                     (lightdm-configuration
+                                      (lightdm (replace-mesa lightdm))
+                                      (xorg-configuration
+                                       (xorg-configuration
+                                        (modules (cons nvda %default-xorg-modules))
+                                        (drivers '("nvidia"))
+                                        (keyboard-layout (keyboard-layout "us"))
+                                        (server (replace-mesa xorg-server))))
+                                      (greeters (list
+                                                 (lightdm-gtk-greeter-configuration
+                                                  (lightdm-gtk-greeter (replace-mesa lightdm-gtk-greeter))
+                                                  (assets (map replace-mesa (list adwaita-icon-theme gnome-themes-extra hicolor-icon-theme)))
+                                                  (theme-name "Adwaita-dark")
+                                                  (extra-config '("xft-dpi = 300")))))))
+                            (service gnome-desktop-service-type
+                                     (gnome-desktop-configuration
+                                      (core-services
+                                       (list
+                                        (replace-mesa gnome-meta-core-services)))
+                                      (shell
+                                       (list (replace-mesa gnome-meta-core-shell)))
+                                      (utilities
+                                       (list (replace-mesa gnome-meta-core-utilities)))
+                                      (extra-packages
+                                       (list (replace-mesa gnome-essential-extras)))))
 
-   ;; The D-Bus clique.
-   (service avahi-service-type)
-   (service udisks-service-type)
-   (service upower-service-type
-            (upower-configuration
-             (upower (replace-mesa upower))))
-   (service accountsservice-service-type)
-   (service cups-pk-helper-service-type)
-   (service colord-service-type)
-   (service geoclue-service-type)
-   (service polkit-service-type)
-   (service elogind-service-type)
-   (service dbus-root-service-type
-            (dbus-configuration
-             (services (list blueman))))
-   
-   (service nvidia-service-type ; NVIDIA
-            (nvidia-configuration
-             (module nvidia-module-open)))
-   
-   (service libvirt-service-type ; Virtualization
-            (libvirt-configuration
-             (unix-sock-group "libvirt")
-             (tls-port "16555")))
-   
-   (service virtlog-service-type
-            (virtlog-configuration
-             (max-clients 1000))))
+                            ;; The D-Bus clique.
+                            (service avahi-service-type)
+                            (service udisks-service-type)
+                            (service upower-service-type
+                                     (upower-configuration
+                                      (upower (replace-mesa upower))))
+                            (service accountsservice-service-type)
+                            (service cups-pk-helper-service-type)
+                            (service colord-service-type)
+                            (service geoclue-service-type)
+                            (service polkit-service-type)
+                            (service elogind-service-type)
+                            (service dbus-root-service-type
+                                     (dbus-configuration
+                                      (services (list blueman))))
+                            
+                            (service nvidia-service-type ; NVIDIA
+                                     (nvidia-configuration
+                                      (module nvidia-module-open)))
+                            
+                            (service libvirt-service-type ; Virtualization
+                                     (libvirt-configuration
+                                      (unix-sock-group "libvirt")
+                                      (tls-port "16555")))
+                            
+                            (service virtlog-service-type
+                                     (virtlog-configuration
+                                      (max-clients 1000))))
 
-  %yubikey-services
-
-  (create-system-desktop-services %base-services)))
+                           %yubikey-services))
+  (bluetooth-service-type config => (bluetooth-configuration
+                                      (name host-name)))))
