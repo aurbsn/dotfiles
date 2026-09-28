@@ -132,5 +132,6 @@
 ;; Other
 (load "setup-git.el")
 (load "setup-org.el")
+(load "setup-elfeed.el")
 
 (add-hook 'prog-mode-hook 'guru-mode)

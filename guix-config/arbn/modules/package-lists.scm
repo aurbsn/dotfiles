@@ -84,8 +84,8 @@
    emacs-rainbow-mode
 
    emacs-eat
-
    emacs-guru-mode
+   emacs-elfeed
    ))
 
 (define-public %texlive-packages
