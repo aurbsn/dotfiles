@@ -27,7 +27,8 @@
      ("https://semantic-domain.blogspot.com/rss.xml" math ct type-theory)
      ;; Blogs
      ("https://wadler.blogspot.com/rss.xml")
-     ("https://cdegroot.com/feed.xml" lisp))
+     ("https://cdegroot.com/feed.xml" lisp)
+     ("https://wingolog.org/feed/atom" lisp compilers))
    :config)
   ;; Refresh when opening, not on a timer
   (advice-add 'elfeed :after (lambda (&rest _) (elfeed-update))))
