@@ -6,8 +6,9 @@
   #:use-module (gnu home services shepherd)
   #:use-module (gnu home services gnupg)
   #:use-module (guix channels)
-  #:use-module (ice-9 curried-definitions))
-(use-package-modules security-token gnupg fcitx5)
+  #:use-module (ice-9 curried-definitions)
+  
+(use-package-modules security-token gnupg fcitx5 emacs)
 (use-service-modules guix cups desktop networking ssh xorg avahi dbus sound pm
                      security-token)
 
@@ -44,7 +45,9 @@
 
 (define*-public (create-home-services my-services my-files #:key (free #f))
   (append (list
+           
 	   (service home-shepherd-service-type)
+           
            (simple-service 'home-env-vars
                            home-environment-variables-service-type
                            `(("EDITOR" . "emacsclient")
@@ -59,6 +62,7 @@
                              ("SDL_IM_MODULE" . "fcitx")
                              ("PATH" . "$HOME/.local/bin:$HOME/.npm-global/bin:$HOME/bin:$PATH")
                              ("LESS" . "-FRX")))
+           
            (service
             home-bash-service-type
             (home-bash-configuration
@@ -75,9 +79,11 @@
               (list (local-file
                      "../../config-files/bash_logout"
                      "bash_logout")))))
+           
            (service home-gpg-agent-service-type
                     (home-gpg-agent-configuration 
                      (pinentry-program (file-append pinentry "/bin/pinentry"))))
+           
            (simple-service 'flatpak-visible-fonts
                            home-activation-service-type
                            #~(begin
@@ -90,6 +96,7 @@
                                           (string-append (getenv "HOME")
                                                          "/.guix-home/profile/share/fonts/.")
                                           dest))))
+
            (simple-service 'fcitx5-daemon
                            home-shepherd-service-type
                            (list (shepherd-service
@@ -98,8 +105,22 @@
                                   (start #~(make-forkexec-constructor
                                             (list #$(file-append fcitx5 "/bin/fcitx5"))))
                                   (stop #~(make-kill-destructor)))))
+
            
-                                        ; Configuration files
+           (simple-service 'emacs-server
+                           home-shepherd-service-type
+                           (list (shepherd-service
+                                  (provision '(emacs-server))
+                                  (start #~(make-forkexec-constructor
+                                            (list #$(file-append emacs-pgtk "/bin/emacs") "--fg-daemon")
+                                            #:log-file (string-append (getenv "HOME")
+                                                                      "/.local/state/log/emacs-server.log")))
+                                  (stop #~(make-system-destructor
+                                           (string-append #$(file-append emacs-pgtk "/bin/emacsclient")
+                                                          " --eval '(kill-emacs)'")))
+                                  (documentation "Run Emacs as a background daemon."))))
+           
+           ;; Configuration files
            (simple-service 
             'home-config
             home-files-service-type
