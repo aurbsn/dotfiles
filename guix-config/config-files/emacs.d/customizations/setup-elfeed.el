@@ -27,6 +27,7 @@
      ("https://semantic-domain.blogspot.com/rss.xml" math ct type-theory)
      ;; Blogs
      ("https://wadler.blogspot.com/rss.xml")
+     ("https://cdegroot.com/feed.xml" lisp)
      )
    :config)
   ;; Refresh when opening, not on a timer
