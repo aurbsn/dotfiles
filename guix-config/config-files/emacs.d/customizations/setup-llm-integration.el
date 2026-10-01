@@ -20,4 +20,6 @@
   (setq gptel-backend (gptel-get-backend "Ollama")
         gptel-model 'qwen2.5-coder:14b))
 
-(use-package agent-shell)
+(use-package agent-shell
+  :config
+  (setq agent-shell-anthropic-claude-acp-command '("fhs-box" "claude-agent-acp")))

@@ -8,6 +8,7 @@
   #:use-module (guix channels)
   #:use-module (ice-9 curried-definitions)
   
+  #:use-module (arbn modules fhs-box))
 (use-package-modules security-token gnupg fcitx5 emacs)
 (use-service-modules guix cups desktop networking ssh xorg avahi dbus sound pm
                      security-token)
@@ -106,6 +107,8 @@
                                             (list #$(file-append fcitx5 "/bin/fcitx5"))))
                                   (stop #~(make-kill-destructor)))))
 
+           (simple-service 'fhs-box home-files-service-type
+                           `((".local/bin/fhs-box" ,(fhs-box-program))))
            
            (simple-service 'emacs-server
                            home-shepherd-service-type
