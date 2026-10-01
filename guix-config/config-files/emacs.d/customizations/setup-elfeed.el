@@ -20,7 +20,14 @@
      ("https://lobste.rs/t/compilers.rss" lobsters compilers)
      ("https://lobste.rs/t/plt.rss" lobsters plt)
      ("https://lobste.rs/t/formalmethods.rss" lobsters plt)
-     ("https://lobste.rs/t/emacs.rss" lobsters emacs)))
-  :config
+     ("https://lobste.rs/t/emacs.rss" lobsters emacs)
+     ;; Math
+     ("https://bartoszmilewski.com/rss" math ct)
+     ("https://math.andrej.com/feed.xml" math)
+     ("https://semantic-domain.blogspot.com/rss.xml" math ct type-theory)
+     ;; Blogs
+     ("https://wadler.blogspot.com/rss.xml")
+     )
+   :config)
   ;; Refresh when opening, not on a timer
   (advice-add 'elfeed :after (lambda (&rest _) (elfeed-update))))
