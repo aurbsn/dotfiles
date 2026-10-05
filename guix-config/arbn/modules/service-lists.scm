@@ -61,8 +61,7 @@
                              ("QT_IM_MODULE" . "fcitx")
                              ("XMODIFIERS" . "@im=fcitx")
                              ("SDL_IM_MODULE" . "fcitx")
-                             ("PATH" . "$HOME/.local/bin:$HOME/.npm-global/bin:$HOME/bin:$PATH")
-                             ("LESS" . "-FRX")))
+                             ("PATH" . "$HOME/.local/bin:$HOME/.npm-global/bin:$HOME/bin:$PATH")))
            
            (service
             home-bash-service-type
