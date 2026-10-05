@@ -32,22 +32,22 @@
                 (rest          (values (reverse manifests) rest)))))
 
           (receive (manifests command) (parse-args (cdr (command-line)))
-            (let ((guix     (or (getenv "GUIX")
-                                (string-append (getenv "HOME")
-                                               "/.config/guix/current/bin/guix")))
-                  (box-home (string-append (getenv "HOME")
-                                           "/.local/share/" #$name)))
-              (mkdir-p box-home)
+            (let* ((home     (getenv "HOME"))
+                   (guix     (or (getenv "GUIX")
+                                 (string-append home
+                                                "/.config/guix/current/bin/guix")))
+                   (box-data (string-append home "/.local/share/" #$name)))
+              (mkdir-p box-data)
               (apply execl guix guix
                      `("shell" "--container" "--emulate-fhs" "--network"
                        "-m" #$manifest
                        ,@(append-map (lambda (m) (list "-m" m)) manifests)
-                       ,(string-append "--share=" box-home)
+                       ,(string-append "--share=" home)
                        ,@(map (lambda (re) (string-append "--preserve=" re))
                               '#$preserve)
                        "--" "env"
-                       ,(string-append "HOME=" box-home)
-                       ,(string-append "NPM_CONFIG_PREFIX=" box-home "/.local")
+                       ,(string-append "HOME=" home)
+                       ,(string-append "NPM_CONFIG_PREFIX=" box-data "/.local")
                        "SSL_CERT_DIR=/etc/ssl/certs"
                        "sh" "-c"
                        "export PATH=\"$NPM_CONFIG_PREFIX/bin:$PATH\"; exec \"$@\""
