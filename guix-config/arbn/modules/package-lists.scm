@@ -87,10 +87,8 @@
            sbcl
            racket
            mit-scheme
-           libcanberra
            exercism
            cl-fiveam
-           rsync
            font-adobe-source-code-pro
            font-adobe-source-han-sans ; Chinese fonts
            font-adobe-source-han-serif
@@ -107,7 +105,9 @@
    fcitx5-chinese-addons
    fcitx5-configtool
    fcitx5-gtk
-   fcitx5-qt))
+   fcitx5-qt
+   oath-toolkit
+   rsync))
 
 (define-public %base-system-packages ; All systems need these
   (append
