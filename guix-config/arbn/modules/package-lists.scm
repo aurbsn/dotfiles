@@ -5,7 +5,7 @@
  base guile package-management text-editors version-control certs lisp lisp-check lisp-xyz 
  emacs emacs-xyz fonts linux rsync guile-xyz cmake ssh scheme education nss books terminals
  tex file-systems java gnupg imagemagick virtualization hardware file fcitx5 node libcanberra
- racket)
+ racket authentication)
 ; These packages will always be desired for Guix Home configs,
 ; include on servers
 (define-public %base-home-packages 
@@ -88,6 +88,7 @@
            mit-scheme
            exercism
            cl-fiveam
+           haunt
            font-adobe-source-code-pro
            font-adobe-source-han-sans ; Chinese fonts
            font-adobe-source-han-serif
