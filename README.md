@@ -67,3 +67,7 @@ guix system build -L guix-config guix-config/arbn/systems/hackpad.scm -n
   copying to `~/.emacs.d/secrets.el`, which `init.el` loads if present.
   `~/.emacs.d/customizations/` is a read-only store symlink, so it cannot
   live there.
+
+## License
+
+Licensed under the GNU General Public License, version 3 or (at your option) any later version.
