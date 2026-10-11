@@ -35,6 +35,10 @@
     ("arbn-dev-exit"
      "10.47.0.4"
      "D33lJ5q84ZDgXtTkzpiEfCYbX2jwqhzSBJTUTM9YEBw="
+     #t)
+    ("arbn-ipad"
+     "10.47.0.5"
+     "MFCnnEw6nThputK3Dh5dj9MsvoMA/waD6EU1b9cZMCk="
      #t)))
 
 (define (node name)
