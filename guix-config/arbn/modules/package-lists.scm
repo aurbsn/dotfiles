@@ -111,7 +111,8 @@
    fcitx5-gtk
    fcitx5-qt
    oath-toolkit
-   rsync))
+   rsync
+   mosh))
 
 (define-public %base-system-packages ; All systems need these
   (append

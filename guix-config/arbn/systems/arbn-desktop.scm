@@ -63,7 +63,8 @@
           (list 
            gnome-tweaks
            virt-manager
-           gnome-shell-extensions)
+           gnome-shell-extensions
+           mosh)
           %base-system-packages))))
  #:home
  (home-environment 
