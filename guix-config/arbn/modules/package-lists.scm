@@ -2,10 +2,10 @@
   #:use-module (gnu)
   #:use-module (arbn packages emacs))
 (use-package-modules 
- base guile package-management text-editors version-control certs lisp lisp-check lisp-xyz 
- emacs emacs-xyz fonts linux rsync guile-xyz cmake ssh scheme education nss books terminals
- tex file-systems java gnupg imagemagick virtualization hardware file fcitx5 node libcanberra
- racket authentication)
+ base guile package-management text-editors version-control certs
+ lisp lisp-check lisp-xyz  emacs emacs-xyz fonts linux rsync guile-xyz cmake ssh
+ scheme education nss books terminals tex file-systems java gnupg imagemagick
+ virtualization hardware file fcitx5 node libcanberra  racket authentication)
 ; These packages will always be desired for Guix Home configs,
 ; include on servers
 (define-public %base-home-packages 
@@ -20,48 +20,52 @@
 (define-public %emacs-packages
   (list
    emacs-pgtk
+   ;; Guix + Guile
+   emacs-geiser
+   emacs-geiser-guile
+   emacs-guix
    ;; Lisp parentheses
    emacs-paredit
    emacs-rainbow-delimiters
    ;; Clojure
-   emacs-clojure-mode
    emacs-cider
+   emacs-clojure-mode
    ;; Common Lisp
    emacs-aggressive-indent
    emacs-sly
    emacs-sly-asdf
+   emacs-sly-macrostep
    emacs-sly-repl-ansi-color
    ;; Racket
    emacs-racket-mode
-
-   emacs-ef-themes
-   emacs-projectile
-   emacs-tagedit
-   emacs-magit
-   emacs-web-mode
-   emacs-pdf-tools
+   ;; LLMs
+   emacs-agent-shell
+   emacs-gptel
+   ;; Document handling
    emacs-nov
-   emacs-yasnippet
-   emacs-org-roam
-   emacs-exec-path-from-shell
-   emacs-guix
-   emacs-geiser
-   emacs-geiser-guile
-   emacs-markdown-mode
-   emacs-restclient
+   emacs-pdf-tools
+   
+   ;; Other
+   emacs-consult
    emacs-corfu
    emacs-counsel
-   emacs-consult
-   emacs-vertico
-   emacs-gptel
-   emacs-terraform-mode
-   emacs-yaml-mode
-   emacs-agent-shell
-   emacs-rainbow-mode
    emacs-eat
-   emacs-guru-mode
+   emacs-ef-themes
    emacs-elfeed
-   ))
+   emacs-exec-path-from-shell
+   emacs-guru-mode
+   emacs-magit
+   emacs-markdown-mode
+   emacs-org-roam
+   emacs-projectile
+   emacs-rainbow-mode
+   emacs-restclient
+   emacs-tagedit
+   emacs-terraform-mode
+   emacs-vertico
+   emacs-web-mode
+   emacs-yaml-mode
+   emacs-yasnippet))
 
 (define-public %texlive-packages
   (list texlive-collection-latexrecommended
@@ -87,7 +91,7 @@
            racket
            mit-scheme
            exercism
-           cl-fiveam
+           sbcl-fiveam
            haunt
            font-adobe-source-code-pro
            font-adobe-source-han-sans ; Chinese fonts

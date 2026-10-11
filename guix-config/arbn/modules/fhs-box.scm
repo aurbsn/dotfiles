@@ -5,14 +5,15 @@
 (define %fhs-box-packages
   '("node" "bash" "coreutils" "findutils" "grep" "sed" "gawk"
     "diffutils" "patch" "tar" "gzip" "which"
-    "git" "ripgrep" "nss-certs"))
+    "git" "ripgrep" "nss-certs" "guile"))
 
 ;; A persistent FHS container for prebuilt binaries and npm-installed tools.
 ;;   fhs-box [-m MANIFEST]... [--] [CMD ARGS...]
 ;; With no CMD, starts an interactive bash.
 (define*-public (fhs-box-program #:key (name "fhs-box")
                                  (packages %fhs-box-packages)
-                                 (preserve '("^TERM$")))
+                                 (preserve '("^TERM$"))
+                                 (expose '("/gnu/store")))
   (let ((manifest (scheme-file (string-append name "-manifest.scm")
                                #~(specifications->manifest '#$packages))))
     (program-file
@@ -45,6 +46,8 @@
                        ,(string-append "--share=" home)
                        ,@(map (lambda (re) (string-append "--preserve=" re))
                               '#$preserve)
+                       ,@(map (lambda (dir) (string-append "--expose=" dir))
+                              '#$expose)
                        "--" "env"
                        ,(string-append "HOME=" home)
                        ,(string-append "NPM_CONFIG_PREFIX=" box-data "/.local")

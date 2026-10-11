@@ -139,8 +139,8 @@
                      ,(local-file "../../config-files/emacs.d/init.el" #:recursive? #t))
                    `(".emacs.d/customizations"
                      ,(local-file "../../config-files/emacs.d/customizations" #:recursive? #t))
-                   `(".sbclrc"
-                     ,(local-file "../../config-files/sbclrc"))
+                   `(".config/common-lisp/source-registry.conf.d/arbn-lisp.conf"
+                     ,(local-file "../../config-files/arbn-lisp.conf"))
                    `(".gitconfig"
                      ,(local-file "../../config-files/gitconfig"))))))
           my-services))

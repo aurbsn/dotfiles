@@ -1,6 +1,0 @@
-(require :asdf)
-
-(setf asdf:*central-registry*
-      (list* (merge-pathnames ".guix-home/profile/share/common-lisp/systems/"
-                              (user-homedir-pathname))
-             asdf:*central-registry*))
