@@ -71,6 +71,7 @@
    (append
     (list flatpak
           clhs)
+    %desktop-system-home-packages
     %desktop-home-packages)))
  #:my-system-services
  (modify-services
