@@ -4,7 +4,6 @@
   #:use-module (arbn modules service-lists)
   #:use-module (arbn modules package-lists)
   #:use-module (arbn modules wireguard)
-  #:use-module (nongnu packages chrome)
   #:use-module (nongnu packages emacs)
   #:use-module (nongnu packages linux)
   #:use-module (nongnu packages mozilla)
@@ -176,7 +175,7 @@
                      (openssh-configuration
                       (password-authentication? #f)
                       (authorized-keys
-                       `(("arbn" ,(local-file "../../ssh-keys/arbn-laptop.pub"))))
+                       `(("arbn" ,(local-file "../../ssh-keys/arbn-dev.pub"))))
                       ;; Only accept logins that come through the tunnel.
                       (extra-content "AllowUsers arbn@10.47.0.0/24"))))
 
