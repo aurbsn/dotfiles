@@ -6,7 +6,8 @@
              (gnu machine)
              (gnu machine hetzner)
              (guix utils)
-             (arbn modules wireguard))
+             (arbn modules wireguard)
+             (ice-9 match))
 (use-service-modules mcron networking ssh sysctl)
 
 (define %server-type "cpx21")
@@ -20,14 +21,18 @@
   #~(job "17 4 * * *" "guix gc -F 10G"))
 
 ;; Drop everything inbound except SSH, WireGuard and anything arriving
-;; through the tunnel.  Forward only between tunnel peers
+;; through the tunnel.  Forward between tunnel peers, and from exit nodes out
+;; to the internet.
 (define %ruleset
-  (plain-file "hub.nft" "\
+  (plain-file
+   "hub.nft"
+   (string-append
+    "\
 table inet filter {
   chain input {
     type filter hook input priority 0; policy drop;
-    ct state invalid drop
     ct state { established, related } accept
+    ct state invalid drop
     iifname \"lo\" accept
     meta l4proto { icmp, ipv6-icmp } accept
     tcp dport 22 accept
@@ -36,12 +41,26 @@ table inet filter {
   }
   chain forward {
     type filter hook forward priority 0; policy drop;
+    ct state { established, related } accept
     iifname \"wg0\" oifname \"wg0\" accept
-  }
+"
+    (match (wireguard-exit-addresses)
+      (() "")
+      (addresses
+       (string-append "    iifname \"wg0\" ip saddr { "
+                      (string-join addresses ", ")
+                      " } accept\n")))
+    "  }
   chain output {
     type filter hook output priority 0; policy accept;
   }
-}"))
+}
+table ip nat {
+  chain postrouting {
+    type nat hook postrouting priority 100; policy accept;
+    ip saddr " %subnet " oifname != \"wg0\" masquerade
+  }
+}")))
 
 (define %base
   (make-hetzner-os %server-type))
