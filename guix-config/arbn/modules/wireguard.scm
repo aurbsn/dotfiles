@@ -32,7 +32,10 @@
      "10.47.0.3"
      "zZVKg0AQJyDZjAKABQLoCVpfRSoJszS1GHACXIGE1S0="
      #f)
-    ("arbn-laptop-exit" "10.47.0.4" #f #t)))
+    ("arbn-dev-exit"
+     "10.47.0.4"
+     "D33lJ5q84ZDgXtTkzpiEfCYbX2jwqhzSBJTUTM9YEBw="
+     #t)))
 
 (define (node name)
   (or (assoc name %nodes)

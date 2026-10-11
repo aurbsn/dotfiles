@@ -78,7 +78,8 @@
    (append 
     (list
      (service gnome-desktop-service-type)
-     (wireguard-client-service "arbn-dev"))
+     (wireguard-client-service "arbn-dev")
+     (wireguard-exit-service "arbn-dev-exit"))
     %yubikey-services
     %desktop-services)
    #:free #f)
