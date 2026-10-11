@@ -2,6 +2,7 @@
   #:use-module (gnu)
   #:use-module (arbn modules package-lists)
   #:use-module (arbn modules service-lists)
+  #:use-module (arbn modules wireguard)
   #:use-module (arbn systems base-system)
   #:use-module (nongnu system linux-initrd)
   #:use-module (nongnu packages linux)
@@ -76,7 +77,8 @@
   (create-system-desktop-services 
    (append 
     (list
-     (service gnome-desktop-service-type))
+     (service gnome-desktop-service-type)
+     (wireguard-client-service "arbn-dev"))
     %yubikey-services
     %desktop-services)
    #:free #f)

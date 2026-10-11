@@ -16,7 +16,7 @@
 (define %nodes
   '(("arbn-hub"     "10.47.0.1" "25HscAUa/YiQbkuyiddBcIL25QYu5EdX0J6fBQZM1yw=")
     ("arbn-desktop" "10.47.0.2" "hCJSPe1z2b8PCF/LSc00wsfokCbA+FGD+5DE4I1M9BI=")
-    ("arbn-dev"  "10.47.0.3" #f)))
+    ("arbn-dev"  "10.47.0.3" "zZVKg0AQJyDZjAKABQLoCVpfRSoJszS1GHACXIGE1S0=")))
 
 (define (node name)
   (or (assoc name %nodes)
