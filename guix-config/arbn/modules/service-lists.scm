@@ -9,7 +9,7 @@
   #:use-module (ice-9 curried-definitions)
   
   #:use-module (arbn modules fhs-box))
-(use-package-modules security-token gnupg fcitx5 emacs)
+(use-package-modules base security-token gnupg fcitx5 emacs)
 (use-service-modules guix cups desktop networking ssh xorg avahi dbus sound pm
                      security-token)
 
@@ -91,8 +91,8 @@
                                (let ((dest (string-append (getenv "HOME")
                                                           "/.local/share/fonts/guix")))
                                  (mkdir-p dest)
-                                 (system* "chmod" "-R" "u+w" dest)
-                                 (system* "cp" "-rfL" "--no-preserve=mode"
+                                 (system* #$(file-append coreutils "/bin/chmod") "-R" "u+w" dest)
+                                 (system* #$(file-append coreutils "/bin/cp") "-rfL" "--no-preserve=mode"
                                           (string-append (getenv "HOME")
                                                          "/.guix-home/profile/share/fonts/.")
                                           dest))))
