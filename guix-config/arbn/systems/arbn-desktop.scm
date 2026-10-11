@@ -3,6 +3,7 @@
   #:use-module (arbn systems base-system)
   #:use-module (arbn modules service-lists)
   #:use-module (arbn modules package-lists)
+  #:use-module (arbn modules wireguard)
   #:use-module (nongnu packages chrome)
   #:use-module (nongnu packages emacs)
   #:use-module (nongnu packages linux)
@@ -153,19 +154,31 @@
             (service dbus-root-service-type
                      (dbus-configuration
                       (services (list blueman))))
-            
-            (service nvidia-service-type ; NVIDIA
+
+            ;; NVIDIA
+            (service nvidia-service-type 
                      (nvidia-configuration
                       (module nvidia-module-open)))
-            
-            (service libvirt-service-type ; Virtualization
+
+            ;; Virtualization
+            (service libvirt-service-type 
                      (libvirt-configuration
                       (unix-sock-group "libvirt")
                       (tls-port "16555")))
             
             (service virtlog-service-type
                      (virtlog-configuration
-                      (max-clients 1000))))
+                      (max-clients 1000)))
+
+            ;; WireGuard + SSH
+            (wireguard-client-service "arbn-desktop")
+            (service openssh-service-type
+                     (openssh-configuration
+                      (password-authentication? #f)
+                      (authorized-keys
+                       `(("arbn" ,(local-file "../../ssh-keys/arbn-laptop.pub"))))
+                      ;; Only accept logins that come through the tunnel.
+                      (extra-content "AllowUsers arbn@10.47.0.0/24"))))
 
            %yubikey-services))
   (bluetooth-service-type config => (bluetooth-configuration

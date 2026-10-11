@@ -1,16 +1,17 @@
 (define-module (arbn modules service-lists)
   #:use-module (gnu)
   #:use-module (gnu services)
-  #:use-module (gnu home services)
+  #:use-module (gnu home services gnupg)
   #:use-module (gnu home services shells)
   #:use-module (gnu home services shepherd)
-  #:use-module (gnu home services gnupg)
+  #:use-module (gnu home services ssh)
+  #:use-module (gnu home services)
   #:use-module (guix channels)
   #:use-module (ice-9 curried-definitions)
   
   #:use-module (arbn modules fhs-box))
 (use-package-modules base security-token gnupg fcitx5 emacs)
-(use-service-modules guix cups desktop networking ssh xorg avahi dbus sound pm
+(use-service-modules guix cups desktop networking avahi dbus sound pm
                      security-token)
 
 (define-public %nonguix-channel
@@ -121,6 +122,18 @@
                                            (string-append #$(file-append emacs-pgtk "/bin/emacsclient")
                                                           " --eval '(kill-emacs)'")))
                                   (documentation "Run Emacs as a background daemon."))))
+
+           (service home-openssh-service-type
+                    (home-openssh-configuration
+                     (hosts
+                      (list (openssh-host
+                             (name "desktop")
+                             (host-name "10.47.0.2")
+                             (user "arbn"))
+                            (openssh-host
+                             (name "hub")
+                             (host-name "5.161.160.215")
+                             (user "root"))))))
            
            ;; Configuration files
            (simple-service 
