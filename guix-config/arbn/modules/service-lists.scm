@@ -108,7 +108,11 @@
                                   (stop #~(make-kill-destructor)))))
 
            (simple-service 'fhs-box home-files-service-type
-                           `((".local/bin/fhs-box" ,(fhs-box-program))))
+                           `((".local/bin/fhs-box"
+                              ,(fhs-box-program
+                                #:expose '("/gnu/store"
+                                           "/var/guix/daemon-socket"
+                                           "/var/guix/profiles")))))
            
            (simple-service 'emacs-server
                            home-shepherd-service-type

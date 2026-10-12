@@ -5,7 +5,8 @@
 (define %fhs-box-packages
   '("node" "bash" "coreutils" "findutils" "grep" "sed" "gawk"
     "diffutils" "patch" "tar" "gzip" "which"
-    "git" "ripgrep" "nss-certs" "guile"))
+    "git" "ripgrep" "nss-certs" "guile"
+    "bind:utils" "nftables" "util-linux"))
 
 ;; A persistent FHS container for prebuilt binaries and npm-installed tools.
 ;;   fhs-box [-m MANIFEST]... [--] [CMD ARGS...]
@@ -53,6 +54,6 @@
                        ,(string-append "NPM_CONFIG_PREFIX=" box-data "/.local")
                        "SSL_CERT_DIR=/etc/ssl/certs"
                        "sh" "-c"
-                       "export PATH=\"$NPM_CONFIG_PREFIX/bin:$PATH\"; exec \"$@\""
+                       "export PATH=\"$NPM_CONFIG_PREFIX/bin:$HOME/.config/guix/current/bin:$PATH\"; exec \"$@\""
                        #$name
                        ,@(if (null? command) '("bash") command))))))))))
