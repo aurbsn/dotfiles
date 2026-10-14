@@ -10,7 +10,7 @@
   #:use-module (ice-9 curried-definitions)
   
   #:use-module (arbn modules fhs-box))
-(use-package-modules base security-token gnupg fcitx5 emacs)
+(use-package-modules base security-token gnupg fcitx5 emacs terminals)
 (use-service-modules guix cups desktop networking avahi dbus sound pm
                      security-token)
 
@@ -159,7 +159,9 @@
                    `(".config/common-lisp/source-registry.conf.d/arbn-lisp.conf"
                      ,(local-file "../../config-files/arbn-lisp.conf"))
                    `(".gitconfig"
-                     ,(local-file "../../config-files/gitconfig"))))))
+                     ,(local-file "../../config-files/gitconfig"))
+                   `(".terminfo"
+                     ,(file-append foot "/share/terminfo"))))))
           my-services))
 
 (define*-public (create-system-desktop-services my-services #:key (free #f))
