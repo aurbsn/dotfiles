@@ -112,7 +112,9 @@
    fcitx5-qt
    oath-toolkit
    rsync
-   mosh))
+   mosh
+   foot
+   binutils))
 
 (define-public %base-system-packages ; All systems need these
   (append
