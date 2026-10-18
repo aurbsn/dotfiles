@@ -55,14 +55,12 @@
                            home-environment-variables-service-type
                            `(("EDITOR" . "emacsclient")
                              ("LANG" . "en_US.UTF-8")
-                             ("NODE_OPTIONS" . "--max-old-space-size=8192")
                              ("GTK_PATH" . "$HOME/.guix-home/profile/lib/gtk-3.0${GTK_PATH:+:$GTK_PATH}")
                              ("XDG_DATA_DIRS" . "/var/lib/flatpak/exports/share:$HOME/.local/share/flatpak/exports/share:$XDG_DATA_DIRS")
                              ("GTK_IM_MODULE" . "fcitx")
                              ("QT_IM_MODULE" . "fcitx")
                              ("XMODIFIERS" . "@im=fcitx")
-                             ("SDL_IM_MODULE" . "fcitx")
-                             ("PATH" . "$HOME/.local/bin:$HOME/.npm-global/bin:$HOME/bin:$PATH")))
+                             ("SDL_IM_MODULE" . "fcitx")))
            
            (service
             home-bash-service-type

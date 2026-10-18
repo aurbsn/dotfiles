@@ -4,8 +4,9 @@
   #:use-module (arbn modules service-lists)
   #:use-module (arbn modules package-lists)
   #:use-module (arbn modules wireguard)
-  #:use-module (gnu home))
-(use-service-modules desktop linux networking pm ssh xorg)
+  #:use-module (gnu home)
+  #:use-module (gnu home services syncthing))
+(use-service-modules desktop networking ssh xorg)
 (use-package-modules audio curl networking pulseaudio linux wm xorg)
 
 (define %desktop-build-machine
@@ -47,9 +48,6 @@
   
   (packages
    (append (list
-            blueman
-            bluez
-            bluez-alsa
             pulseaudio
             curl)
            %base-system-packages)))
@@ -57,7 +55,7 @@
  (home-environment 
   (services
    (create-home-services 
-    '() 
+    (list (service home-syncthing-service-type))
     '()
     #:free #t))
   (packages

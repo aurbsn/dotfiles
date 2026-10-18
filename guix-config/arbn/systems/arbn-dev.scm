@@ -62,7 +62,6 @@
   (services
    (create-home-services 
     (list
-     (service home-syncthing-service-type)
      (service home-pipewire-service-type)
      (service home-dbus-service-type))
     '()
