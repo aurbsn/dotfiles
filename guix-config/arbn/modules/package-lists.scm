@@ -6,16 +6,15 @@
  lisp lisp-check lisp-xyz  emacs emacs-xyz fonts linux rsync guile-xyz cmake ssh
  scheme education nss books terminals tex file-systems java gnupg imagemagick
  virtualization hardware file fcitx5 node libcanberra  racket authentication)
-; These packages will always be desired for Guix Home configs,
-; include on servers
+
+;; These packages will always be desired for Guix Home configs, including on servers
 (define-public %base-home-packages 
   (list
    git
    nss-certs
    glibc
    glibc-locales
-   guile-3.0
-   pinentry))
+   guile-3.0))
 
 (define-public %emacs-packages
   (list
@@ -65,7 +64,8 @@
    emacs-vertico
    emacs-web-mode
    emacs-yaml-mode
-   emacs-yasnippet))
+   emacs-yasnippet
+   emacs-pinentry))
 
 (define-public %texlive-packages
   (list texlive-collection-latexrecommended
@@ -80,7 +80,7 @@
         texlive-cleveref
         texlive-pgfplots))
 
-; Packages for a personal desktop development environment
+;; Packages for a personal desktop development environment
 (define-public %desktop-home-packages
   (append %base-home-packages
 	  %emacs-packages
@@ -100,7 +100,7 @@
            font-wqy-zenhei
            font-wqy-microhei)))
 
-; Desktop packages when not using Guix on a foreign distro
+;; Desktop packages when not using Guix on a foreign distro
 (define-public %desktop-system-home-packages
   (list
    openjdk

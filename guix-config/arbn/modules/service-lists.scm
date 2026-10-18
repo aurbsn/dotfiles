@@ -84,7 +84,8 @@
            
            (service home-gpg-agent-service-type
                     (home-gpg-agent-configuration 
-                     (pinentry-program (file-append pinentry "/bin/pinentry"))))
+                     (pinentry-program (file-append pinentry-emacs "/bin/pinentry-emacs"))
+                     (extra-content "allow-emacs-pinentry")))
            
            (simple-service 'flatpak-visible-fonts
                            home-activation-service-type
