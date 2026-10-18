@@ -4,6 +4,7 @@
   #:use-module (arbn modules service-lists)
   #:use-module (arbn modules package-lists)
   #:use-module (arbn modules wireguard)
+  #:use-module (arbn packages weiqi)
   #:use-module (nongnu packages emacs)
   #:use-module (nongnu packages linux)
   #:use-module (nongnu packages mozilla)
@@ -29,159 +30,159 @@
  #:extra-user-groups '("libvirt")
  #:system
  (operating-system
-   (kernel-arguments '("modprobe.blacklist=nouveau"
-                       "nvidia_drm.modeset=1"))
-   (kernel linux-6.12)
-   (initrd microcode-initrd)
-   (firmware (list linux-firmware))
-   (keyboard-layout (keyboard-layout "us"))
-   (host-name host-name)
-   (bootloader (bootloader-configuration
-                (bootloader grub-efi-bootloader)
-                (targets '("/boot/efi"))
-                (keyboard-layout keyboard-layout)))
+  (kernel-arguments '("modprobe.blacklist=nouveau"
+                      "nvidia_drm.modeset=1"))
+  (kernel linux-6.12)
+  (initrd microcode-initrd)
+  (firmware (list linux-firmware))
+  (keyboard-layout (keyboard-layout "us"))
+  (host-name host-name)
+  (bootloader (bootloader-configuration
+               (bootloader grub-efi-bootloader)
+               (targets '("/boot/efi"))
+               (keyboard-layout keyboard-layout)))
 
-   (mapped-devices (list (mapped-device
-                          (source (uuid
-                                   "c300b946-fd97-4dc1-b4ab-b2fd7cdb2891"))
-                          (target "cryptroot")
-                          (type luks-device-mapping))))
+  (mapped-devices (list (mapped-device
+                         (source (uuid
+                                  "c300b946-fd97-4dc1-b4ab-b2fd7cdb2891"))
+                         (target "cryptroot")
+                         (type luks-device-mapping))))
 
-   (file-systems (cons* (file-system
-                          (mount-point "/boot/efi")
-                          (device (uuid "F1DB-22A3"
-                                        'fat32))
-                          (type "vfat"))
-                        (file-system
-                          (mount-point "/")
-                          (device "/dev/mapper/cryptroot")
-                          (type "ext4")
-                          (dependencies mapped-devices)) %base-file-systems))
-   (packages
-    (map replace-mesa
-         (append
-          (list 
-           gnome-tweaks
-           virt-manager
-           gnome-shell-extensions
-           mosh)
-          %base-system-packages))))
+  (file-systems (cons* (file-system
+                        (mount-point "/boot/efi")
+                        (device (uuid "F1DB-22A3"
+                                      'fat32))
+                        (type "vfat"))
+                       (file-system
+                        (mount-point "/")
+                        (device "/dev/mapper/cryptroot")
+                        (type "ext4")
+                        (dependencies mapped-devices)) %base-file-systems))
+  (packages
+   (map replace-mesa
+        (append
+         (list 
+          gnome-tweaks
+          virt-manager
+          gnome-shell-extensions
+          mosh)
+         %base-system-packages))))
  #:home
  (home-environment 
-   (services
-    (create-home-services
-     (list
-      ;; System-specific home services
-      (service home-syncthing-service-type)
-      (service home-pipewire-service-type)
-      (service home-dbus-service-type))
+  (services
+   (create-home-services
+    (list
+     ;; System-specific home services
+     (service home-syncthing-service-type)
+     (service home-pipewire-service-type)
+     (service home-dbus-service-type))
 
-     ;; System-specific home configuration files
-     '()))
-   (packages
-    (map replace-mesa
-         (append 
-          %desktop-system-home-packages
-          %desktop-home-packages
-          (list 
-           unzip
-           vlc
-           firefox
-           pavucontrol
-           yaru-theme
-           oath-toolkit
-           flatpak
-           clhs
-           ;; IME
-           emacs-rime
-           )))))
+    ;; System-specific home configuration files
+    '()))
+  (packages
+   (map replace-mesa
+        (append 
+         %desktop-system-home-packages
+         %desktop-home-packages
+         (list 
+          unzip
+          vlc
+          firefox
+          pavucontrol
+          yaru-theme
+          oath-toolkit
+          flatpak
+          clhs
+          emacs-rime
+          katago-opencl
+          )))))
  #:my-system-services
  (modify-services 
-     (create-system-desktop-services 
-      (append %base-services
-              (list
-               ;; NetworkManager and its applet.
-               (service network-manager-service-type
-                        (network-manager-configuration
-                         (network-manager (replace-mesa network-manager))))
-               (service wpa-supplicant-service-type) ;needed by NetworkManager
-               (simple-service 'network-manager-applet
-                               profile-service-type
-                               (list (replace-mesa network-manager-applet)))
-               (service modem-manager-service-type)
-               (service usb-modeswitch-service-type)
+  (create-system-desktop-services 
+   (append %base-services
+           (list
+            ;; NetworkManager and its applet.
+            (service network-manager-service-type
+                     (network-manager-configuration
+                      (network-manager (replace-mesa network-manager))))
+            (service wpa-supplicant-service-type) ;needed by NetworkManager
+            (simple-service 'network-manager-applet
+                            profile-service-type
+                            (list (replace-mesa network-manager-applet)))
+            (service modem-manager-service-type)
+            (service usb-modeswitch-service-type)
 
-               ;; GNOME
-               (service lightdm-service-type
-                        (lightdm-configuration
-                         (lightdm (replace-mesa lightdm))
-                         (xorg-configuration
-                          (xorg-configuration
-                           (modules (cons nvda %default-xorg-modules))
-                           (drivers '("nvidia"))
-                           (keyboard-layout (keyboard-layout "us"))
-                           (server (replace-mesa xorg-server))))
-                         (greeters (list
-                                    (lightdm-gtk-greeter-configuration
-                                     (lightdm-gtk-greeter (replace-mesa lightdm-gtk-greeter))
-                                     (assets (map replace-mesa (list adwaita-icon-theme gnome-themes-extra hicolor-icon-theme)))
-                                     (theme-name "Adwaita-dark")
-                                     (extra-config '("xft-dpi = 300")))))))
-               (service gnome-desktop-service-type
-                        (gnome-desktop-configuration
-                         (core-services
-                          (list
-                           (replace-mesa gnome-meta-core-services)))
-                         (shell
-                          (list (replace-mesa gnome-meta-core-shell)))
-                         (utilities
-                          (list (replace-mesa gnome-meta-core-utilities)))
-                         (extra-packages
-                          (list (replace-mesa gnome-essential-extras)))))
+            ;; GNOME
+            (service lightdm-service-type
+                     (lightdm-configuration
+                      (lightdm (replace-mesa lightdm))
+                      (xorg-configuration
+                       (xorg-configuration
+                        (modules (cons nvda %default-xorg-modules))
+                        (drivers '("nvidia"))
+                        (keyboard-layout (keyboard-layout "us"))
+                        (server (replace-mesa xorg-server))))
+                      (greeters (list
+                                 (lightdm-gtk-greeter-configuration
+                                  (lightdm-gtk-greeter (replace-mesa lightdm-gtk-greeter))
+                                  (assets (map replace-mesa (list adwaita-icon-theme gnome-themes-extra hicolor-icon-theme)))
+                                  (theme-name "Adwaita-dark")
+                                  (extra-config '("xft-dpi = 300")))))))
+            (service gnome-desktop-service-type
+                     (gnome-desktop-configuration
+                      (core-services
+                       (list
+                        (replace-mesa gnome-meta-core-services)))
+                      (shell
+                       (list (replace-mesa gnome-meta-core-shell)))
+                      (utilities
+                       (list (replace-mesa gnome-meta-core-utilities)))
+                      (extra-packages
+                       (list (replace-mesa gnome-essential-extras)))))
 
-               ;; The D-Bus clique.
-               (service avahi-service-type)
-               (service udisks-service-type)
-               (service upower-service-type
-                        (upower-configuration
-                         (upower (replace-mesa upower))))
-               (service accountsservice-service-type)
-               (service cups-pk-helper-service-type)
-               (service colord-service-type)
-               (service geoclue-service-type)
-               (service polkit-service-type)
-               (service elogind-service-type)
-               (service dbus-root-service-type
-                        (dbus-configuration
-                         (services (list blueman))))
+            ;; The D-Bus clique.
+            (service avahi-service-type)
+            (service udisks-service-type)
+            (service upower-service-type
+                     (upower-configuration
+                      (upower (replace-mesa upower))))
+            (service accountsservice-service-type)
+            (service cups-pk-helper-service-type)
+            (service colord-service-type)
+            (service geoclue-service-type)
+            (service polkit-service-type)
+            (service elogind-service-type)
+            (service dbus-root-service-type
+                     (dbus-configuration
+                      (services (list blueman))))
 
-               ;; NVIDIA
-               (service nvidia-service-type 
-                        (nvidia-configuration
-                         (module nvidia-module-open)))
+            ;; NVIDIA
+            (service nvidia-service-type 
+                     (nvidia-configuration
+                      (module nvidia-module-open)))
 
-               ;; Virtualization
-               (service libvirt-service-type 
-                        (libvirt-configuration
-                         (unix-sock-group "libvirt")
-                         (tls-port "16555")))
-               
-               (service virtlog-service-type
-                        (virtlog-configuration
-                         (max-clients 1000)))
+            ;; Virtualization
+            (service libvirt-service-type 
+                     (libvirt-configuration
+                      (unix-sock-group "libvirt")
+                      (tls-port "16555")))
+            
+            (service virtlog-service-type
+                     (virtlog-configuration
+                      (max-clients 1000)))
 
-               ;; WireGuard + SSH
-               (wireguard-client-service "arbn-desktop")
-               (service openssh-service-type
-                        (openssh-configuration
-                         (password-authentication? #f)
-                         (authorized-keys
-                          `(("arbn"
-                             ,(local-file "../../ssh-keys/arbn-dev.pub")
-                             ,(local-file "../../ssh-keys/arbn-ipad.pub"))))
-                         ;; Only accept logins that come through the tunnel.
-                         (extra-content "AllowUsers arbn@10.47.0.0/24"))))
+            ;; WireGuard + SSH
+            (wireguard-client-service "arbn-desktop")
+            (service openssh-service-type
+                     (openssh-configuration
+                      (password-authentication? #f)
+                      (authorized-keys
+                       `(("arbn"
+                          ,(local-file "../../ssh-keys/arbn-dev.pub")
+                          ,(local-file "../../ssh-keys/arbn-ipad.pub"))))
+                      ;; Only accept logins that come through the tunnel.
+                      (extra-content "AllowUsers arbn@10.47.0.0/24"))))
 
-              %yubikey-services))
-   (bluetooth-service-type config => (bluetooth-configuration
-                                      (name host-name)))))
+           %yubikey-services))
+  (bluetooth-service-type config => (bluetooth-configuration
+                                     (name host-name)))))

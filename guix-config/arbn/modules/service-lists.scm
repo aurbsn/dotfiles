@@ -8,6 +8,7 @@
   #:use-module (gnu home services)
   #:use-module (guix channels)
   #:use-module (ice-9 curried-definitions)
+  #:use-module (arbn packages weiqi)
   
   #:use-module (arbn modules fhs-box))
 (use-package-modules base security-token gnupg fcitx5 emacs terminals)
@@ -138,6 +139,16 @@
                              (name "hub")
                              (host-name "5.161.160.215")
                              (user "root"))))))
+
+           ;; KataGo
+           (simple-service 'katago-files home-files-service-type
+                           `((".katago/default_model.bin.gz"
+                              ,(file-append katago-network-b28c512nbt
+                                            "/share/katago/networks/default_model.bin.gz"))
+                             (".katago/default_gtp.cfg" ,(local-file "../../config-files/katago/gtp.cfg"))
+                             (".katago/analysis.cfg" ,(local-file "../../config-files/katago/analysis.cfg"))))
+           (simple-service 'opencl-nvidia home-environment-variables-service-type
+                           '(("OCL_ICD_VENDORS" . "/run/current-system/profile/etc/OpenCL/vendors")))
            
            ;; Configuration files
            (simple-service 
