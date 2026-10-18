@@ -89,7 +89,6 @@
           vlc
           firefox
           pavucontrol
-          yaru-theme
           oath-toolkit
           flatpak
           clhs
