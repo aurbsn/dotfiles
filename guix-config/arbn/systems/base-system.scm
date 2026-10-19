@@ -10,6 +10,8 @@
                         (extra-user-groups '()))
   (operating-system
    (inherit system)
+
+   (keyboard-layout (keyboard-layout "us" #:options '("ctrl:nocaps")))
    
    (locale "en_US.utf8")
    (timezone "America/New_York")
