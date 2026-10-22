@@ -56,7 +56,6 @@
                            `(("EDITOR" . "emacsclient")
                              ("LANG" . "en_US.UTF-8")
                              ("NODE_OPTIONS" . "--max-old-space-size=8192")
-                             ("GDK_SCALE" . "2")
                              ("GTK_PATH" . "$HOME/.guix-home/profile/lib/gtk-3.0${GTK_PATH:+:$GTK_PATH}")
                              ("XDG_DATA_DIRS" . "/var/lib/flatpak/exports/share:$HOME/.local/share/flatpak/exports/share:$XDG_DATA_DIRS")
                              ("GTK_IM_MODULE" . "fcitx")

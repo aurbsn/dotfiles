@@ -87,6 +87,8 @@
 
 (use-package eat)
 
+(pinentry-start)
+
 (setq custom-file (expand-file-name "customize.el" user-emacs-directory))
 (load custom-file t)
 (load "shell-integration.el")
