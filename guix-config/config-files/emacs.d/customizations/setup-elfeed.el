@@ -29,7 +29,9 @@
      ("https://wadler.blogspot.com/rss.xml")
      ("https://cdegroot.com/feed.xml" lisp)
      ("https://wingolog.org/feed/atom" lisp compilers)
-     ("https://scottlburson2.blogspot.com/" lisp))
+     ("https://scottlburson2.blogspot.com/" lisp)
+     ("https://inteltechniques.com/blog/rss.xml" privacy security osint))
+   
    :config)
   ;; Refresh when opening, not on a timer
   (advice-add 'elfeed :after (lambda (&rest _) (elfeed-update))))
