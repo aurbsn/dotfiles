@@ -7,7 +7,6 @@
 (with-eval-after-load 'esh-module
   (setopt eshell-modules-list
           (seq-union eshell-modules-list
-                     '(eshell-smart
-                       eshell-elecslash
+                     '(eshell-elecslash
                        eshell-tramp
                        eshell-xtra))))
