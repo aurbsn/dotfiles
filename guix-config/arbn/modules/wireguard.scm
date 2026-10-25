@@ -47,7 +47,7 @@
      #t)
     ("hackpad"
      "10.47.0.7"
-     #f
+     "1lUhrz/9T2vdL4Lx+ZJJqGT5yHHqUoRYZXP7moEtrmM="
      #f)))
 
 (define (node name)

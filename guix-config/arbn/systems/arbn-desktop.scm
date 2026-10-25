@@ -179,10 +179,17 @@
                       (authorized-keys
                        `(("arbn"
                           ,(local-file "../../ssh-keys/arbn-dev.pub")
-                          ,(local-file "../../ssh-keys/arbn-ipad.pub"))))
+                          ,(local-file "../../ssh-keys/arbn-ipad.pub")
+                          ,(local-file "../../ssh-keys/hackpad-root.pub"))))
                       ;; Only accept logins that come through the tunnel.
                       (extra-content "AllowUsers arbn@10.47.0.0/24"))))
 
            %yubikey-services))
   (bluetooth-service-type config => (bluetooth-configuration
-                                     (name host-name)))))
+                                     (name host-name)))
+  (guix-service-type config => (guix-configuration
+                                (inherit config)
+                                (authorized-keys
+                                 (cons (local-file "../../signing-keys/hackpad.pub")
+                                       (guix-configuration-authorized-keys
+                                        config)))))))
