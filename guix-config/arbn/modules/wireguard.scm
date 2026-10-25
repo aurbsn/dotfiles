@@ -39,6 +39,10 @@
     ("arbn-ipad"
      "10.47.0.5"
      "MFCnnEw6nThputK3Dh5dj9MsvoMA/waD6EU1b9cZMCk="
+     #t)
+    ("arbn-phone"
+     "10.47.0.6"
+     "5vMikGT1XfygY/lRF8K/Wkc453Tq8kKbelxH7LtTWjM="
      #t)))
 
 (define (node name)
