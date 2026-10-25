@@ -37,6 +37,7 @@
   (firmware (list linux-firmware))
   (keyboard-layout (keyboard-layout "us"))
   (host-name host-name)
+  (name-service-switch %mdns-host-lookup-nss)
   (bootloader (bootloader-configuration
                (bootloader grub-efi-bootloader)
                (targets '("/boot/efi"))
