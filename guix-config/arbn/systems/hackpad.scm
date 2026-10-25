@@ -3,9 +3,18 @@
   #:use-module (arbn systems base-system)
   #:use-module (arbn modules service-lists)
   #:use-module (arbn modules package-lists)
+  #:use-module (arbn modules wireguard)
   #:use-module (gnu home))
 (use-service-modules desktop networking ssh xorg)
 (use-package-modules audio curl networking pulseaudio linux wm xorg)
+
+(define %desktop-build-machine
+  #~(build-machine
+     (name #$(node-address "arbn-desktop"))
+     (systems (list "x86_64-linux" "i686-linux"))
+     (host-key "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAfjShm8Sq2rFedqwDfjysYGL92z2J/my51+TcexFIjv")
+     (user "arbn")
+     (private-key "/root/.ssh/id_ed25519")))
 
 (system-config
  #:system
@@ -55,10 +64,19 @@
  #:my-system-services
  (create-system-services 
  (append 
-  (list 
-   (service gnome-desktop-service-type))
-  (modify-services 
+  (list
+   (service gnome-desktop-service-type)
+   (wireguard-client-service "hackpad"))
+  (modify-services
    %desktop-services
    (gdm-service-type config => (gdm-configuration
-             (wayland? #t)))))
+             (wayland? #t)))
+   (guix-service-type config => (guix-configuration
+                                 (inherit config)
+                                 (build-machines
+                                  (list %desktop-build-machine))
+                                 (authorized-keys
+                                  (cons (local-file "../../signing-keys/arbn-desktop.pub")
+                                        (guix-configuration-authorized-keys
+                                         config)))))))
  #:free #t))
