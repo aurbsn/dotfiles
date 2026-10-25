@@ -4,6 +4,7 @@
   #:use-module (ice-9 match)
   #:use-module (srfi srfi-1)
   #:export (%subnet
+            node-address
             wireguard-hub-service
             wireguard-client-service
             wireguard-exit-service
@@ -43,7 +44,11 @@
     ("arbn-phone"
      "10.47.0.6"
      "5vMikGT1XfygY/lRF8K/Wkc453Tq8kKbelxH7LtTWjM="
-     #t)))
+     #t)
+    ("hackpad"
+     "10.47.0.7"
+     #f
+     #f)))
 
 (define (node name)
   (or (assoc name %nodes)
