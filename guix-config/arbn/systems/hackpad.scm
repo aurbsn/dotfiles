@@ -5,7 +5,7 @@
   #:use-module (arbn modules package-lists)
   #:use-module (arbn modules wireguard)
   #:use-module (gnu home))
-(use-service-modules desktop networking ssh xorg)
+(use-service-modules desktop linux networking pm ssh xorg)
 (use-package-modules audio curl networking pulseaudio linux wm xorg)
 
 (define %desktop-build-machine
@@ -34,7 +34,8 @@
           (source
            (uuid "35309dd5-dbd2-41d7-92f1-e0cb53ba7ab9"))
           (target "cryptroot")
-          (type luks-device-mapping))))
+          (type luks-device-mapping)
+          (arguments '(#:allow-discards? #t)))))
 
   (file-systems
    (cons* (file-system
@@ -66,7 +67,10 @@
  (append 
   (list
    (service gnome-desktop-service-type)
-   (wireguard-client-service "hackpad"))
+   (wireguard-client-service "hackpad")
+   (service tlp-service-type)
+   (service thermald-service-type)
+   (service fstrim-service-type))
   (modify-services
    %desktop-services
    (gdm-service-type config => (gdm-configuration
