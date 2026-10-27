@@ -98,7 +98,8 @@
            font-adobe-source-han-serif
            font-google-noto-sans-cjk
            font-wqy-zenhei
-           font-wqy-microhei)))
+           font-wqy-microhei
+           ungoogled-chromium-wayland)))
 
 ;; Desktop packages when not using Guix on a foreign distro
 (define-public %desktop-system-home-packages

@@ -6,7 +6,7 @@
   #:use-module (arbn modules wireguard)
   #:use-module (gnu home)
   #:use-module (gnu home services syncthing))
-(use-service-modules desktop networking ssh xorg)
+(use-service-modules desktop networking ssh xorg pm linux)
 (use-package-modules audio curl networking pulseaudio linux wm xorg)
 
 (define %desktop-build-machine
