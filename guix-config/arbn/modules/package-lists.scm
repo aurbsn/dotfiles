@@ -5,7 +5,8 @@
  base guile package-management text-editors version-control certs
  lisp lisp-check lisp-xyz  emacs emacs-xyz fonts linux rsync guile-xyz cmake ssh
  scheme education nss books terminals tex file-systems java gnupg imagemagick
- virtualization hardware file fcitx5 node libcanberra  racket authentication)
+ virtualization hardware file fcitx5 node libcanberra racket authentication cups
+ password-utils)
 
 ;; These packages will always be desired for Guix Home configs, including on servers
 (define-public %base-home-packages 
@@ -43,6 +44,9 @@
    ;; Document handling
    emacs-nov
    emacs-pdf-tools
+   ;; Passwords
+   emacs-password-store
+   emacs-password-store-otp
    
    ;; Other
    emacs-consult
@@ -115,7 +119,9 @@
    rsync
    mosh
    foot
-   binutils))
+   binutils
+   cups
+   password-store))
 
 (define-public %base-system-packages ; All systems need these
   (append
