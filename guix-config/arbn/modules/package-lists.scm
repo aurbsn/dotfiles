@@ -120,7 +120,8 @@
    foot
    binutils
    cups
-   password-store))
+   password-store
+   browserpass-native))
 
 (define-public %base-system-packages ; All systems need these
   (append

@@ -94,8 +94,7 @@
           flatpak
           clhs
           emacs-rime
-          katago-opencl
-          )))))
+          katago-opencl)))))
  #:my-system-services
  (modify-services 
   (create-system-desktop-services 
