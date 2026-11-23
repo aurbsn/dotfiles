@@ -22,4 +22,7 @@
 
 (use-package agent-shell
   :config
-  (setq agent-shell-anthropic-claude-acp-command '("fhs-box" "claude-agent-acp")))
+  (setq agent-shell-anthropic-claude-acp-command
+        (if (executable-find "fhs-box")
+            '("fhs-box" "claude-agent-acp")
+          '("claude-agent-acp"))))

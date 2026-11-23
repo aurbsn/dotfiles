@@ -46,7 +46,7 @@
         (udev-rules-service 'fido2 libfido2 #:groups '("plugdev"))
         (udev-rules-service 'u2f %fido2-rule #:groups '("plugdev"))))
 
-(define*-public (create-home-services my-services my-files #:key (free #f))
+(define*-public (create-home-services my-services my-files #:key (free #f) (fhs-box? #t))
   (append (list
            
 	   (service home-shepherd-service-type)
@@ -106,13 +106,6 @@
                                             (list #$(file-append fcitx5 "/bin/fcitx5"))))
                                   (stop #~(make-kill-destructor)))))
 
-           (simple-service 'fhs-box home-files-service-type
-                           `((".local/bin/fhs-box"
-                              ,(fhs-box-program
-                                #:expose '("/gnu/store"
-                                           "/var/guix/daemon-socket"
-                                           "/var/guix/profiles")))))
-           
            (simple-service 'emacs-server
                            home-shepherd-service-type
                            (list (shepherd-service
@@ -171,6 +164,14 @@
                      ,(local-file "../../config-files/gitconfig"))
                    `(".terminfo"
                      ,(file-append foot "/share/terminfo"))))))
+          (if fhs-box?
+              (list (simple-service 'fhs-box home-files-service-type
+                                    `((".local/bin/fhs-box"
+                                       ,(fhs-box-program
+                                         #:expose '("/gnu/store"
+                                                    "/var/guix/daemon-socket"
+                                                    "/var/guix/profiles"))))))
+              '())
           my-services))
 
 (define*-public (create-system-desktop-services my-services #:key (free #f))
